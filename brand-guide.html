@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Midwest Waste Consultants — Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B365D;
+    --navy-deep:#142849;
+    --orange:#FF8200;
+    --white:#FFFFFF;
+    --steel:#F4F4F4;
+    --rule:#E2E6EE;
+    --ink:#142849;
+    --muted:#5b6878;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Open Sans',system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Montserrat',Helvetica,Arial,sans-serif;
+    color:var(--navy);
+    letter-spacing:-0.01em;
+    margin:0 0 .5em;
+  }
+  h1{font-weight:800;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-0.02em}
+  h2{font-weight:700;font-size:1.65rem;margin-top:0}
+  h3{font-weight:700;font-size:1.15rem}
+  h4{font-weight:600;font-size:.95rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  p{margin:0 0 1em}
+  a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--white);
+    padding:72px 0 64px;
+    border-bottom:6px solid var(--orange);
+  }
+  .hero h1,.hero h2,.hero h3{color:var(--white)}
+  .hero .eyebrow{
+    display:inline-block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--orange);
+    border-left:3px solid var(--orange);
+    padding-left:10px;margin-bottom:20px;
+  }
+  .hero p{color:#cdd5e3;max-width:760px;font-size:1.05rem}
+  .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+  @media (max-width:780px){.hero-grid{grid-template-columns:1fr}}
+  .hero-mark{
+    background:var(--navy-deep);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    padding:24px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-mark img{max-width:100%;height:auto;display:block;border-radius:8px}
+
+  /* Section */
+  section{padding:72px 0;border-bottom:1px solid var(--rule)}
+  section:last-of-type{border-bottom:0}
+  .section-head{max-width:760px;margin-bottom:36px}
+  .section-head .eyebrow{
+    font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
+    display:block;margin-bottom:10px;
+  }
+
+  /* Color Palette */
+  .palette{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media (max-width:880px){.palette{grid-template-columns:repeat(2,1fr)}}
+  .swatch{
+    border:1px solid var(--rule);
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--white);
+  }
+  .swatch .chip{height:140px;display:flex;align-items:flex-end;padding:14px;color:var(--white);font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.04em}
+  .swatch.light .chip{color:var(--navy)}
+  .swatch .meta{padding:14px 16px 16px;font-size:.9rem}
+  .swatch .meta .name{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--navy);font-size:1rem;margin-bottom:2px}
+  .swatch .meta .codes{color:var(--muted);font-feature-settings:"tnum" 1;font-size:.85rem}
+  .swatch .usage{margin-top:8px;color:var(--muted);font-size:.85rem}
+
+  /* Typography */
+  .type-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media (max-width:780px){.type-grid{grid-template-columns:1fr}}
+  .type-card{border:1px solid var(--rule);border-radius:10px;padding:26px}
+  .type-sample{font-family:'Montserrat',sans-serif;color:var(--navy)}
+  .type-sample.body{font-family:'Open Sans',sans-serif}
+  .type-card .specs{font-size:.85rem;color:var(--muted);margin-top:14px;font-feature-settings:"tnum" 1}
+  .alpha{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:600;font-size:1.05rem;margin-top:10px}
+  .alpha.body{font-family:'Open Sans',sans-serif;font-weight:400}
+
+  /* Logo concepts */
+  .concept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media (max-width:880px){.concept-grid{grid-template-columns:1fr}}
+  .concept{
+    background:var(--white);
+    border:1px solid var(--rule);
+    border-radius:12px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .concept .stage{
+    background:var(--navy);
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .concept .stage img{width:100%;height:100%;object-fit:cover;display:block}
+  .concept .body{padding:22px 24px 26px}
+  .concept .tag{
+    display:inline-block;font-family:'Montserrat',sans-serif;font-weight:700;
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--orange);margin-bottom:8px;
+  }
+  .concept h3{margin-bottom:8px}
+  .concept p{font-size:.95rem;color:#3b4658;margin-bottom:0}
+  .concept .best-for{
+    margin-top:14px;font-size:.82rem;color:var(--muted);
+    border-top:1px solid var(--rule);padding-top:12px;
+  }
+  .best-for strong{color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.04em}
+
+  /* Usage rules */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:880px){.rules{grid-template-columns:1fr}}
+  .rule{
+    background:var(--steel);
+    border-radius:10px;padding:22px 24px;
+    border-left:4px solid var(--orange);
+  }
+  .rule h4{color:var(--navy);text-transform:none;letter-spacing:0;font-size:1.05rem;font-weight:700;margin-bottom:6px}
+  .rule p{margin:0;font-size:.95rem}
+
+  .donts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  @media (max-width:880px){.donts{grid-template-columns:1fr}}
+  .dont{
+    border:1px solid var(--rule);border-radius:10px;padding:18px 20px;
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .dont .x{
+    flex-shrink:0;width:28px;height:28px;border-radius:50%;
+    background:#FBE7E2;color:#B53D1B;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Montserrat',sans-serif;font-weight:800;font-size:.9rem;
+  }
+  .dont p{margin:0;font-size:.92rem}
+
+  /* Voice */
+  .voice{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media (max-width:780px){.voice{grid-template-columns:1fr}}
+  .voice-card{border:1px solid var(--rule);border-radius:10px;padding:24px}
+  .pill{
+    display:inline-block;background:var(--navy);color:var(--white);
+    font-family:'Montserrat',sans-serif;font-weight:600;
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:5px 10px;border-radius:999px;margin:0 6px 6px 0;
+  }
+  .pill.alt{background:var(--orange)}
+
+  /* Footer */
+  footer{background:var(--navy);color:#cdd5e3;padding:40px 0;text-align:center;font-size:.85rem}
+  footer .wrap > div{font-family:'Montserrat',sans-serif;color:var(--white);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+
+  /* Print */
+  @media print{
+    .hero{padding:36px 0}
+    section{padding:36px 0;break-inside:avoid}
+    .concept{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO ============================================================== -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Brand Guide · v1.0 · April 2026</span>
+      <h1>Midwest Waste Consultants<br>Visual Identity System</h1>
+      <p>
+        A unified standard for how the Midwest Waste brand looks, sounds, and behaves
+        across vehicle wraps, the dual-use web platform, and every digital surface in between.
+        Built around the existing "Bear and Sphere" equity, optimized for legibility at any scale.
+      </p>
+    </div>
+    <div class="hero-mark">
+      <img src="images/logo-midwest-waste.webp" alt="Midwest Waste primary logo: white bear pushing a sphere on navy background" />
+    </div>
+  </div>
+</header>
+
+<!-- BRAND ESSENCE ===================================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">01 · Brand Essence</span>
+      <h2>The Bear and the Sphere</h2>
+      <p>
+        The bear pushing a sphere is more than a logo — it is a working metaphor for
+        the strength, persistence, and momentum required in waste management.
+        The mark already lives on every truck in the fleet; that recognition is the
+        single most valuable visual asset Midwest Waste owns. This guide preserves
+        it on physical assets while introducing digital-first variations that perform
+        at small sizes, in horizontal lockups, and inside circular social crops.
+      </p>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <h4>Strength</h4>
+        <p>The bear conveys force and reliability — the muscle behind hands-on hauling and 30 years of operational expertise.</p>
+      </div>
+      <div class="rule">
+        <h4>Momentum</h4>
+        <p>The pushing motion separates Midwest Waste from static, "industrial-only" competitor marks. We move things forward.</p>
+      </div>
+      <div class="rule">
+        <h4>Trust</h4>
+        <p>High-contrast navy and white read as professional and dependable — the visual equivalent of "speak to an owner."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR ============================================================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">02 · Color Palette</span>
+      <h2>Midwest Navy & Consultant Orange</h2>
+      <p>Two anchor colors do the heavy lifting. Navy carries trust and authority. Orange carries action — reserved for calls-to-action, accent rules, and highlight moments. White and Steel Gray are the breathing room.</p>
+    </div>
+
+    <div class="palette">
+      <div class="swatch">
+        <div class="chip" style="background:#1B365D">Primary Navy</div>
+        <div class="meta">
+          <div class="name">Midwest Navy</div>
+          <div class="codes">HEX #1B365D · RGB 27 · 54 · 93 · CMYK 89/77/35/25</div>
+          <div class="usage">Backgrounds, headers, primary text, vehicle base.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#FF8200">Action Orange</div>
+        <div class="meta">
+          <div class="name">Action Orange</div>
+          <div class="codes">HEX #FF8200 · RGB 255 · 130 · 0 · CMYK 0/60/100/0</div>
+          <div class="usage">CTA buttons, accent rules, highlights only.</div>
+        </div>
+      </div>
+      <div class="swatch light">
+        <div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--rule)">Pure White</div>
+        <div class="meta">
+          <div class="name">Pure White</div>
+          <div class="codes">HEX #FFFFFF · RGB 255 · 255 · 255</div>
+          <div class="usage">Logo mark, body backgrounds, clear space.</div>
+        </div>
+      </div>
+      <div class="swatch light">
+        <div class="chip" style="background:#F4F4F4">Steel Gray</div>
+        <div class="meta">
+          <div class="name">Steel Gray</div>
+          <div class="codes">HEX #F4F4F4 · RGB 244 · 244 · 244</div>
+          <div class="usage">Secondary surfaces, subtle dividers.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;background:var(--steel);border-left:4px solid var(--orange);padding:18px 22px;border-radius:8px;font-size:.92rem;color:#3b4658">
+      <strong style="color:var(--navy);font-family:Montserrat,sans-serif">Ratio guidance.</strong>
+      Navy and white should account for roughly <strong>85%</strong> of any composition. Orange is a spice, not a base — keep it under <strong>10%</strong> for maximum impact.
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY ======================================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">03 · Typography</span>
+      <h2>Montserrat & Open Sans</h2>
+      <p>A two-font system: a geometric sans-serif that mirrors the circular logo for headers and a friendly humanist sans for long-form reading. Both render cleanly on screens of every size.</p>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <h4>Primary · Headers & Logo</h4>
+        <div class="type-sample" style="font-weight:800;font-size:2.6rem;line-height:1;letter-spacing:-.02em">Montserrat</div>
+        <div class="type-sample" style="font-weight:700;font-size:1.3rem;margin-top:8px">Built to push forward.</div>
+        <div class="alpha">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        <div class="specs">Use weights 600 / 700 / 800. Title case for headlines, all-caps for eyebrows with 0.18em tracking.</div>
+      </div>
+      <div class="type-card">
+        <h4>Secondary · Body Copy</h4>
+        <div class="type-sample body" style="font-weight:600;font-size:1.7rem;line-height:1.15;color:var(--navy)">Open Sans</div>
+        <div class="type-sample body" style="font-weight:400;font-size:1rem;margin-top:10px;color:#3b4658">
+          Midwest Waste Consultants goes beyond ordinary waste services to focus on long-term goals for our clients — from a single residential roll-off to multi-site brokerage.
+        </div>
+        <div class="alpha body">abcdefghijklmnopqrstuvwxyz 0123456789</div>
+        <div class="specs">Use 400 for body, 600 for emphasis. Line-height 1.55 for paragraphs, 1.4 for short blocks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO CONCEPTS ===================================================== -->
+<section style="background:var(--steel)">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">04 · Logo Concepts</span>
+      <h2>Four Refinements of the Bear & Sphere</h2>
+      <p>
+        The original mark stays on the trucks — it is the brand equity. These four
+        digital-first variations solve the legibility, scaling, and aspect-ratio
+        problems that surface online without disturbing the soul of the logo.
+        SVG renderings below illustrate the structural direction for each concept.
+      </p>
+    </div>
+
+    <div class="concept-grid">
+
+      <!-- CONCEPT 1: BOLDED & CONSOLIDATED -->
+      <div class="concept">
+        <div class="stage">
+          <img src="images/concepts/concept-1-bolded.png" alt="Concept 1 — bolded and consolidated refinement of the original Midwest Waste logo with thicker typography and heavier orange accent bars">
+        </div>
+        <div class="body">
+          <span class="tag">Concept 01</span>
+          <h3>Bolded & Consolidated</h3>
+          <p>A direct refinement of the existing layout. Heavier sans-serif throughout, thicker orange bars, beefier "EST 2015" and "CONSULTANTS." Identical composition — just everything tightened so it survives at small print and web header sizes.</p>
+          <div class="best-for"><strong>Best for —</strong> small-print collateral, website headers, square profile crops where the original layout must be preserved.</div>
+        </div>
+      </div>
+
+      <!-- CONCEPT 2: STACKED DIGITAL-READY -->
+      <div class="concept">
+        <div class="stage">
+          <img src="images/concepts/concept-2-stacked.png" alt="Concept 2 — stacked digital-ready lockup with the bear and clean sphere icon above a large MIDWEST WASTE wordmark and thick orange divider">
+        </div>
+        <div class="body">
+          <span class="tag">Concept 02</span>
+          <h3>Stacked Digital-Ready</h3>
+          <p>Icon and type are separated into a clean lockup. The wordmark scales up dramatically because it is no longer trapped inside the sphere. A single bold orange rule replaces the two thin bars. "EST 2015" becomes a small detail outside the mark.</p>
+          <div class="best-for"><strong>Best for —</strong> website navigation bars, email signatures, business cards, mobile headers — anywhere horizontal real estate is the constraint.</div>
+        </div>
+      </div>
+
+      <!-- CONCEPT 3: CURVED INTEGRATED WORDMARK -->
+      <div class="concept">
+        <div class="stage">
+          <img src="images/concepts/concept-3-curved.png" alt="Concept 3 — curved integrated wordmark with MIDWEST WASTE arcing along the top of the sphere and CONSULTANTS centered below flanked by orange bars">
+        </div>
+        <div class="body">
+          <span class="tag">Concept 03</span>
+          <h3>Curved Integrated Wordmark</h3>
+          <p>"MIDWEST WASTE" curves along the top arc of the sphere, as if printed on the surface being pushed. The motion of the bear becomes the motion of the name. CONSULTANTS sits centered with two short orange bars framing it, EST 2015 as a clean detail below.</p>
+          <div class="best-for"><strong>Best for —</strong> hero imagery, marketing collateral, presentation covers, large-format print where dynamism matters more than minimalism.</div>
+        </div>
+      </div>
+
+      <!-- CONCEPT 4: MINIMALIST MONOGRAM ICON -->
+      <div class="concept">
+        <div class="stage">
+          <img src="images/concepts/concept-4-monogram.png" alt="Concept 4 — minimalist monogram icon with bear silhouette pushing a sphere containing only a bold MW monogram and a single orange accent bar">
+        </div>
+        <div class="body">
+          <span class="tag">Concept 04</span>
+          <h3>Minimalist Monogram Icon</h3>
+          <p>Strip everything. The bear silhouette and sphere remain — inside the sphere, only a powerful "MW" monogram and a single orange accent bar. No "EST 2015," no "CONSULTANTS." A power mark built to remain distinct at 16×16 pixels.</p>
+          <div class="best-for"><strong>Best for —</strong> favicons, app icons, social profile photos, watermarks, embroidery, and any other surface where text would be illegible.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- USAGE ============================================================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">05 · Logo Usage</span>
+      <h2>Clear Space, Sizing, and Surfaces</h2>
+      <p>Three rules cover most situations. When in doubt, give the mark more room and pick the variation built for the surface.</p>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <h4>Clear Space</h4>
+        <p>Maintain padding equal to the width of the bear's head on every side. Nothing — text, photo edges, other logos — enters that zone.</p>
+      </div>
+      <div class="rule">
+        <h4>Minimum Size</h4>
+        <p>Primary mark: 120 px wide minimum on screen, 1 inch in print. Below that, switch to the Stacked or Monogram variation.</p>
+      </div>
+      <div class="rule">
+        <h4>Surface Pairing</h4>
+        <p>Always place the mark on a solid color container. If the background is a photograph, drop a navy or white block behind the logo first.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:40px 0 16px">Don't</h3>
+    <div class="donts">
+      <div class="dont"><div class="x">×</div><p>Don't stretch, skew, or rotate the mark. Scale proportionally only.</p></div>
+      <div class="dont"><div class="x">×</div><p>Don't recolor the bear. The bear is white on navy — never orange, never gradient.</p></div>
+      <div class="dont"><div class="x">×</div><p>Don't add drop shadows, glows, or 3D effects. The silhouette does the work.</p></div>
+      <div class="dont"><div class="x">×</div><p>Don't place the mark on busy photos without a solid color container behind it.</p></div>
+      <div class="dont"><div class="x">×</div><p>Don't recreate the type yourself. Use the supplied SVG files only.</p></div>
+      <div class="dont"><div class="x">×</div><p>Don't use the primary mark below the minimum size. Switch to the Monogram instead.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE ============================================================= -->
+<section style="background:var(--steel)">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">06 · Voice & Tone</span>
+      <h2>Plainspoken. Experienced. Direct.</h2>
+      <p>Midwest Waste does not sound like a tech startup or a national hauler. We sound like an owner who has been doing this for thirty years and is happy to pick up the phone.</p>
+    </div>
+
+    <div class="voice">
+      <div class="voice-card">
+        <h3>We are</h3>
+        <div style="margin:14px 0 18px">
+          <span class="pill">Plainspoken</span>
+          <span class="pill">Experienced</span>
+          <span class="pill">Local</span>
+          <span class="pill">Practical</span>
+          <span class="pill">Owner-operated</span>
+        </div>
+        <p style="margin:0;color:#3b4658"><strong style="color:var(--navy);font-family:Montserrat,sans-serif">Example —</strong> "Need a dumpster this weekend? Call us. We'll size it right and have it on your driveway by Friday."</p>
+      </div>
+      <div class="voice-card">
+        <h3>We are not</h3>
+        <div style="margin:14px 0 18px">
+          <span class="pill alt">Jargon-heavy</span>
+          <span class="pill alt">Salesy</span>
+          <span class="pill alt">Corporate</span>
+          <span class="pill alt">Vague</span>
+          <span class="pill alt">Overpromising</span>
+        </div>
+        <p style="margin:0;color:#3b4658"><strong style="color:var(--navy);font-family:Montserrat,sans-serif">Avoid —</strong> "Leveraging end-to-end synergistic waste intelligence solutions to optimize your sustainability journey."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL =========================================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">07 · Digital Implementation</span>
+      <h2>Refinements You Can Ship Without Repainting Trucks</h2>
+      <p>Four small moves close the gap between the physical mark and a polished digital presence — without any change to the fleet.</p>
+    </div>
+
+    <div class="rules" style="grid-template-columns:repeat(2,1fr)">
+      <div class="rule">
+        <h4>1 · Bolden "Consultants"</h4>
+        <p>On every digital surface, use the version where "CONSULTANTS" is one weight thicker. Same character, readable on a phone.</p>
+      </div>
+      <div class="rule">
+        <h4>2 · Simplify for Social Crops</h4>
+        <p>Most platforms crop to a circle. For Facebook, Instagram, and LinkedIn profile photos, use the Concept 04 monogram so nothing important gets cut off.</p>
+      </div>
+      <div class="rule">
+        <h4>3 · Thicker Orange Bars</h4>
+        <p>Increase the orange accent stroke weight by ~25% in digital files. The bars stop "vibrating" on low-resolution screens and feel grounded.</p>
+      </div>
+      <div class="rule">
+        <h4>4 · Ship SVGs Only</h4>
+        <p>Web developers receive .svg files. Never .jpg, never compressed .png. The bear silhouette stays sharp on every device, every zoom level.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;background:var(--navy);color:#cdd5e3;padding:28px 32px;border-radius:12px">
+      <h3 style="color:#fff;margin-bottom:8px">Recommended file kit</h3>
+      <p style="margin:0;font-size:.95rem">
+        <strong style="color:#fff">Primary (Vehicle Style)</strong> · square SVG and PNG at 1024 / 512 / 256 px ·
+        <strong style="color:#fff">Horizontal (Stacked Digital-Ready)</strong> · SVG plus PNG at 1200 × 400 px and 600 × 200 px ·
+        <strong style="color:#fff">Monogram (Favicon)</strong> · SVG plus ICO at 16 / 32 / 48 / 180 px.
+        Each variation should ship in three color modes: navy/white, full color (with orange), and reversed (white on transparent).
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Midwest Waste Consultants, LLC</div>
+    Brand Guide v1.0 · April 2026 · Sugar Grove · Aurora · Fox Valley
+  </div>
+</footer>
+
+</body>
+</html>

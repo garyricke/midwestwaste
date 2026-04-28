@@ -1,0 +1,1523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Midwest Waste — 2026 Marketing Strategy & Estimate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B365D;
+    --navy-deep:#142849;
+    --navy-light:#2A4775;
+    --orange:#FF8200;
+    --orange-deep:#E07300;
+    --white:#FFFFFF;
+    --steel:#F4F4F4;
+    --rule:#E2E6EE;
+    --ink:#142849;
+    --muted:#5b6878;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Open Sans',system-ui,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Montserrat',Helvetica,Arial,sans-serif;
+    color:var(--navy);
+    letter-spacing:-0.01em;
+    margin:0 0 .5em;
+  }
+  h1{font-weight:900;font-size:clamp(2.4rem,5vw,4rem);line-height:1;letter-spacing:-0.025em}
+  h2{font-weight:800;font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:0;line-height:1.1}
+  h3{font-weight:700;font-size:1.25rem;line-height:1.25}
+  h4{font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--orange)}
+  p{margin:0 0 1em}
+  a{color:var(--navy);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+  a:hover{color:var(--orange)}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .narrow{max-width:780px}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    background:var(--navy);
+    color:var(--white);
+    overflow:hidden;
+    border-bottom:6px solid var(--orange);
+  }
+  .hero-img{
+    position:absolute;inset:0;
+    background-image:url('images/marketing/hero-fox-valley-autumn.png');
+    background-size:cover;background-position:center;
+    opacity:.55;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,40,73,.55) 0%,rgba(20,40,73,.95) 100%);
+  }
+  .hero-content{position:relative;padding:120px 0 100px}
+  .hero h1,.hero h2,.hero h3{color:var(--white)}
+  .hero .eyebrow{
+    display:inline-block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--orange);
+    border-left:3px solid var(--orange);
+    padding-left:12px;margin-bottom:24px;
+  }
+  .hero p.lead{color:#dce4f1;max-width:780px;font-size:1.18rem;line-height:1.5;margin-top:16px}
+
+  .hero-meta{
+    margin-top:40px;display:flex;gap:36px;flex-wrap:wrap;
+    font-family:'Montserrat',sans-serif;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;color:#a8b4c8;
+  }
+  .hero-meta strong{color:var(--white);display:block;font-size:1.5rem;letter-spacing:-.01em;font-weight:800;margin-top:4px;text-transform:none}
+
+  /* Section */
+  section{padding:88px 0;border-bottom:1px solid var(--rule)}
+  section.dark{background:var(--navy);color:#dce4f1;border-bottom:0}
+  section.dark h1,section.dark h2,section.dark h3{color:var(--white)}
+  section.dark h4{color:var(--orange)}
+  section.dark a{color:var(--orange)}
+  section.steel{background:var(--steel)}
+  section:last-of-type{border-bottom:0}
+  .section-head{max-width:780px;margin-bottom:48px}
+  .section-head .eyebrow{
+    font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
+    display:block;margin-bottom:14px;
+  }
+
+  /* Two col */
+  .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+  @media (max-width:880px){.two-col{grid-template-columns:1fr}}
+
+  /* Audience cards */
+  .audience{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:880px){.audience{grid-template-columns:1fr}}
+  .aud-card{
+    border:1px solid var(--rule);border-radius:12px;padding:28px;
+    background:var(--white);
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .aud-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(20,40,73,.08)}
+  .aud-card .num{
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    color:var(--orange);font-size:2.5rem;line-height:1;margin-bottom:8px;
+  }
+  .aud-card h3{margin:0 0 8px}
+  .aud-card .pain{font-size:.85rem;color:var(--muted);margin-top:14px;border-top:1px solid var(--rule);padding-top:12px}
+
+  /* Big bet feature */
+  .bet{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+  }
+  @media (max-width:980px){.bet{grid-template-columns:1fr}}
+  .bet-cover{
+    aspect-ratio:1/1;border-radius:16px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.45);
+  }
+  .bet-cover img{width:100%;height:100%;display:block;object-fit:cover}
+  .bet-stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:32px;
+  }
+  .stat{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:10px;padding:18px 20px;
+  }
+  .stat .num{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--orange);font-size:1.7rem;line-height:1;margin-bottom:6px}
+  .stat .lab{font-size:.82rem;color:#a8b4c8;text-transform:uppercase;letter-spacing:.1em}
+
+  /* Flip cards */
+  .flips{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+  @media (max-width:880px){.flips{grid-template-columns:1fr}}
+  .flip{
+    perspective:1200px;height:230px;cursor:pointer;
+  }
+  .flip-inner{
+    position:relative;width:100%;height:100%;
+    transition:transform .6s cubic-bezier(.4,.2,.2,1);
+    transform-style:preserve-3d;
+  }
+  .flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}
+  .flip-face{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border-radius:12px;padding:26px 24px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .flip-front{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .flip-back{
+    background:var(--orange);color:var(--navy);
+    transform:rotateY(180deg);
+    border:1px solid var(--orange-deep);
+  }
+  .flip-front h3{color:var(--white);margin:0}
+  .flip-front .label{font-family:Montserrat,sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+  .flip-front .hint{font-size:.78rem;color:#a8b4c8;text-transform:uppercase;letter-spacing:.1em;font-family:Montserrat,sans-serif;font-weight:600}
+  .flip-back h3{color:var(--navy);margin:0 0 8px}
+  .flip-back p{margin:0;font-size:.92rem;color:var(--navy-deep);font-weight:600;line-height:1.4}
+
+  /* Workflow steps */
+  .workflow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+  @media (max-width:880px){.workflow{grid-template-columns:1fr 1fr}}
+  .step{
+    background:var(--white);border:1px solid var(--rule);border-radius:10px;
+    padding:22px 20px;position:relative;
+  }
+  .step-num{
+    font-family:Montserrat,sans-serif;font-weight:900;font-size:.85rem;
+    color:var(--orange);letter-spacing:.14em;margin-bottom:8px;
+  }
+  .step h3{font-size:1.02rem;margin-bottom:6px}
+  .step p{margin:0;font-size:.86rem;color:var(--muted);line-height:1.45}
+
+  /* FPV cinematic block */
+  .fpv-block{
+    margin:36px 0;border-radius:14px;overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+  }
+  .fpv-block img{width:100%;height:auto;display:block}
+  .fpv-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  @media (max-width:780px){.fpv-grid{grid-template-columns:1fr}}
+  .fpv-grid img{width:100%;border-radius:10px;display:block}
+
+  /* Quote / cite block */
+  .cite{
+    background:var(--steel);
+    border-left:4px solid var(--orange);
+    padding:22px 26px;border-radius:0 10px 10px 0;
+    margin:24px 0;
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:26px;
+    align-items:start;
+  }
+  .cite .cite-text{padding:4px 0;min-width:0}
+  .cite p{margin:0 0 6px}
+  .cite .src{font-size:.82rem;color:var(--muted);font-family:Montserrat,sans-serif;letter-spacing:.04em}
+  .cite .src a{word-break:break-all}
+  .cite-thumb{
+    display:block;
+    border-radius:8px;
+    overflow:hidden;
+    background:var(--navy);
+    box-shadow:0 10px 28px rgba(20,40,73,.22),0 1px 3px rgba(20,40,73,.08);
+    border:1px solid rgba(20,40,73,.08);
+    aspect-ratio:16/10;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .cite-thumb:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 36px rgba(20,40,73,.3),0 1px 3px rgba(20,40,73,.12);
+  }
+  .cite-thumb img{
+    width:100%;height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:top center;
+  }
+  @media (max-width:780px){
+    .cite{grid-template-columns:1fr;gap:18px}
+  }
+
+  /* Roadmap */
+  .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+  @media (max-width:880px){.roadmap{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.roadmap{grid-template-columns:1fr}}
+  .quarter{
+    background:var(--white);border:1px solid var(--rule);border-radius:10px;
+    padding:22px 20px;border-top:4px solid var(--orange);
+  }
+  .quarter h4{color:var(--navy);text-transform:none;letter-spacing:0;font-size:.78rem;margin-bottom:6px}
+  .quarter h3{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:10px}
+  .quarter ul{margin:0;padding-left:18px;font-size:.88rem;color:var(--ink)}
+  .quarter li{margin-bottom:6px}
+
+  /* Budget tables */
+  .table-wrap{overflow-x:auto;margin:24px 0}
+  table{
+    width:100%;border-collapse:collapse;background:var(--white);
+    border:1px solid var(--rule);border-radius:10px;overflow:hidden;
+    font-size:.94rem;
+  }
+  thead th{
+    background:var(--navy);color:var(--white);
+    font-family:Montserrat,sans-serif;font-weight:700;
+    text-align:left;padding:14px 18px;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+  }
+  td,th{padding:14px 18px;border-bottom:1px solid var(--rule);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--steel)}
+  td.num{text-align:right;font-feature-settings:"tnum" 1;font-family:Montserrat,sans-serif;font-weight:600;color:var(--navy);white-space:nowrap}
+  tfoot td{
+    background:var(--steel);
+    font-family:Montserrat,sans-serif;font-weight:800;color:var(--navy);
+    border-top:2px solid var(--navy);
+  }
+
+  /* Accordion */
+  .accordion{margin-top:28px;border-radius:12px;overflow:hidden;border:1px solid var(--rule)}
+  details{
+    border-bottom:1px solid var(--rule);
+    background:var(--white);
+  }
+  details:last-child{border-bottom:0}
+  details[open]{background:var(--steel)}
+  summary{
+    cursor:pointer;list-style:none;
+    padding:20px 24px;
+    font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);
+    font-size:1.05rem;
+    display:flex;justify-content:space-between;align-items:center;
+    transition:background .2s ease;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{
+    content:"+";color:var(--orange);font-size:1.6rem;font-weight:300;
+    transition:transform .3s ease;line-height:1;
+  }
+  details[open] summary::after{content:"−"}
+  details > div{padding:0 24px 22px;color:var(--ink);font-size:.95rem;line-height:1.6}
+
+  /* KPI grid */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media (max-width:880px){.kpis{grid-template-columns:1fr 1fr}}
+  .kpi{
+    background:var(--white);border:1px solid var(--rule);border-radius:10px;
+    padding:22px;text-align:center;
+  }
+  .kpi .num{font-family:Montserrat,sans-serif;font-weight:900;color:var(--orange);font-size:2rem;line-height:1}
+  .kpi .lab{font-family:Montserrat,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-top:6px}
+  .kpi .when{font-size:.78rem;color:var(--muted);margin-top:6px}
+
+  /* Pull image */
+  .pull-img{
+    margin:36px -28px;border-radius:0;overflow:hidden;
+  }
+  .pull-img img{width:100%;height:auto;display:block}
+  @media (min-width:1180px){.pull-img{margin-left:0;margin-right:0;border-radius:14px}}
+
+  .caption{
+    font-size:.82rem;color:var(--muted);text-align:center;margin-top:10px;font-style:italic;
+    font-family:Open Sans,sans-serif;
+  }
+
+  /* Highlight callout */
+  .callout{
+    background:var(--navy);color:var(--white);
+    border-radius:14px;padding:32px 36px;margin:28px 0;
+    border-left:5px solid var(--orange);
+  }
+  .callout h3{color:var(--white);margin-bottom:8px;font-size:1.3rem}
+  .callout p{margin:0;color:#dce4f1}
+
+  /* Footer */
+  footer{background:var(--navy-deep);color:#a8b4c8;padding:48px 0;text-align:center;font-size:.86rem}
+  footer .wrap > div{font-family:Montserrat,sans-serif;color:var(--white);font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;font-size:1rem}
+
+  /* Competitive positioning matrix */
+  .matrix-wrap{
+    margin-top:24px;background:var(--white);
+    border:1px solid var(--rule);border-radius:14px;
+    padding:36px 32px 24px;
+  }
+  .matrix-frame{display:flex;align-items:stretch;gap:18px}
+  .axis-y-label{
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    font-family:Montserrat,sans-serif;font-weight:700;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .matrix{
+    position:relative;flex:1;aspect-ratio:16/10;
+    border:2px solid var(--navy);background:var(--steel);
+    overflow:hidden;border-radius:6px;
+  }
+  @media (max-width:780px){.matrix{aspect-ratio:1/1.05}}
+  .quadrant{position:absolute;width:50%;height:50%}
+  .q-tl{top:0;left:0}
+  .q-tr{top:0;right:0;background:rgba(255,130,0,.13)}
+  .q-bl{bottom:0;left:0}
+  .q-br{bottom:0;right:0}
+  .q-tr .q-label{
+    position:absolute;top:14px;right:18px;
+    font-family:Montserrat,sans-serif;font-weight:900;
+    font-size:.7rem;letter-spacing:.18em;color:var(--orange);
+  }
+  .grid-line.h{position:absolute;top:50%;left:0;right:0;height:1px;background:var(--navy);opacity:.2}
+  .grid-line.v{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--navy);opacity:.2}
+  .dot{
+    position:absolute;transform:translate(-50%,-50%);
+    display:flex;flex-direction:column;align-items:center;
+    z-index:2;text-align:center;
+  }
+  .dot::before{
+    content:"";width:13px;height:13px;border-radius:50%;
+    background:var(--navy);border:3px solid var(--white);
+    box-shadow:0 2px 6px rgba(0,0,0,.18);margin-bottom:6px;
+  }
+  .dot.mwc-today::before{background:#8a96aa}
+  .dot.mwc-target::before{
+    background:var(--orange);width:18px;height:18px;
+    box-shadow:0 0 0 6px rgba(255,130,0,.22),0 4px 12px rgba(255,130,0,.45);
+  }
+  .dot-name{
+    font-family:Montserrat,sans-serif;font-weight:700;
+    font-size:.74rem;color:var(--navy);white-space:nowrap;
+    background:var(--white);padding:2px 8px;border-radius:4px;
+    box-shadow:0 1px 3px rgba(0,0,0,.1);
+  }
+  .dot-sub{font-size:.62rem;color:var(--muted);margin-top:3px;font-style:italic;white-space:nowrap}
+  .dot.mwc-target .dot-name{background:var(--orange);color:var(--white);font-weight:800}
+  .dot.mwc-target .dot-sub{color:var(--orange-deep);font-weight:700;font-style:normal}
+  .matrix .move-arrow{
+    position:absolute;top:24%;left:9%;width:67%;height:0;
+    border-top:2px dashed var(--orange);z-index:1;
+    transform-origin:left center;
+    transform:rotate(-1.5deg);
+  }
+  .matrix .move-arrow::after{
+    content:"";position:absolute;right:-2px;top:-6px;
+    width:0;height:0;
+    border-left:9px solid var(--orange);
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+  }
+  .axis-x-label{
+    margin-top:16px;text-align:center;
+    font-family:Montserrat,sans-serif;font-weight:700;
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--navy);
+  }
+  .matrix-legend{
+    display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+    margin-top:18px;padding-top:16px;border-top:1px solid var(--rule);
+    font-size:.78rem;color:var(--muted);
+  }
+  .matrix-legend span{display:inline-flex;align-items:center;gap:6px}
+  .matrix-legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+  /* Competitor tier cards */
+  .competitors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+  @media (max-width:980px){.competitors{grid-template-columns:1fr}}
+  .comp-card{
+    background:var(--white);border:1px solid var(--rule);border-radius:12px;
+    padding:28px 26px;border-top:4px solid var(--navy);
+    display:flex;flex-direction:column;
+  }
+  .comp-card .comp-tier{
+    font-family:Montserrat,sans-serif;font-weight:900;
+    font-size:.7rem;letter-spacing:.2em;color:var(--orange);
+    margin-bottom:6px;
+  }
+  .comp-card > h3{margin:0 0 4px;font-size:1.15rem}
+  .comp-card .comp-who{
+    font-size:.82rem;color:var(--muted);margin-bottom:16px;
+    padding-bottom:14px;border-bottom:1px solid var(--rule);
+    font-style:italic;
+  }
+  .comp-card h4{
+    color:var(--navy);text-transform:none;letter-spacing:0;
+    font-size:.78rem;margin:14px 0 4px;font-weight:800;
+  }
+  .comp-card h4:first-of-type{margin-top:0}
+  .comp-card p{font-size:.92rem;margin-bottom:0;line-height:1.55}
+
+  /* Focus list */
+  .focus-list{
+    margin-top:48px;background:var(--navy);color:var(--white);
+    border-radius:14px;padding:38px 44px;border-left:5px solid var(--orange);
+  }
+  .focus-list h3{color:var(--white);margin-bottom:20px;font-size:1.4rem}
+  .focus-list ol{margin:0;padding:0;counter-reset:focus-counter;list-style:none}
+  .focus-list li{
+    counter-increment:focus-counter;position:relative;
+    padding-left:54px;margin-bottom:14px;
+    color:#dce4f1;line-height:1.55;font-size:.96rem;
+  }
+  .focus-list li::before{
+    content:counter(focus-counter,decimal-leading-zero);
+    position:absolute;left:0;top:-2px;
+    font-family:Montserrat,sans-serif;font-weight:900;
+    color:var(--orange);font-size:1.1rem;letter-spacing:.05em;
+  }
+  .focus-list li strong{color:var(--white)}
+  .focus-list li:last-child{margin-bottom:0}
+
+  /* Highlighted row in tables */
+  tbody tr.row-highlight{background:rgba(255,130,0,.08)}
+  tbody tr.row-highlight:hover{background:rgba(255,130,0,.14)}
+  .row-detail{
+    font-family:'Open Sans',sans-serif;font-weight:400;font-style:italic;
+    font-size:.78rem;color:var(--muted);margin-top:3px;
+  }
+  .source-note{font-size:.78rem;color:var(--muted);margin-top:10px;font-style:italic;line-height:1.5}
+
+  @media print{
+    .hero-content{padding:36px 0}
+    section{padding:36px 0;break-inside:avoid}
+    .flip-inner{transform:none !important}
+    .flip-back{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO ============================================================== -->
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">Marketing Strategy + Estimate · April 2026</span>
+    <h1>The story is the strategy.</h1>
+    <p class="lead">
+      A 12-month plan to turn Midwest Waste from a five-page landing site
+      into a podcast-driven content engine — so the work that wins jobs in
+      the Fox Valley and the trust that wins national consulting contracts
+      compound on the same surface, week after week.
+    </p>
+
+    <div class="hero-meta">
+      <div>Cadence<strong>Biweekly · 24 episodes</strong></div>
+      <div>Format<strong>30-min · iPhone + lavs</strong></div>
+      <div>Year-1 investment<strong>$134,600</strong></div>
+      <div>Reallocation<strong>From the existing $50K plan</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- THESIS ============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="section-head narrow">
+      <span class="eyebrow">01 · The Thesis</span>
+      <h2>Stop renting traffic. Build a library.</h2>
+      <p>
+        The 2026 strategy doc is right: PPC drives the highest-intent calls and
+        SEO builds organic visibility for the consulting arm. What it can't fund
+        is <em>differentiation.</em> Every regional hauler runs the same Google Ads
+        playbook. National competitors like RoadRunner and Rubicon out-spend
+        Midwest Waste 10× on search. The way through is not to outbid them — it's
+        to build something they can't replicate cheaply: <strong>a recurring,
+        proprietary content layer that compounds in search, social, and AI
+        answer engines simultaneously.</strong>
+      </p>
+      <p>
+        That layer is <strong>Trash Talk</strong> — a biweekly podcast hosted by Tyler &amp; Greg,
+        recorded on an iPhone in the cab of a truck — converted into long-form,
+        immersive landing pages that <em>become</em> the new website. Not blog posts.
+        Not transcripts. Pages designed for dwell time, scroll depth, and the
+        kind of structured semantic content that Google's AI Overviews and
+        Perplexity quote verbatim.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE LANDSCAPE ============================================= -->
+<section class="steel">
+  <div class="wrap">
+    <div class="section-head narrow">
+      <span class="eyebrow">02 · Competitive landscape</span>
+      <h2>The category is consolidating to its extremes. The middle is empty.</h2>
+      <p>
+        North American waste is splitting into two camps. <strong>Legacy giants</strong>
+        — Waste Management (24% North American share, $22.1B revenue) and Republic
+        Services (25% public share) — own the landfills, fleets, and routes.
+        <strong>Asset-light tech disruptors</strong> — RoadRunner Recycling
+        ($199M raised, AI-powered Waste Metering™ dashboards) and Rubicon Global
+        (RUBICONSmartCity SaaS, vendor-agnostic procurement) — own the customer
+        dashboards and the ESG narrative. <strong>Keter Environmental</strong>,
+        PE-backed national managed services, sits in the middle. All five spend
+        tens of millions a year acquiring customers.
+      </p>
+      <p>
+        None of them currently owns the position Midwest Waste is uniquely suited
+        for: <strong>thirty years of operational truth, told in a credible human
+        voice, on a digital surface that ranks and gets cited by AI.</strong>
+        That's the gap. Trash Talk and the immersive landing pages are the
+        instrument that takes it.
+      </p>
+    </div>
+
+    <!-- POSITIONING MATRIX ----------------------------------------- -->
+    <div class="matrix-wrap">
+      <h4 style="text-align:center;margin-bottom:24px;color:var(--orange)">Strategic positioning · April 2026</h4>
+      <div class="matrix-frame">
+        <div class="axis-y-label">Operational depth →</div>
+        <div class="matrix">
+          <div class="quadrant q-tl"></div>
+          <div class="quadrant q-tr"><span class="q-label">UNCONTESTED</span></div>
+          <div class="quadrant q-bl"></div>
+          <div class="quadrant q-br"></div>
+
+          <div class="grid-line h"></div>
+          <div class="grid-line v"></div>
+
+          <div class="move-arrow"></div>
+
+          <div class="dot mwc-today" style="top:26%;left:8%">
+            <span class="dot-name">Midwest Waste</span><span class="dot-sub">today</span>
+          </div>
+          <div class="dot" style="top:18%;left:32%">
+            <span class="dot-name">WM</span><span class="dot-sub">24% market</span>
+          </div>
+          <div class="dot" style="top:14%;left:42%">
+            <span class="dot-name">Republic</span><span class="dot-sub">25% market</span>
+          </div>
+          <div class="dot" style="top:54%;left:55%">
+            <span class="dot-name">Keter</span><span class="dot-sub">PE-backed</span>
+          </div>
+          <div class="dot" style="top:67%;left:74%">
+            <span class="dot-name">RoadRunner</span><span class="dot-sub">$199M raised</span>
+          </div>
+          <div class="dot" style="top:75%;left:88%">
+            <span class="dot-name">Rubicon</span><span class="dot-sub">SaaS</span>
+          </div>
+          <div class="dot mwc-target" style="top:22%;left:78%">
+            <span class="dot-name">Midwest Waste</span><span class="dot-sub">2027 target</span>
+          </div>
+        </div>
+      </div>
+      <div class="axis-x-label">Customer-facing digital sophistication →</div>
+      <div class="matrix-legend">
+        <span><i style="background:#8a96aa"></i>Where MWC is now</span>
+        <span><i style="background:var(--navy)"></i>Competitor</span>
+        <span><i style="background:var(--orange)"></i>Where MWC moves to</span>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE ------------------------------------------- -->
+    <h3 style="margin-top:64px">The five players, side-by-side</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Model</th>
+            <th>Strategic core</th>
+            <th>Digital signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Waste Management (WM)</strong></td>
+            <td>Asset-heavy / integrated</td>
+            <td>Landfill ownership, tipping fees</td>
+            <td>SmartTruck AI routing</td>
+          </tr>
+          <tr>
+            <td><strong>Republic Services</strong></td>
+            <td>Asset-heavy / integrated</td>
+            <td>Sustainability + climate leadership</td>
+            <td>Largest EV fleet in N. America</td>
+          </tr>
+          <tr>
+            <td><strong>Keter Environmental</strong></td>
+            <td>PE-backed managed services</td>
+            <td>Data-driven ESG solutions</td>
+            <td>Proprietary CRM &amp; reporting</td>
+          </tr>
+          <tr>
+            <td><strong>RoadRunner Recycling</strong></td>
+            <td>Asset-light / tech-first</td>
+            <td>Waste intelligence + diversion</td>
+            <td>Waste Metering™ AI dashboard</td>
+          </tr>
+          <tr>
+            <td><strong>Rubicon Global</strong></td>
+            <td>Asset-light / SaaS</td>
+            <td>Vendor-agnostic procurement</td>
+            <td>RUBICONSmartCity platform</td>
+          </tr>
+          <tr class="row-highlight">
+            <td><strong>Midwest Waste</strong></td>
+            <td>Hybrid local-national</td>
+            <td>30-year expertise + dual-use platform</td>
+            <td><em>In progress · Trash Talk + immersive pages</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TIER DEEP-DIVE --------------------------------------------- -->
+    <h3 style="margin-top:64px">Three tiers. Three openings.</h3>
+    <div class="competitors">
+
+      <div class="comp-card">
+        <div class="comp-tier">TIER 01</div>
+        <h3>The asset-heavy giants</h3>
+        <div class="comp-who">WM &amp; Republic · ~50% combined market</div>
+
+        <h4>Their moat</h4>
+        <p>Vertical integration. They own the landfills, transfer stations, fleets, and routes. Nobody underprices them on disposal at scale.</p>
+
+        <h4>Where they're vulnerable</h4>
+        <p>Rigid pricing, "used car salesman" sales culture, slow customer service, no credible local voice. Reviews in Sugar Grove and Aurora actively call this out — customers want a human, get a call center.</p>
+
+        <h4>How MWC overtakes them</h4>
+        <p><strong>Authentic local voice + responsiveness.</strong> Trash Talk humanizes the owners. Episodes about "what your hauler doesn't tell you" position MWC as the truth-teller in the category. "Speak to an Owner" replaces "Submit a request."</p>
+
+        <h4>What MWC must focus on</h4>
+        <p>Aggressive Trustindex review collection, owner-led video on every service page, transparency content (real pricing examples, real route stories), local hub pages anchored by location-specific episodes.</p>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-tier">TIER 02</div>
+        <h3>The asset-light tech disruptors</h3>
+        <div class="comp-who">RoadRunner &amp; Rubicon · venture-backed, ESG-first</div>
+
+        <h4>Their moat</h4>
+        <p>Polished SaaS — RoadRunner's Waste Metering™, Rubicon's RUBICONSmartCity. ESG-friendly narrative wins multi-site enterprise procurement and corporate sustainability budgets.</p>
+
+        <h4>Where they're vulnerable</h4>
+        <p>No actual operating expertise. They sell dashboards, not labor. Asset-light means when something goes wrong on the route — and things go wrong every week — they're at the mercy of unaccountable third-party haulers.</p>
+
+        <h4>How MWC overtakes them</h4>
+        <p><strong>Operational truth as content.</strong> Each episode is unfakeable proof of expertise — diagnostic stories, real cost reductions, weird-but-true incidents. A SaaS dashboard cannot tell you why Tuesday routes in Aurora are 18 minutes longer in October.</p>
+
+        <h4>What MWC must focus on</h4>
+        <p>White-label sustainability and bill-audit tools (BillCheck-style) so the surface matches; pair them with podcast-documented case studies of actual jobs. Vertical landing pages for healthcare, logistics, restaurants, senior living. ESG schema on every consulting page.</p>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-tier">TIER 03</div>
+        <h3>The PE-backed managed services</h3>
+        <div class="comp-who">Keter · national, account-team driven</div>
+
+        <h4>Their moat</h4>
+        <p>National account relationships, proprietary CRM, polished data-reporting decks. They show up to the RFP with a binder.</p>
+
+        <h4>Where they're vulnerable</h4>
+        <p>PE pressure forces aggressive pricing and account-team turnover. The person who closed the deal won't be there in 18 months. Generic playbooks. Little real differentiation between accounts.</p>
+
+        <h4>How MWC overtakes them</h4>
+        <p><strong>Owner-operated continuity.</strong> The same two people answer the phone in 2026, 2030, and 2035. Trash Talk guest series with long-term consulting clients makes that continuity visible and verifiable.</p>
+
+        <h4>What MWC must focus on</h4>
+        <p>Three- and five-year retention metrics on the consulting page, founder-led account management as the headline, podcast guest series featuring multi-year clients telling their own success story.</p>
+      </div>
+
+    </div>
+
+    <!-- BUDGET ASYMMETRY ------------------------------------------ -->
+    <h3 style="margin-top:64px">The budget asymmetry</h3>
+    <p class="narrow" style="margin-bottom:24px">
+      Reasonable estimates of what each player has invested in their public
+      website and what they likely spend on marketing each month — derived
+      from public filings, funding disclosures, agency rate-cards, and the
+      strategy doc's market-tier benchmarks. The precision matters less than
+      the order of magnitude.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th style="text-align:right">Website investment</th>
+            <th style="text-align:right">Monthly marketing</th>
+            <th style="text-align:right">Annual marketing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Waste Management</strong>
+              <div class="row-detail">$22.1B revenue · enterprise-tier spend</div>
+            </td>
+            <td class="num">$1.5M – $3M+</td>
+            <td class="num">$300K – $1.2M+</td>
+            <td class="num">$4M – $15M+</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Republic Services</strong>
+              <div class="row-detail">25% market · sustainability narrative</div>
+            </td>
+            <td class="num">$1.5M – $2.5M</td>
+            <td class="num">$300K – $1M+</td>
+            <td class="num">$4M – $12M+</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Rubicon Global</strong>
+              <div class="row-detail">SaaS · publicly traded · multi-site enterprise</div>
+            </td>
+            <td class="num">$500K – $1.5M *</td>
+            <td class="num">$100K – $300K</td>
+            <td class="num">$1.2M – $3.6M</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>RoadRunner Recycling</strong>
+              <div class="row-detail">$199M raised · venture-backed growth</div>
+            </td>
+            <td class="num">$400K – $1M *</td>
+            <td class="num">$50K – $150K</td>
+            <td class="num">$600K – $2M</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Keter Environmental</strong>
+              <div class="row-detail">PE-backed · national managed services</div>
+            </td>
+            <td class="num">$200K – $500K</td>
+            <td class="num">$30K – $80K</td>
+            <td class="num">$400K – $1M</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>
+              <strong>Midwest Waste · proposed</strong>
+              <div class="row-detail">Owner-operated · 30 years · this plan</div>
+            </td>
+            <td class="num">$8,500</td>
+            <td class="num">$10,073</td>
+            <td class="num">$135,476</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="source-note">
+      * Site-only estimate. Excludes the SaaS platform investment (RoadRunner's
+      Waste Metering™ AI dashboard, Rubicon's RUBICONSmartCity) — a separate
+      product-engineering line typically an order of magnitude larger. Ranges
+      reflect initial build plus ongoing development; enterprise sites are
+      continuously rebuilt rather than shipped once.
+    </p>
+
+    <div class="callout" style="margin-top:36px">
+      <h3>The leverage argument</h3>
+      <p>
+        Midwest Waste cannot outspend Rubicon, let alone Waste Management. A
+        $135K-a-year program against a $4M–$15M-a-year enterprise budget is
+        mathematically irrelevant — and that's exactly why the plan doesn't
+        try. <strong>Every dollar in this proposal buys a permanent asset.</strong>
+        An indexable, citable, schema-rich landing page that compounds in
+        search and in AI answer engines for years. The competitors are renting
+        impressions; Midwest Waste is buying real estate. Twenty-four episodes
+        in, the asymmetry stops being measured in dollars and starts being
+        measured in pages indexed, citations earned, and questions answered.
+      </p>
+    </div>
+
+    <!-- FOCUS LIST ------------------------------------------------- -->
+    <div class="focus-list">
+      <h3>The focus list — seven moves to win the category</h3>
+      <ol>
+        <li><strong>Publish or perish.</strong> The biweekly Trash Talk cadence is non-negotiable. Compounding only works if it actually compounds.</li>
+        <li><strong>"Speak to an Owner" as the central CTA</strong> — replacing every "Request a quote" form. Differentiation begins with the first contact.</li>
+        <li><strong>White-label the dashboard.</strong> Stand up bill-audit, ESG reporting, and online sizing tools. Match the SaaS players' surface; beat them with the operational depth behind it.</li>
+        <li><strong>Schema-rich pages on every episode and every service.</strong> PodcastEpisode + FAQ + HowTo + LocalBusiness JSON-LD. AI Overviews and Perplexity will quote whoever ships the cleanest structured data.</li>
+        <li><strong>Industry-vertical landing pages.</strong> Healthcare, logistics, restaurants, senior living, multi-site retail. Each anchored by an episode that becomes its proof point.</li>
+        <li><strong>Local hub pages backed by episode content.</strong> Sugar Grove, Aurora, Wheaton, West Chicago — each a destination URL with location-specific episodes embedded as social proof.</li>
+        <li><strong>Trustindex + earned media.</strong> Reviews on every service page. As episodes ship, pursue press placements — industry trades first, then regional business press. Earned media is what turns the podcast from a content piece into category credibility.</li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- AUDIENCE ========================================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">03 · Audience</span>
+      <h2>Three audiences. One content engine.</h2>
+      <p class="narrow">Each episode of Trash Talk is engineered to reach a different audience without changing format. The hosts stay the same; the topic shifts; the landing page is built to capture the right kind of intent.</p>
+    </div>
+
+    <div class="audience">
+      <div class="aud-card">
+        <div class="num">01</div>
+        <h3>Fox Valley locals</h3>
+        <p>Homeowners and small-business owners in Sugar Grove, Aurora, Wheaton, West Chicago. They search "dumpster rental near me" on a phone at 8pm.</p>
+        <p class="pain"><strong>Wins from:</strong> truck-cab episodes about local routes, neighborhood stories, "what to do with a hoarded garage" cleanouts.</p>
+      </div>
+      <div class="aud-card">
+        <div class="num">02</div>
+        <h3>National consulting prospects</h3>
+        <p>Multi-site enterprise buyers — facilities managers, procurement, ESG officers — who buy 3–5 year brokerage contracts.</p>
+        <p class="pain"><strong>Wins from:</strong> episodes on bill auditing, hauler RFPs, ESG reporting, and the industry insider context only 30 years buys you.</p>
+      </div>
+      <div class="aud-card">
+        <div class="num">03</div>
+        <h3>The aging-population segment</h3>
+        <p>Adult children of seniors moving to assisted living. Decisions made by phone, with a heavy bias toward "local + family-owned."</p>
+        <p class="pain"><strong>Wins from:</strong> episodes about real downsizing jobs, smart-hands services, and the human side of helping someone clear 40 years of life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BIG BET (PODCAST) ============================================= -->
+<section class="dark">
+  <div class="wrap">
+    <div class="bet">
+      <div class="bet-cover">
+        <img src="images/marketing/trash-talk-cover.png" alt="Trash Talk podcast cover art — bold white type on navy with orange accents and the Midwest Waste bear-and-sphere mark">
+      </div>
+      <div>
+        <span class="eyebrow" style="color:var(--orange);font-family:Montserrat;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:14px">04 · The Big Bet</span>
+        <h2>Trash Talk with Tyler &amp; Greg</h2>
+        <p>Two owners. Thirty years in the business. A 30-minute conversation, every other week, about what actually happens when you spend your career hauling, brokering, and consulting on the things people throw away.</p>
+        <p>Tyler &amp; Greg cover the stuff competitors won't: the weirdest things found in dumpsters, why a national hauler's "smart" billing system is built to overcharge, the truck routes that change with the seasons, what to do with the contents of a parent's basement, the math behind the consulting arm. Plain-spoken. Funny. Real.</p>
+
+        <div class="bet-stats">
+          <div class="stat"><div class="num">24</div><div class="lab">Episodes / year 1</div></div>
+          <div class="stat"><div class="num">30 min</div><div class="lab">Format</div></div>
+          <div class="stat"><div class="num">2 wks</div><div class="lab">Cadence</div></div>
+          <div class="stat"><div class="num">~12 hrs</div><div class="lab">Recording / yr</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO-SITE ARCHITECTURE ============================================= -->
+<section class="steel">
+  <div class="wrap">
+    <div class="section-head narrow">
+      <span class="eyebrow">05 · Platform architecture</span>
+      <h2>Two sites. One podcast. One engine.</h2>
+      <p>
+        The hauling business and the consulting business are not the same sale.
+        One is decided in seconds on a phone; the other is negotiated over months
+        in a boardroom. In 2026, <strong>specificity wins</strong> — and the right
+        architecture is two purpose-built sites with one podcast acting as the
+        connective tissue between them.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Hauling Site · Transactional</th>
+            <th>Consulting Site · Relationship</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Primary goal</strong></td>
+            <td>Instant booking / payment</td>
+            <td>Lead generation / trust building</td>
+          </tr>
+          <tr>
+            <td><strong>User intent</strong></td>
+            <td>"I need this shit gone on Saturday."</td>
+            <td>"We need to hit Net-Zero in 500 locations."</td>
+          </tr>
+          <tr>
+            <td><strong>UX / UI</strong></td>
+            <td>Uber-style, fast, mobile-optimized</td>
+            <td>Case studies, white papers, long-form video</td>
+          </tr>
+          <tr>
+            <td><strong>SEO focus</strong></td>
+            <td>Hyper-local (Fox Valley, Batavia)</td>
+            <td>National (sustainability, waste management)</td>
+          </tr>
+          <tr>
+            <td><strong>Primary CTA</strong></td>
+            <td>Book now / get a price</td>
+            <td>Speak to an owner / request an audit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <h3>The sub-brand solution</h3>
+      <p>
+        Keep the Polar Bear branding consistent across both, but the domains
+        reflect the intent. <strong>MidwestWaste.com</strong> — fast, transactional,
+        the Uber for trash. <strong>MidwestWasteConsultants.com</strong> — professional,
+        authority-based, the PhD of waste. Same company. Same two faces.
+        Different first impressions.
+      </p>
+    </div>
+
+    <h3 style="margin-top:64px">The podcast: the great connective tissue</h3>
+    <p class="narrow" style="margin-bottom:36px">
+      One show. Two content streams. Trash Talk doesn't need to pick an
+      audience — it segments its output to feed both sites without splitting
+      the production effort.
+    </p>
+
+    <div class="competitors" style="grid-template-columns:1fr 1fr">
+      <div class="comp-card" style="border-top-color:var(--orange)">
+        <div class="comp-tier">FOR THE HAULING SITE</div>
+        <h3>The human element</h3>
+        <div class="comp-who">Short, punchy, local</div>
+        <h4>What it covers</h4>
+        <p>Clips about the wildest things found in a dumpster. The hardest-working drivers in Aurora. What a Fox Valley route looks like in February versus October.</p>
+        <h4>Why it works</h4>
+        <p>Proves Midwest Waste is made of real, local humans — the direct antidote to Waste Management's call center. These short, punchy clips live on the hauling site as social proof.</p>
+      </div>
+      <div class="comp-card" style="border-top-color:var(--navy)">
+        <div class="comp-tier">FOR THE CONSULTING SITE</div>
+        <h3>The authority element</h3>
+        <div class="comp-who">Full-length, expert, strategic</div>
+        <h4>What it covers</h4>
+        <p>Full interviews with facility managers. Deep dives into auto-renewal clause abuse. The real math behind a national waste brokerage contract.</p>
+        <h4>Why it works</h4>
+        <p>Proves Midwest Waste is an expert who can't be fooled — the direct antidote to RoadRunner's AI dashboard with no operational truth behind it. These episodes live on the consulting site as Resources.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:64px">How AI manages the double work</h3>
+    <p class="narrow" style="margin-bottom:36px">
+      The biggest fear of two sites plus a podcast is the workload. The AI
+      infrastructure handles the split automatically — one recording session
+      feeds both platforms without doubling anyone's time.
+    </p>
+
+    <div class="workflow" style="grid-template-columns:repeat(3,1fr)">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <h3>Record once</h3>
+        <p>One 30-minute podcast episode in the field. Tyler &amp; Greg: 30 minutes total time.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <h3>AI segmentation</h3>
+        <p>An AI agent reads the transcript and automatically extracts: 3 Pro-Tips for the consulting blog, 2 Local Stories for the hauling site, 5 short-form video scripts for TikTok and LinkedIn.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <h3>Smart cross-linking</h3>
+        <p>If a local business owner on the hauling site mentions "multiple locations," the site nudges them toward the consulting platform. One audience. Two conversions.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LANDING PAGES (THE DIFFERENTIATOR) ================================ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">06 · The Differentiator</span>
+      <h2>Each episode becomes an immersive landing page.</h2>
+      <p class="narrow">
+        Most podcasts post a transcript and an embed and call it done. Trash
+        Talk treats every episode as a <strong>design project</strong>. Built by Orbis
+        using Claude Code, each page is a custom long-form experience — popups,
+        accordions, flip cards, scroll-driven storytelling, embedded clips,
+        photo galleries, schema-rich Q&amp;A. A different format every time. The
+        page itself becomes a reason to share the episode.
+      </p>
+    </div>
+
+    <h4 style="color:var(--orange);margin-bottom:16px">Tap or hover to flip · the techniques in play</h4>
+    <div class="flips">
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Element 01</span>
+            <h3>Accordion deep-dives</h3>
+            <span class="hint">Hover to flip →</span>
+          </div>
+          <div class="flip-face flip-back">
+            <h3>Why it works</h3>
+            <p>Long content stays scannable. Each FAQ-style block is its own schema-rich SEO target. Google indexes them as separate snippets.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Element 02</span>
+            <h3>Pop-up footnotes</h3>
+            <span class="hint">Hover to flip →</span>
+          </div>
+          <div class="flip-face flip-back">
+            <h3>Why it works</h3>
+            <p>In-line definitions, citations, and "click for the receipt" callouts keep readers on page longer — dwell time is a top-3 ranking signal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Element 03</span>
+            <h3>Flip-card vignettes</h3>
+            <span class="hint">Hover to flip →</span>
+          </div>
+          <div class="flip-face flip-back">
+            <h3>Why it works</h3>
+            <p>The cards you're hovering on right now. They turn passive paragraphs into interactive moments — measurable engagement events.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Element 04</span>
+            <h3>Embedded audio clips</h3>
+            <span class="hint">Hover to flip →</span>
+          </div>
+          <div class="flip-face flip-back">
+            <h3>Why it works</h3>
+            <p>30-second clips of the best moments break up the page. Users sample without committing. Conversion to "play full episode" is the metric.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Element 05</span>
+            <h3>Scroll-driven storytelling</h3>
+            <span class="hint">Hover to flip →</span>
+          </div>
+          <div class="flip-face flip-back">
+            <h3>Why it works</h3>
+            <p>Hero scenes that animate as the reader scrolls. The episode literally unfolds. Massive boost to time-on-page and shareability on social.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">
+            <span class="label">Element 06</span>
+            <h3>Schema markup</h3>
+            <span class="hint">Hover to flip →</span>
+          </div>
+          <div class="flip-face flip-back">
+            <h3>Why it works</h3>
+            <p>PodcastEpisode + FAQ + HowTo + LocalBusiness JSON-LD on every page. AI Overviews and Perplexity quote pages with structured Q&amp;A first.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:48px 0 16px">Two examples already running this play</h3>
+    <p>Orbis is already building this exact format for two other podcasts. The pattern is proven; we're applying it to a category — waste hauling — that has zero competition for it.</p>
+
+    <div class="cite">
+      <a href="https://www.buildingefficiencypodcast.com/podcast-review/143-from-jazz-to-infrastructure-david-karlsgodts-unconventional-career-path" target="_blank" rel="noopener" class="cite-thumb" aria-label="Open the Building Efficiency Podcast episode page in a new tab">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_700/midwest-waste/podcast-examples/building-efficiency-karlsgodt"
+          srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_400/midwest-waste/podcast-examples/building-efficiency-karlsgodt 400w,
+                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_700/midwest-waste/podcast-examples/building-efficiency-karlsgodt 700w,
+                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1100/midwest-waste/podcast-examples/building-efficiency-karlsgodt 1100w"
+          sizes="(max-width: 780px) calc(100vw - 80px), 300px"
+          alt="Screenshot of the Building Efficiency Podcast episode page for episode 143, From Jazz to Infrastructure with David Karlsgodt"
+          loading="lazy"
+          width="700" height="438">
+      </a>
+      <div class="cite-text">
+        <p><strong>Building Efficiency Podcast</strong> — episode page for "From Jazz to Infrastructure: David Karlsgodt's Unconventional Career Path." Long-form interactive design, embedded narrative beats, schema-rich Q&amp;A.</p>
+        <div class="src"><a href="https://www.buildingefficiencypodcast.com/podcast-review/143-from-jazz-to-infrastructure-david-karlsgodts-unconventional-career-path" target="_blank" rel="noopener">buildingefficiencypodcast.com/podcast-review/143-from-jazz-to-infrastructure-david-karlsgodts-unconventional-career-path</a></div>
+      </div>
+    </div>
+
+    <div class="cite">
+      <a href="https://www.fetaltherapynursenetwork.org/fetal-frontline-podcast/ep1-the-history-of-ftnn" target="_blank" rel="noopener" class="cite-thumb" aria-label="Open the Fetal Therapy Nurse Network episode page in a new tab">
+        <img
+          src="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_700/midwest-waste/podcast-examples/ftnn-history-of-ftnn"
+          srcset="https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_400/midwest-waste/podcast-examples/ftnn-history-of-ftnn 400w,
+                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_700/midwest-waste/podcast-examples/ftnn-history-of-ftnn 700w,
+                  https://res.cloudinary.com/dsbllwpbh/image/upload/f_auto,q_auto,w_1100/midwest-waste/podcast-examples/ftnn-history-of-ftnn 1100w"
+          sizes="(max-width: 780px) calc(100vw - 80px), 300px"
+          alt="Screenshot of the Fetal Therapy Nurse Network podcast episode page for The History of FTNN, episode 1"
+          loading="lazy"
+          width="700" height="438">
+      </a>
+      <div class="cite-text">
+        <p><strong>Fetal Therapy Nurse Network</strong> — "The History of FTNN." A timeline-driven, accordion-heavy page built around a single conversation. Becomes the canonical web reference for the topic.</p>
+        <div class="src"><a href="https://www.fetaltherapynursenetwork.org/fetal-frontline-podcast/ep1-the-history-of-ftnn" target="_blank" rel="noopener">fetaltherapynursenetwork.org/fetal-frontline-podcast/ep1-the-history-of-ftnn</a></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>The website rebuild thesis</h3>
+      <p>If episodes 1 through 24 each get a page like the two above, Midwest Waste ends 2026 with <strong>24 of the most thoroughly indexable, semantically dense pages in the entire regional waste category.</strong> That growing library, plus a reorganized service hub and the existing local pages, <em>is</em> the new website. We are not building a website that hosts a podcast. We are building a podcast whose episodes form a website.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FPV DRONE ========================================================= -->
+<section class="steel">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">07 · Visual differentiator</span>
+      <h2>Aerial cinematography. From a garbage truck.</h2>
+      <p class="narrow">
+        A small piece of the budget unlocks something nobody in the regional
+        category is doing: <strong>FPV drone footage of trash hauling.</strong> Cinematic
+        aerial b-roll captured during real routes — top-down neighborhood
+        sweeps, low-altitude tracking shots on country roads, transfer-station
+        flyovers. Cut into episode landing pages, dropped into 15-second
+        social clips, threaded through the about page and service hubs.
+      </p>
+    </div>
+
+    <div class="fpv-block">
+      <img src="images/marketing/fpv-country-road.png" alt="FPV drone tracking shot of a navy waste hauling truck driving on a rural Illinois country road at golden hour, fields and red barns flanking the road">
+    </div>
+    <div class="caption">FPV drone tracking shot — golden-hour route on a county road outside Sugar Grove. Concept frame.</div>
+
+    <div class="fpv-grid" style="margin-top:36px">
+      <div>
+        <img src="images/marketing/fpv-neighborhood.png" alt="Aerial top-down FPV drone view of a trash truck mid-route on a tree-lined Fox Valley residential street with autumn foliage and curbside bins">
+        <div class="caption">Top-down neighborhood sweep · concept frame</div>
+      </div>
+      <div>
+        <img src="images/marketing/hero-fox-valley-autumn.png" alt="A clean navy commercial waste truck parked under autumn maples on a Fox Valley residential street at golden hour">
+        <div class="caption">Editorial ground-level still · concept frame</div>
+      </div>
+    </div>
+
+    <p style="margin-top:32px;max-width:780px">
+      <strong>The shoot model.</strong> One quarterly half-day shoot covers a season's worth of
+      b-roll across multiple routes and locations. Captured with a sub-250g
+      FPV drone (Part-107 certified pilot), ND filters, RAW capture. Output
+      gets cut into episode landing pages, social clips, the home page hero,
+      and a single annual brand film that lives on the about page. <em>Trash
+      hauling has never looked like this in regional marketing.</em>
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCTION WORKFLOW =============================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">08 · Production</span>
+      <h2>The recording is the easy part.</h2>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p>
+          Tyler &amp; Greg do not need a studio. The whole rig is an iPhone, two
+          <a href="https://www.amazon.com/Hollyland-M2S-Lightning-Microphone-Cancelling/dp/B0DNQ5D1H4?ref_=ast_sto_dp&th=1" target="_blank" rel="noopener">Hollyland M2S Lightning lavalier mics</a>,
+          and a small dashboard mount. The rig fits in a glove compartment.
+        </p>
+        <p>
+          That means episodes can be recorded <strong>anywhere the work happens</strong> —
+          riding shotgun on a route, walking through a transfer station,
+          parked in front of a customer's house mid-cleanout, in the office
+          with a guest. The location <em>is</em> the production value. No
+          fake-leather-podcast-studio aesthetic; instead, the diesel hum of a
+          real truck cab.
+        </p>
+        <p>
+          From there, Orbis takes over: <strong>Descript</strong> for editing
+          (filler removal, audio cleanup, AI-driven punch-ups, transcript
+          generation), <strong>Claude Code</strong> for landing-page assembly,
+          schema markup, and short-form clip selection. Hosting on
+          <strong>Transistor.fm</strong> auto-publishes to Apple Podcasts,
+          Spotify, YouTube, and the RSS that powers the site's episode feed.
+        </p>
+      </div>
+      <div>
+        <img src="images/marketing/recording-in-cab.png" alt="Two podcast hosts in their 40s and 50s laughing mid-conversation in the cab of a waste hauling truck, recording with an iPhone on a dashboard mount and lavalier microphones clipped to their shirts" style="width:100%;border-radius:12px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.15)">
+        <div class="caption">Concept: Tyler &amp; Greg recording an episode in the cab. iPhone + Hollyland M2S lavs.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px">Per-episode workflow · ~6 hours end-to-end</h3>
+    <div class="workflow">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <h3>Record</h3>
+        <p>30-min conversation in the field. iPhone + 2 lavs. Hosts: 30 min.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <h3>Edit</h3>
+        <p>Descript: filler removal, levels, punch-ups, transcript. Orbis: ~90 min.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <h3>Build page</h3>
+        <p>Claude Code generates the immersive landing page from transcript. Orbis: ~2 hrs.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 04</div>
+        <h3>Clip + tag</h3>
+        <p>3 short-form clips for LinkedIn / Meta. Schema markup, OG cards. Orbis: ~45 min.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 05</div>
+        <h3>Distribute</h3>
+        <p>Auto-push to Transistor → Apple/Spotify/YouTube. Email blast. Orbis: ~30 min.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:40px">
+      <h3>Intern handoff after episode 6</h3>
+      <p>Episodes 1–6 are calibration: Orbis builds the design system, the page template library, the Descript template, and the schema patterns. From episode 7 forward, the per-episode work drops dramatically and a trained intern can run the end-to-end workflow under Orbis supervision. That's reflected in the budget — <strong>$750/episode for the first 6, $500/episode for the next 18.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION + SEO/AEO ============================================ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">09 · Distribution + SEO/AEO</span>
+      <h2>Where the episode goes after it ships.</h2>
+    </div>
+
+    <div class="audience" style="margin-top:0">
+      <div class="aud-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);color:#dce4f1">
+        <h4 style="color:var(--orange)">Owned</h4>
+        <h3 style="color:#fff">Episode landing page</h3>
+        <p>Lives on midwestwasteconsultants.com. The canonical asset. Schema-rich, mobile-first, internally cross-linked to service hubs and local pages.</p>
+      </div>
+      <div class="aud-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);color:#dce4f1">
+        <h4 style="color:var(--orange)">Earned</h4>
+        <h3 style="color:#fff">Apple · Spotify · YouTube</h3>
+        <p>Auto-published from Transistor. YouTube uses static cover + waveform video — surprisingly large discovery channel for B2B podcasts.</p>
+      </div>
+      <div class="aud-card" style="background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);color:#dce4f1">
+        <h4 style="color:var(--orange)">Paid + Email</h4>
+        <h3 style="color:#fff">EmailOctopus + social boost</h3>
+        <p>Monthly email blast (1 new + 1 evergreen). 3 short-form clips per episode boosted on LinkedIn (consulting) and Facebook/Instagram (local).</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px;color:#fff">Why this format wins SEO and AEO in 2026</h3>
+    <div class="accordion">
+      <details open>
+        <summary>1 · Semantic depth that competitors can't fake</summary>
+        <div>30-minute conversations between two genuine subject-matter experts produce thousands of words of original, on-topic content per episode. Across 24 episodes that's hundreds of thousands of words of unique material — the kind of corpus that ranks for hundreds of long-tail queries no one is bidding on. PPC competitors can't compete with content they don't have.</div>
+      </details>
+      <details>
+        <summary>2 · Dwell time and engagement signals</summary>
+        <div>Interactive landing pages — accordions, flip cards, embedded clips, scroll animations — produce 3–5× the time-on-page of a standard blog post. Google has been weighting dwell time and meaningful engagement increasingly heavily since 2024. Shareable formats also generate referral links, the gold standard ranking signal.</div>
+      </details>
+      <details>
+        <summary>3 · AEO — Answer Engine Optimization for AI Overviews and Perplexity</summary>
+        <div>AI search engines (Google AI Overviews, Perplexity, ChatGPT browse, Claude) preferentially cite pages with structured Q&amp;A schema, FAQ markup, and clear topical authority. Each Trash Talk landing page ships with PodcastEpisode + FAQ + HowTo JSON-LD. Episodes about specific topics ("how to size a roll-off dumpster," "what does a national waste broker actually do," "how senior cleanouts work") become the canonical citation source — quoted by name in AI answers.</div>
+      </details>
+      <details>
+        <summary>4 · Local intent reinforcement</summary>
+        <div>Episodes recorded in Sugar Grove, Aurora, Wheaton, and West Chicago — and tagged with location schema — feed organic visibility for the existing local landing pages. Each episode becomes a fresh signal that Midwest Waste is the active, relevant local authority. This is the single biggest unlock against the "Big Three" national haulers, who can't credibly claim local presence in a Fox Valley neighborhood.</div>
+      </details>
+      <details>
+        <summary>5 · Compounding link equity</summary>
+        <div>Each episode page links to relevant service hubs, location pages, and prior episodes. Within a year the site has 24+ deeply-linked editorial pages all reinforcing one another. This is how authority sites are built — not by hiring a link agency, but by producing things people want to link to.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP =========================================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">10 · 12-month roadmap</span>
+      <h2>Quarter by quarter.</h2>
+    </div>
+
+    <div class="roadmap">
+      <div class="quarter">
+        <h4>Q1 · MAY–JUL 2026</h4>
+        <h3>Foundation</h3>
+        <ul>
+          <li>Brand finalization (using brand guide)</li>
+          <li>Website rebuild w/ episode template</li>
+          <li>Recording kit + Hollyland M2S</li>
+          <li>FPV drone + Part 107 cert</li>
+          <li>Trash Talk cover + intro music</li>
+          <li>Pilot 4 episodes (pre-launch buffer)</li>
+        </ul>
+      </div>
+      <div class="quarter">
+        <h4>Q2 · AUG–OCT 2026</h4>
+        <h3>Launch</h3>
+        <ul>
+          <li>Episode 1 ships; biweekly cadence begins</li>
+          <li>Episodes 1–6 (calibration phase)</li>
+          <li>First quarterly drone shoot</li>
+          <li>Email list seeded from existing customers</li>
+          <li>Apple / Spotify / YouTube live</li>
+          <li>Initial PPC campaign retargeted to landing pages</li>
+        </ul>
+      </div>
+      <div class="quarter">
+        <h4>Q3 · NOV 2026–JAN 2027</h4>
+        <h3>Scale</h3>
+        <ul>
+          <li>Intern handoff at episode 7</li>
+          <li>Per-episode cost drops to $500</li>
+          <li>Episodes 7–12 ship</li>
+          <li>First measurable AI Overview citations</li>
+          <li>Consulting RFP referencing podcast: target 1+</li>
+          <li>Second quarterly drone shoot</li>
+        </ul>
+      </div>
+      <div class="quarter">
+        <h4>Q4 · FEB–APR 2027</h4>
+        <h3>Compound</h3>
+        <ul>
+          <li>Episodes 13–24 ship</li>
+          <li>Annual brand film (drone footage cut)</li>
+          <li>Full retrospective + KPI review</li>
+          <li>Year-2 budget recalibration</li>
+          <li>Top-3 episodes turn into evergreen lead pages</li>
+          <li>Decision: weekly cadence for Year 2?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET ============================================================ -->
+<section class="steel">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">11 · Budget &amp; estimate</span>
+      <h2>Year-1 investment: $134,600.</h2>
+      <p class="narrow">Inside the $50K marketing benchmark from the strategy doc plus a one-time setup phase. Steady-state monthly spend lands at the lower edge of the recommended $10.5–16K/mo range — freeing the AI Dividend ($15.5K/mo in operational savings) for year-2 scale.</p>
+    </div>
+
+    <h3>One-time setup (Q1 · May–July 2026)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line item</th><th>Detail</th><th style="text-align:right">Cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Website rebuild</td><td>Podcast-first IA, episode template system, design components, location hubs, schema foundation. Built by Orbis with Claude Code.</td><td class="num">$8,500</td></tr>
+          <tr><td>Pilot batch · 4 episodes</td><td>Pre-launch buffer at calibration rate ($750 × 4) — ensures uninterrupted biweekly cadence at launch.</td><td class="num">$3,000</td></tr>
+          <tr><td>FPV drone kit</td><td>Sub-250g cinematic FPV drone, ND filter set, batteries, FAA Part 107 commercial certification fee, training.</td><td class="num">$1,500</td></tr>
+          <tr><td>Trash Talk brand</td><td>Cover art (3 sizes), episode-card template system, 15-second intro/outro music license, sound logo.</td><td class="num">$1,200</td></tr>
+          <tr><td>Recording kit</td><td>Hollyland M2S Lightning lavaliers (×2), iPhone dashboard mount, backup recorder, foam windscreens.</td><td class="num">$400</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Setup total</td><td class="num">$14,600</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h3 style="margin-top:48px">Monthly recurring (steady state · Aug 2026 onward)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line item</th><th>Detail</th><th style="text-align:right">Per month</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Trash Talk production · Orbis</td><td>2 episodes / month bundled (Descript edit + landing page + schema + 3 short-form clips). Calibration rate of $750 for ep 1–6, then $500 ep 7–24.</td><td class="num">$1,000</td></tr>
+          <tr><td>PPC / Search ads</td><td>Local high-intent hauling keywords · "dumpster rental Sugar Grove," "Aurora roll-off," etc.</td><td class="num">$4,500</td></tr>
+          <tr><td>SEO content extension</td><td>Location pages, show-notes optimization, internal linking sprints, technical SEO.</td><td class="num">$2,000</td></tr>
+          <tr><td>AI tools &amp; agents</td><td>Descript Pro, AI sales agent, AI billing audit agent, Claude Code seats.</td><td class="num">$1,800</td></tr>
+          <tr><td>Short-form social boosts</td><td>Paid promotion of episode clips · LinkedIn (consulting) + Meta (local).</td><td class="num">$400</td></tr>
+          <tr><td>FPV drone shoots · amortized</td><td>One half-day shoot per quarter, amortized monthly. Yields 90+ usable b-roll clips per shoot.</td><td class="num">$300</td></tr>
+          <tr><td>Podcast hosting · Transistor.fm</td><td>Professional plan · multi-show, advanced analytics, auto-distribute to all major networks.</td><td class="num">$49</td></tr>
+          <tr><td>Email · EmailOctopus Pro</td><td>Monthly podcast digest, scaling to ~5K subscribers by year-end.</td><td class="num">$24</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Monthly total</td><td class="num">$10,073</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h3 style="margin-top:48px">Year-1 total &amp; reallocation</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Bucket</th><th>Detail</th><th style="text-align:right">Year 1</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>One-time setup</td><td>Q1 build + kit + initial 4-episode buffer</td><td class="num">$14,600</td></tr>
+          <tr><td>Monthly recurring</td><td>$10,073 × 12 months</td><td class="num">$120,876</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Year-1 total</td><td class="num">$135,476</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="callout">
+      <h3>How this fits the 2026 strategy doc</h3>
+      <p>The strategy doc recommended <strong>$10,500–$16,000/month</strong> in marketing spend. This plan lands at <strong>$10,073/month</strong> in steady state — at the bottom of that range — by reallocating the existing "Content &amp; Video Marketing" line ($2,000–3,500/mo) into podcast production, plus a small slice of "AI Integration" into hosting + email + drone tooling. PPC and SEO budgets are preserved. The $14,600 one-time setup is a Year-1-only line, recovered within months by the AI Dividend ($15,500/mo in operational savings the strategy doc projects).</p>
+    </div>
+  </div>
+</section>
+
+<!-- KPIS ============================================================== -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">12 · KPIs &amp; checkpoints</span>
+      <h2>What success looks like.</h2>
+      <p class="narrow">Three checkpoints. If we miss two of three at any checkpoint, we recalibrate — not abandon. The hardest part of content is staying in the chair.</p>
+    </div>
+
+    <h3>Month 3 · launched</h3>
+    <div class="kpis">
+      <div class="kpi"><div class="num">6</div><div class="lab">Episodes shipped</div><div class="when">Cadence proven</div></div>
+      <div class="kpi"><div class="num">100+</div><div class="lab">Email subscribers</div><div class="when">From existing CRM</div></div>
+      <div class="kpi"><div class="num">+25%</div><div class="lab">Site dwell time</div><div class="when">vs. baseline</div></div>
+      <div class="kpi"><div class="num">3</div><div class="lab">Inbound mentions</div><div class="when">"Heard the podcast"</div></div>
+    </div>
+
+    <h3 style="margin-top:48px">Month 6 · gaining traction</h3>
+    <div class="kpis">
+      <div class="kpi"><div class="num">12</div><div class="lab">Episodes shipped</div><div class="when">Intern handoff complete</div></div>
+      <div class="kpi"><div class="num">+50%</div><div class="lab">Organic traffic</div><div class="when">vs. Q1 baseline</div></div>
+      <div class="kpi"><div class="num">5+</div><div class="lab">Consulting leads</div><div class="when">Attributed to podcast</div></div>
+      <div class="kpi"><div class="num">1+</div><div class="lab">AI Overview citation</div><div class="when">Page quoted by name</div></div>
+    </div>
+
+    <h3 style="margin-top:48px">Month 12 · compounding</h3>
+    <div class="kpis">
+      <div class="kpi"><div class="num">24</div><div class="lab">Episodes shipped</div><div class="when">Full library indexed</div></div>
+      <div class="kpi"><div class="num">2,500+</div><div class="lab">Email subscribers</div><div class="when">Building audience asset</div></div>
+      <div class="kpi"><div class="num">15–20%</div><div class="lab">Leads from podcast</div><div class="when">% of total inbound</div></div>
+      <div class="kpi"><div class="num">$1,000</div><div class="lab">Local CAC</div><div class="when">Down from $2,500 target</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISION ========================================================== -->
+<section class="dark">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow" style="color:var(--orange);font-family:Montserrat;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:inline-block;margin-bottom:14px">13 · The decision</span>
+    <h2 style="max-width:780px;margin:0 auto 18px">Two trucks, two mics, twenty-four episodes.</h2>
+    <p style="max-width:680px;margin:0 auto 24px;color:#dce4f1;font-size:1.1rem">
+      The plan asks Tyler &amp; Greg for ~12 hours of recording across the year.
+      It asks the business for the same dollars it was already going to spend.
+      It returns a content engine that compounds in search, in social, and in
+      AI answer engines — and a website that, by April 2027, looks nothing
+      like the regional waste category.
+    </p>
+    <p style="color:#a8b4c8;font-size:.9rem">Estimate prepared by Orbis Design · Approval &amp; first kickoff session targeted: May 2026.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Midwest Waste Consultants × Orbis Design</div>
+    Marketing strategy &amp; estimate · April 2026 · Sugar Grove · Aurora · Fox Valley
+  </div>
+</footer>
+
+</body>
+</html>

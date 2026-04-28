@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<title>MidwestWaste.app · Junkyard Jam (concept prototype)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B365D;
+    --navy-deep:#142849;
+    --navy-light:#2A4775;
+    --orange:#FF8200;
+    --orange-deep:#E07300;
+    --yellow:#FFC72C;
+    --white:#FFFFFF;
+    --steel:#F4F4F4;
+    --grass:#7BB661;
+    --grass-deep:#5C8E4A;
+    --sky-1:#C9E3F2;
+    --sky-2:#E8F1F7;
+    --ink:#142849;
+    --muted:#5b6878;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;overscroll-behavior:none}
+  body{
+    font-family:'Open Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+    color:var(--ink);
+    background:var(--navy);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+
+  /* TRUST STRIP --------------------------------------------------- */
+  .trust-strip{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:var(--navy-deep);
+    color:#dce4f1;
+    font-family:'Montserrat',sans-serif;
+    font-size:.7rem;letter-spacing:.06em;
+    padding:8px 14px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    border-bottom:2px solid var(--orange);
+  }
+  .trust-strip .badge{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .trust-strip .badge strong{color:var(--white);font-weight:800}
+  .trust-strip .phone{
+    color:var(--orange);font-weight:700;text-decoration:none;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .trust-strip .skip{
+    color:#a8b4c8;text-decoration:underline;text-underline-offset:3px;
+    font-size:.65rem;white-space:nowrap;
+  }
+  .trust-strip .skip:hover{color:var(--white)}
+  @media (max-width:560px){
+    .trust-strip{font-size:.62rem;padding:7px 10px}
+    .trust-strip .badge .meta{display:none}
+  }
+
+  /* GAME STAGE ---------------------------------------------------- */
+  .stage{
+    position:fixed;inset:0;
+    padding-top:34px; /* trust strip clearance */
+    display:flex;align-items:stretch;justify-content:center;
+  }
+  .scene{
+    position:absolute;inset:34px 0 0 0;
+    display:none;flex-direction:column;
+    opacity:0;transform:scale(.98);
+    transition:opacity .55s ease,transform .55s cubic-bezier(.34,1.56,.64,1);
+  }
+  .scene.active{display:flex;opacity:1;transform:scale(1)}
+
+  /* SCENE 1 — JUNKYARD HERO --------------------------------------- */
+  .junkyard{
+    position:relative;flex:1;
+    background:
+      radial-gradient(ellipse at 50% 75%,rgba(255,194,44,.18) 0%,transparent 60%),
+      linear-gradient(180deg,var(--sky-1) 0%,var(--sky-2) 55%,var(--sky-2) 65%,var(--grass) 65%,var(--grass-deep) 100%);
+    overflow:hidden;
+  }
+  .clouds{position:absolute;top:5%;left:0;right:0;height:80px;pointer-events:none}
+  .cloud{
+    position:absolute;background:rgba(255,255,255,.85);
+    border-radius:50%;filter:blur(.5px);
+    animation:drift 60s linear infinite;
+  }
+  .cloud.c1{width:90px;height:30px;top:10px;left:-10%;animation-duration:75s}
+  .cloud.c2{width:120px;height:38px;top:35px;left:-30%;animation-duration:90s;animation-delay:-20s;opacity:.7}
+  .cloud.c3{width:70px;height:24px;top:55px;left:-15%;animation-duration:65s;animation-delay:-40s;opacity:.85}
+  @keyframes drift{
+    from{transform:translateX(0)}
+    to{transform:translateX(140vw)}
+  }
+
+  .floating-trash{
+    position:absolute;
+    user-select:none;pointer-events:none;
+    filter:drop-shadow(2px 4px 0 rgba(0,0,0,.2));
+    animation:bob 4s ease-in-out infinite;
+    will-change:transform;
+  }
+  .floating-trash.xs{font-size:1.7rem}
+  .floating-trash.sm{font-size:2.6rem}
+  .floating-trash.md{font-size:3.6rem}
+  .floating-trash.lg{font-size:5rem}
+  .floating-trash.xl{font-size:6.5rem}
+  .floating-trash.bob-b{animation-name:bob2}
+  .floating-trash.bob-c{animation-name:bob3}
+  .floating-trash.spin{animation:spin-slow 14s linear infinite}
+  @keyframes bob{
+    0%,100%{transform:translateY(0) rotate(-6deg)}
+    50%{transform:translateY(-14px) rotate(6deg)}
+  }
+  @keyframes bob2{
+    0%,100%{transform:translateY(0) rotate(12deg)}
+    50%{transform:translateY(-18px) rotate(-10deg)}
+  }
+  @keyframes bob3{
+    0%,100%{transform:translateY(-6px) rotate(-15deg)}
+    50%{transform:translateY(-22px) rotate(15deg)}
+  }
+  @keyframes spin-slow{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+  }
+
+  .stage-floor{
+    position:absolute;left:0;right:0;bottom:0;height:35%;
+    z-index:1;
+  }
+  .junk-pile{
+    position:absolute;bottom:8%;right:12%;
+    font-size:2rem;line-height:1;
+    text-shadow:2px 2px 0 rgba(0,0,0,.1);
+  }
+
+  .scene-1-content{
+    position:relative;z-index:5;
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+    padding:20px 18px 30px;
+  }
+  .game-title{
+    font-family:'Bungee',sans-serif;
+    font-size:clamp(2.2rem,9vw,3.4rem);
+    color:var(--orange);
+    -webkit-text-stroke:2px var(--navy-deep);
+    text-shadow:
+      3px 3px 0 var(--navy-deep),
+      6px 6px 0 rgba(0,0,0,.15);
+    margin:8px 0 0;
+    text-align:center;line-height:.95;
+    transform:rotate(-3deg);
+    letter-spacing:.02em;
+  }
+  .game-tag{
+    font-family:'Montserrat',sans-serif;font-weight:700;
+    color:var(--navy-deep);font-size:.78rem;
+    letter-spacing:.16em;text-transform:uppercase;
+    margin-top:8px;text-align:center;
+    background:var(--white);
+    padding:5px 14px;border-radius:99px;
+    border:2px solid var(--navy-deep);
+    box-shadow:2px 2px 0 var(--navy-deep);
+  }
+
+  .character-stage{
+    flex:1;display:flex;align-items:flex-end;justify-content:center;gap:8px;
+    margin-top:12px;width:100%;max-width:560px;position:relative;
+  }
+  .barnaby{
+    width:38%;max-width:200px;
+    animation:bear-idle 3.6s ease-in-out infinite;
+    transform-origin:bottom center;
+    filter:drop-shadow(0 8px 0 rgba(0,0,0,.12));
+  }
+  @keyframes bear-idle{
+    0%,100%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(-6px) rotate(1deg)}
+  }
+  .barnaby .wave-arm{
+    transform-origin:60% 90%;
+    animation:wave 1.6s ease-in-out infinite;
+  }
+  @keyframes wave{
+    0%,100%{transform:rotate(-12deg)}
+    50%{transform:rotate(18deg)}
+  }
+  .dumpster-hero{
+    width:54%;max-width:280px;
+    animation:wiggle 2.8s ease-in-out infinite;
+    transform-origin:bottom center;
+    filter:drop-shadow(0 12px 0 rgba(0,0,0,.18));
+    cursor:pointer;
+  }
+  @keyframes wiggle{
+    0%,100%{transform:rotate(-1.2deg)}
+    50%{transform:rotate(1.2deg)}
+  }
+
+  .speech{
+    background:var(--white);
+    border:3px solid var(--navy-deep);
+    border-radius:18px;
+    padding:14px 18px;
+    font-family:'Montserrat',sans-serif;font-weight:700;
+    color:var(--navy-deep);
+    box-shadow:4px 4px 0 var(--navy-deep);
+    position:relative;
+    max-width:88%;
+    margin:0 auto;
+    line-height:1.35;
+    font-size:.95rem;
+  }
+  .speech::after{
+    content:"";position:absolute;
+    bottom:-12px;left:18%;
+    width:0;height:0;
+    border-left:14px solid transparent;
+    border-right:0 solid transparent;
+    border-top:14px solid var(--navy-deep);
+  }
+  .speech::before{
+    content:"";position:absolute;
+    bottom:-7px;left:20%;
+    width:0;height:0;
+    border-left:9px solid transparent;
+    border-right:0 solid transparent;
+    border-top:9px solid var(--white);
+    z-index:1;
+  }
+  .speech .who{
+    display:block;font-family:'Bungee',sans-serif;
+    color:var(--orange);font-size:.7rem;
+    letter-spacing:.06em;margin-bottom:4px;
+  }
+
+  .cta-row{margin-top:18px;display:flex;gap:10px;justify-content:center;width:100%}
+  .btn{
+    appearance:none;border:none;cursor:pointer;
+    font-family:'Bungee',sans-serif;
+    font-size:1.05rem;letter-spacing:.04em;
+    padding:16px 28px;border-radius:14px;
+    transition:transform .12s ease,box-shadow .12s ease;
+    text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{
+    background:var(--orange);color:var(--navy-deep);
+    border:3px solid var(--navy-deep);
+    box-shadow:5px 5px 0 var(--navy-deep);
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--navy-deep)}
+  .btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--navy-deep)}
+  .btn-secondary{
+    background:var(--white);color:var(--navy-deep);
+    border:3px solid var(--navy-deep);
+    box-shadow:4px 4px 0 var(--navy-deep);
+    font-size:.85rem;padding:12px 20px;
+  }
+  .btn-secondary:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--navy-deep)}
+  .btn.sound-inline{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;padding:14px 18px;
+  }
+  .btn.sound-inline.on{
+    background:var(--orange);color:var(--white);
+    border-color:var(--orange-deep);
+    box-shadow:4px 4px 0 var(--orange-deep);
+  }
+  .btn.sound-inline .sound-ico{font-size:1.1rem;line-height:1}
+  /* Hide floating toggle + hint on Scene 1 — inline button takes over */
+  body.scene-1 .sound-toggle,
+  body.scene-1 .sound-hint{display:none !important}
+
+  /* SCENE 2 — THE MESS -------------------------------------------- */
+  .mess{
+    flex:1;
+    background:linear-gradient(180deg,var(--sky-2) 0%,var(--white) 100%);
+    padding:22px 18px 24px;
+    display:flex;flex-direction:column;align-items:center;
+    overflow-y:auto;
+  }
+  .mess-header{text-align:center;margin-bottom:18px}
+  .mess-eyebrow{
+    display:inline-block;
+    font-family:'Bungee',sans-serif;
+    color:var(--orange);
+    font-size:.7rem;letter-spacing:.16em;
+    background:var(--white);padding:4px 12px;border-radius:99px;
+    border:2px solid var(--navy-deep);
+  }
+  .mess h2{
+    font-family:'Bungee',sans-serif;
+    color:var(--navy-deep);
+    font-size:clamp(1.6rem,5vw,2.2rem);
+    margin:10px 0 6px;line-height:1;
+  }
+  .mess .sub{
+    color:var(--muted);font-weight:600;font-size:.86rem;margin:0;
+  }
+
+  .mess-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;width:100%;max-width:540px;
+    margin-top:8px;
+  }
+  @media(min-width:640px){.mess-grid{grid-template-columns:repeat(3,1fr)}}
+
+  .mess-card{
+    background:var(--white);
+    border:3px solid var(--navy-deep);
+    border-radius:14px;
+    padding:18px 12px;
+    text-align:center;
+    cursor:pointer;
+    transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+    box-shadow:4px 4px 0 var(--navy-deep);
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+  }
+  .mess-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--navy-deep);background:var(--steel)}
+  .mess-card:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--navy-deep)}
+  .mess-card .ico{
+    font-size:2.2rem;display:block;margin-bottom:6px;
+    filter:drop-shadow(2px 2px 0 rgba(0,0,0,.08));
+  }
+  .mess-card .lbl{font-size:.82rem;color:var(--navy-deep);line-height:1.2;display:block}
+  .mess-card .sz{
+    font-size:.65rem;color:var(--orange);font-weight:700;
+    margin-top:4px;letter-spacing:.06em;
+    font-family:'Bungee',sans-serif;display:block;
+  }
+
+  .mess-bear-corner{
+    margin-top:20px;display:flex;align-items:flex-end;gap:10px;
+    width:100%;max-width:540px;
+  }
+  .mess-bear-corner .barnaby{width:90px;flex-shrink:0;animation:bear-idle 3.6s ease-in-out infinite}
+  .mess-bear-corner .speech{margin:0;flex:1;font-size:.85rem;padding:10px 14px;box-shadow:3px 3px 0 var(--navy-deep)}
+
+  /* SCENE 3 — EXPAND-O-MATIC -------------------------------------- */
+  .expand{
+    flex:1;
+    background:
+      radial-gradient(ellipse at 50% 0%,rgba(255,194,44,.2),transparent 60%),
+      linear-gradient(180deg,var(--sky-2) 0%,var(--white) 60%,var(--steel) 100%);
+    padding:20px 14px 18px;
+    display:flex;flex-direction:column;align-items:center;
+    overflow:hidden;position:relative;
+  }
+  .expand-header{text-align:center;margin-bottom:10px}
+  .expand h2{
+    font-family:'Bungee',sans-serif;
+    color:var(--navy-deep);
+    font-size:clamp(1.7rem,5.5vw,2.4rem);
+    margin:8px 0 4px;line-height:1;
+  }
+  .expand h2 .accent{color:var(--orange)}
+
+  .expand-stage{
+    flex:1;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    width:100%;max-width:640px;position:relative;
+    padding:8px 0;
+  }
+  .scale-row{
+    display:flex;align-items:flex-end;justify-content:center;gap:14px;
+    width:100%;height:200px;position:relative;
+    margin-bottom:8px;
+  }
+  .dumpster-wrap{
+    position:relative;
+    transform-origin:bottom center;
+    transition:transform .55s cubic-bezier(.34,1.8,.64,1);
+    will-change:transform;
+  }
+  .dumpster-wrap svg{display:block;height:170px;width:auto}
+  .dumpster-wrap .yardage-tag{
+    position:absolute;top:-14px;right:-14px;
+    background:var(--orange);color:var(--navy-deep);
+    font-family:'Bungee',sans-serif;font-size:.85rem;
+    padding:6px 10px;border-radius:99px;
+    border:2.5px solid var(--navy-deep);
+    box-shadow:2px 2px 0 var(--navy-deep);
+    transform:rotate(8deg);
+  }
+
+  .truck-stack{
+    display:flex;flex-wrap:wrap-reverse;gap:6px;
+    align-items:flex-end;justify-content:center;
+    max-width:160px;min-width:80px;
+  }
+  .pickup{
+    width:60px;opacity:0;transform:translateY(8px) scale(.9);
+    transition:opacity .35s ease,transform .35s cubic-bezier(.34,1.6,.64,1);
+    flex-shrink:0;
+  }
+  .pickup.show{opacity:1;transform:translateY(0) scale(1)}
+  .pickup svg{display:block;width:100%;height:auto}
+
+  .scale-label{
+    text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;color:var(--navy-deep);
+    font-size:.85rem;margin-top:4px;
+    background:var(--white);
+    padding:6px 12px;border-radius:99px;
+    border:2px solid var(--navy-deep);
+    box-shadow:2px 2px 0 var(--navy-deep);
+    display:inline-block;
+  }
+  .scale-label .count{
+    color:var(--orange);font-family:'Bungee',sans-serif;
+    font-size:1rem;
+  }
+
+  .price-tag{
+    margin-top:14px;
+    background:var(--navy-deep);color:var(--white);
+    font-family:'Bungee',sans-serif;
+    padding:10px 22px;border-radius:14px;
+    font-size:1.4rem;letter-spacing:.04em;
+    border:3px solid var(--orange);
+    box-shadow:4px 4px 0 var(--orange-deep);
+    transition:transform .18s ease;
+    display:inline-flex;align-items:baseline;gap:6px;
+  }
+  .price-tag.bump{animation:bump .35s ease}
+  @keyframes bump{
+    0%{transform:scale(1)}
+    40%{transform:scale(1.12)}
+    100%{transform:scale(1)}
+  }
+  .price-tag .delivery{font-size:.65rem;color:var(--orange);letter-spacing:.1em}
+
+  .raccoon-coach{
+    display:flex;align-items:flex-end;gap:8px;
+    width:100%;max-width:540px;margin-top:12px;
+  }
+  .raccoon-coach .raccoon{width:74px;flex-shrink:0;animation:bear-idle 3.6s ease-in-out infinite;animation-delay:-1.2s}
+  .raccoon-coach .speech{margin:0;flex:1;font-size:.82rem;padding:10px 14px;box-shadow:3px 3px 0 var(--navy-deep);transition:transform .25s ease}
+  .raccoon-coach .speech.swap{animation:swap .35s ease}
+  @keyframes swap{
+    0%{transform:translateY(0);opacity:1}
+    50%{transform:translateY(-4px);opacity:.4}
+    100%{transform:translateY(0);opacity:1}
+  }
+  .raccoon-coach .speech .who{color:var(--navy-light)}
+  .raccoon-coach .speech::after,.raccoon-coach .speech::before{display:none}
+
+  .size-picker{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+    width:100%;max-width:520px;margin-top:14px;
+  }
+  .size-btn{
+    appearance:none;cursor:pointer;
+    font-family:'Bungee',sans-serif;
+    background:var(--white);color:var(--navy-deep);
+    border:3px solid var(--navy-deep);
+    padding:12px 4px;border-radius:12px;
+    font-size:1rem;line-height:1;
+    box-shadow:3px 3px 0 var(--navy-deep);
+    transition:transform .12s ease,box-shadow .12s ease,background .12s ease,color .12s ease;
+  }
+  .size-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--navy-deep);background:var(--steel)}
+  .size-btn.active{
+    background:var(--orange);color:var(--white);
+    box-shadow:3px 3px 0 var(--orange-deep);
+    border-color:var(--orange-deep);
+  }
+  .size-btn .yd{display:block;font-size:.6rem;color:var(--muted);margin-top:3px;letter-spacing:.06em}
+  .size-btn.active .yd{color:rgba(255,255,255,.85)}
+
+  .expand-actions{margin-top:14px;display:flex;justify-content:center;width:100%}
+
+  /* SCENE 4 — TEASER ---------------------------------------------- */
+  .teaser{
+    flex:1;
+    background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);
+    color:var(--white);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:30px 22px;text-align:center;
+  }
+  .teaser h2{
+    font-family:'Bungee',sans-serif;color:var(--white);
+    font-size:clamp(1.6rem,5vw,2.2rem);margin:0 0 8px;
+  }
+  .teaser p.lead{color:#dce4f1;font-size:.95rem;max-width:440px;margin:0 0 22px}
+  .teaser-flow{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+    max-width:440px;width:100%;margin-bottom:22px;
+  }
+  .teaser-step{
+    background:rgba(255,255,255,.08);
+    border:2px solid rgba(255,255,255,.18);
+    border-radius:12px;padding:14px 8px;
+    font-family:'Montserrat',sans-serif;font-weight:800;
+    font-size:.78rem;letter-spacing:.04em;
+    color:var(--white);
+  }
+  .teaser-step .ico{font-size:1.6rem;display:block;margin-bottom:4px}
+  .teaser-step .num{color:var(--orange);font-family:'Bungee',sans-serif;font-size:.65rem;letter-spacing:.1em;display:block;margin-bottom:4px}
+  .teaser-note{
+    font-size:.72rem;color:#a8b4c8;
+    font-style:italic;max-width:420px;line-height:1.45;
+    border-top:1px solid rgba(255,255,255,.15);
+    padding-top:14px;margin-top:6px;
+  }
+
+  /* Closer (Greg + speech bubble on Scene 4) */
+  .closer{
+    display:flex;align-items:center;gap:18px;
+    margin-bottom:32px;
+    max-width:580px;width:100%;
+    padding:0 4px;
+  }
+  .closer-bear{
+    width:140px;flex-shrink:0;
+    animation:bear-idle 3.6s ease-in-out infinite;
+    filter:drop-shadow(0 8px 0 rgba(0,0,0,.25));
+    cursor:pointer;
+  }
+  .closer-speech{
+    flex:1;
+    background:var(--white);
+    border:3px solid var(--orange);
+    border-radius:18px;
+    padding:16px 20px;
+    color:var(--navy-deep);
+    box-shadow:5px 5px 0 var(--orange-deep);
+    position:relative;
+    text-align:left;
+  }
+  .closer-speech .who{
+    font-family:'Bungee',sans-serif;
+    color:var(--orange);font-size:.7rem;
+    letter-spacing:.1em;display:block;margin-bottom:6px;
+  }
+  .closer-speech p{
+    margin:0;color:var(--navy-deep);font-weight:600;
+    line-height:1.45;font-size:.94rem;
+  }
+  .closer-speech::after{
+    content:"";position:absolute;
+    bottom:22px;left:-14px;
+    width:0;height:0;
+    border-right:14px solid var(--orange);
+    border-top:9px solid transparent;
+    border-bottom:9px solid transparent;
+  }
+  .closer-speech::before{
+    content:"";position:absolute;
+    bottom:25px;left:-9px;
+    width:0;height:0;
+    border-right:10px solid var(--white);
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    z-index:1;
+  }
+  @media(max-width:560px){
+    .closer{flex-direction:column;text-align:center;gap:10px}
+    .closer-bear{width:110px}
+    .closer-speech::after,.closer-speech::before{display:none}
+  }
+
+  /* PROGRESS DOTS ------------------------------------------------- */
+  .progress{
+    position:fixed;bottom:14px;left:50%;transform:translateX(-50%);
+    display:flex;gap:8px;z-index:30;
+    background:rgba(255,255,255,.92);
+    padding:6px 12px;border-radius:99px;
+    border:2px solid var(--navy-deep);
+    box-shadow:2px 2px 0 var(--navy-deep);
+  }
+  .progress .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:#c8d0dc;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .progress .dot.done{background:var(--navy-deep)}
+  .progress .dot.current{background:var(--orange);transform:scale(1.3)}
+
+  /* SOUND TOGGLE -------------------------------------------------- */
+  .sound-toggle{
+    position:fixed;bottom:14px;right:14px;z-index:40;
+    appearance:none;cursor:pointer;
+    background:var(--white);color:var(--navy-deep);
+    border:2.5px solid var(--navy-deep);
+    width:46px;height:46px;border-radius:50%;
+    font-size:1.15rem;
+    box-shadow:3px 3px 0 var(--navy-deep);
+    transition:transform .12s ease,box-shadow .12s ease,background .15s ease;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sound-toggle:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--navy-deep)}
+  .sound-toggle.on{background:var(--orange);color:var(--white);border-color:var(--orange-deep)}
+  .sound-hint{
+    position:fixed;bottom:18px;right:68px;z-index:39;
+    background:var(--navy-deep);color:var(--white);
+    font-family:'Montserrat',sans-serif;font-weight:700;
+    font-size:.7rem;letter-spacing:.04em;
+    padding:7px 12px;border-radius:8px;
+    box-shadow:2px 2px 0 var(--orange);
+    pointer-events:none;
+    opacity:0;transition:opacity .3s ease;
+  }
+  .sound-hint.show{opacity:1}
+  .sound-hint::after{
+    content:"";position:absolute;
+    right:-8px;top:50%;transform:translateY(-50%);
+    border-left:8px solid var(--navy-deep);
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+  }
+
+  /* BACK BUTTON --------------------------------------------------- */
+  .back-btn{
+    position:fixed;top:42px;left:14px;z-index:35;
+    appearance:none;cursor:pointer;
+    background:var(--white);color:var(--navy-deep);
+    border:2.5px solid var(--navy-deep);
+    border-radius:99px;
+    font-family:'Bungee',sans-serif;font-size:.7rem;
+    padding:6px 12px;letter-spacing:.04em;
+    box-shadow:2px 2px 0 var(--navy-deep);
+    display:none;align-items:center;gap:4px;
+  }
+  .back-btn.show{display:inline-flex}
+  .back-btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--navy-deep)}
+
+  /* PROTOTYPE BANNER --------------------------------------------- */
+  .proto-banner{
+    position:fixed;top:42px;right:14px;z-index:35;
+    background:var(--yellow);color:var(--navy-deep);
+    font-family:'Bungee',sans-serif;font-size:.6rem;letter-spacing:.1em;
+    padding:5px 10px;border-radius:99px;
+    border:2px solid var(--navy-deep);
+    box-shadow:2px 2px 0 var(--navy-deep);
+    transform:rotate(3deg);
+  }
+
+  @media (max-width:560px){
+    .scale-row{height:170px;gap:8px}
+    .dumpster-wrap svg{height:140px}
+    .pickup{width:50px}
+    .truck-stack{max-width:120px}
+  }
+</style>
+</head>
+<body>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <span class="badge">
+    <strong>Family-owned</strong>
+    <span class="meta">· 30 years · Sugar Grove, IL</span>
+  </span>
+  <a class="phone" href="tel:5555555555" aria-label="Call Midwest Waste">
+    📞 Talk to a human
+  </a>
+  <a class="skip" href="#" id="skipGame">Skip game →</a>
+</div>
+
+<!-- BACK BUTTON -->
+<button class="back-btn" id="backBtn" type="button">← Back</button>
+
+<!-- PROTO BANNER -->
+<div class="proto-banner">CONCEPT · v0.1</div>
+
+<!-- STAGE -->
+<main class="stage">
+
+  <!-- SCENE 1 ============================================================== -->
+  <section class="scene active" data-scene="1">
+    <div class="junkyard">
+
+      <div class="clouds">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+      </div>
+
+      <!-- Top scattered (sky) -->
+      <span class="floating-trash md" style="top:3%;left:2%;animation-delay:-0.4s" aria-hidden="true">🛋️</span>
+      <span class="floating-trash sm bob-b" style="top:8%;left:16%;animation-delay:-1.2s" aria-hidden="true">📦</span>
+      <span class="floating-trash sm bob-c" style="top:2%;left:32%;animation-delay:-2.6s" aria-hidden="true">🎸</span>
+      <span class="floating-trash md" style="top:6%;right:32%;animation-delay:-1.8s" aria-hidden="true">📺</span>
+      <span class="floating-trash sm bob-b" style="top:9%;right:16%;animation-delay:-3.2s" aria-hidden="true">🪑</span>
+      <span class="floating-trash sm" style="top:4%;right:2%;animation-delay:-0.8s" aria-hidden="true">🪟</span>
+
+      <!-- Mid-left edge (flanks character zone) -->
+      <span class="floating-trash md bob-b" style="top:24%;left:1%;animation-delay:-1.4s" aria-hidden="true">🧸</span>
+      <span class="floating-trash xs" style="top:34%;left:7%;animation-delay:-2.0s" aria-hidden="true">🥫</span>
+      <span class="floating-trash sm bob-c" style="top:46%;left:0%;animation-delay:-2.8s" aria-hidden="true">🪣</span>
+
+      <!-- Mid-right edge -->
+      <span class="floating-trash sm bob-b" style="top:24%;right:1%;animation-delay:-2.2s" aria-hidden="true">🪞</span>
+      <span class="floating-trash xs" style="top:34%;right:7%;animation-delay:-1.6s" aria-hidden="true">🎮</span>
+      <span class="floating-trash sm bob-c" style="top:46%;right:0%;animation-delay:-3.6s" aria-hidden="true">🍾</span>
+
+      <!-- Bottom scattered (grass / foreground pile) -->
+      <span class="floating-trash xl spin" style="bottom:2%;left:1%;animation-delay:-0.6s" aria-hidden="true">🛞</span>
+      <span class="floating-trash md bob-b" style="bottom:18%;left:14%;animation-delay:-2.4s" aria-hidden="true">🪴</span>
+      <span class="floating-trash sm" style="bottom:6%;left:28%;animation-delay:-1.0s" aria-hidden="true">📰</span>
+      <span class="floating-trash lg bob-b" style="bottom:3%;right:2%;animation-delay:-3.0s" aria-hidden="true">🛏️</span>
+      <span class="floating-trash md" style="bottom:18%;right:14%;animation-delay:-2.6s" aria-hidden="true">🎄</span>
+      <span class="floating-trash md bob-c" style="bottom:6%;right:28%;animation-delay:-3.4s" aria-hidden="true">🚪</span>
+      <span class="floating-trash sm" style="bottom:24%;left:3%;animation-delay:-3.8s" aria-hidden="true">🧻</span>
+      <span class="floating-trash xs bob-b" style="bottom:24%;right:3%;animation-delay:-4.2s" aria-hidden="true">🪞</span>
+
+      <div class="scene-1-content">
+        <div class="game-title">JUNKYARD<br>JAM</div>
+        <div class="game-tag">Build your dumpster · MidwestWaste.app</div>
+
+        <div class="character-stage">
+
+          <!-- BARNABY -->
+          <svg class="barnaby" viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- shadow -->
+            <ellipse cx="110" cy="270" rx="65" ry="6" fill="rgba(0,0,0,.15)"/>
+
+            <!-- waving arm (behind body) -->
+            <g class="wave-arm">
+              <ellipse cx="170" cy="120" rx="18" ry="34" fill="#FFFFFF" stroke="#1B365D" stroke-width="3" transform="rotate(35 170 120)"/>
+              <circle cx="190" cy="92" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+              <!-- mitten lines -->
+              <path d="M183 88 Q190 82 197 88" stroke="#1B365D" stroke-width="2" fill="none"/>
+            </g>
+
+            <!-- Body -->
+            <ellipse cx="110" cy="195" rx="60" ry="62" fill="#FFFFFF" stroke="#1B365D" stroke-width="3.5"/>
+
+            <!-- Hi-vis vest -->
+            <path d="M55 175 Q65 165 90 165 L130 165 Q155 165 165 175 L165 240 Q150 250 110 250 Q70 250 55 240 Z"
+                  fill="#FF8200" stroke="#E07300" stroke-width="2.5"/>
+            <!-- vest reflective stripes -->
+            <path d="M55 200 Q110 215 165 200" stroke="#FFD700" stroke-width="3" fill="none"/>
+            <path d="M58 215 Q110 230 162 215" stroke="#FFFFFF" stroke-width="2" fill="none" opacity=".7"/>
+
+            <!-- Right arm (down) -->
+            <ellipse cx="58" cy="210" rx="14" ry="24" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+            <circle cx="55" cy="234" r="11" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+
+            <!-- Feet -->
+            <ellipse cx="85" cy="262" rx="18" ry="9" fill="#1B365D"/>
+            <ellipse cx="135" cy="262" rx="18" ry="9" fill="#1B365D"/>
+
+            <!-- Head -->
+            <circle cx="110" cy="98" r="55" fill="#FFFFFF" stroke="#1B365D" stroke-width="3.5"/>
+
+            <!-- Ears -->
+            <circle cx="72" cy="58" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+            <circle cx="148" cy="58" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+            <circle cx="72" cy="58" r="6" fill="#FFC4B0"/>
+            <circle cx="148" cy="58" r="6" fill="#FFC4B0"/>
+
+            <!-- Hard hat -->
+            <ellipse cx="110" cy="58" rx="55" ry="11" fill="#FF8200" stroke="#1B365D" stroke-width="3"/>
+            <path d="M58 58 Q58 22 110 22 Q162 22 162 58 Z" fill="#FF8200" stroke="#1B365D" stroke-width="3"/>
+            <line x1="110" y1="22" x2="110" y2="58" stroke="#E07300" stroke-width="2.5"/>
+            <!-- hard hat MWC stripe -->
+            <rect x="95" y="36" width="30" height="10" fill="#1B365D" rx="2"/>
+
+            <!-- Eyes -->
+            <circle cx="92" cy="98" r="5" fill="#142849"/>
+            <circle cx="128" cy="98" r="5" fill="#142849"/>
+            <circle cx="93" cy="96" r="1.5" fill="#FFFFFF"/>
+            <circle cx="129" cy="96" r="1.5" fill="#FFFFFF"/>
+
+            <!-- Snout -->
+            <ellipse cx="110" cy="125" rx="22" ry="16" fill="#F4F4F4" stroke="#1B365D" stroke-width="2"/>
+            <ellipse cx="110" cy="118" rx="6" ry="5" fill="#142849"/>
+            <!-- Smile -->
+            <path d="M 92 132 Q 110 142 128 132" stroke="#142849" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          </svg>
+
+          <!-- DUMPSTER -->
+          <svg class="dumpster-hero" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" id="heroDumpster">
+            <!-- shadow -->
+            <ellipse cx="160" cy="210" rx="120" ry="8" fill="rgba(0,0,0,.16)"/>
+            <!-- Body -->
+            <path d="M30 90 L290 90 L260 200 L60 200 Z" fill="#1B365D" stroke="#0E1F3B" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- Top rim -->
+            <path d="M30 90 L290 90 L298 80 L22 80 Z" fill="#2A4775" stroke="#0E1F3B" stroke-width="3" stroke-linejoin="round"/>
+            <!-- Inside darkness -->
+            <path d="M50 92 L270 92 L262 100 L58 100 Z" fill="#0E1F3B"/>
+            <!-- Front panel highlight -->
+            <path d="M76 110 L244 110 L234 175 L86 175 Z" fill="#2A4775" stroke="#0E1F3B" stroke-width="2"/>
+            <!-- Polar Bear logo on side -->
+            <circle cx="160" cy="142" r="22" fill="#FF8200"/>
+            <text x="160" y="151" font-family="Bungee, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="900">MW</text>
+            <!-- Side ribs -->
+            <line x1="115" y1="100" x2="105" y2="200" stroke="#0E1F3B" stroke-width="2.5" opacity=".55"/>
+            <line x1="205" y1="100" x2="215" y2="200" stroke="#0E1F3B" stroke-width="2.5" opacity=".55"/>
+            <!-- Forks -->
+            <rect x="74" y="155" width="172" height="12" fill="#142849" rx="2"/>
+            <!-- Wheels/feet -->
+            <ellipse cx="80" cy="200" rx="14" ry="6" fill="#0E1F3B"/>
+            <ellipse cx="240" cy="200" rx="14" ry="6" fill="#0E1F3B"/>
+          </svg>
+
+        </div>
+
+        <div class="speech" style="margin-top:14px">
+          <span class="who">GREG THE BEAR</span>
+          Hey there, partner. Got a mess? Let's pick the right dumpster, ope.
+        </div>
+
+        <div class="cta-row">
+          <button class="btn btn-secondary sound-inline" id="soundInline" type="button" aria-label="Toggle sound">
+            <span class="sound-ico">🔇</span>
+            <span class="sound-lbl">Sound off</span>
+          </button>
+          <button class="btn btn-primary" id="startBtn" type="button">
+            Start the game →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 2 ============================================================== -->
+  <section class="scene" data-scene="2">
+    <div class="mess">
+      <div class="mess-header">
+        <span class="mess-eyebrow">STEP 1</span>
+        <h2>What are you tackling?</h2>
+        <p class="sub">Tap the closest match — Greg will size it up.</p>
+      </div>
+
+      <div class="mess-grid" id="messGrid">
+        <button class="mess-card" data-project="garage" data-suggested="15" type="button">
+          <span class="ico">🧹</span>
+          <span class="lbl">Garage cleanout</span>
+          <span class="sz">Usually 15 yd</span>
+        </button>
+        <button class="mess-card" data-project="roof" data-suggested="20" type="button">
+          <span class="ico">🏠</span>
+          <span class="lbl">Roof tear-off</span>
+          <span class="sz">Usually 20 yd</span>
+        </button>
+        <button class="mess-card" data-project="yard" data-suggested="10" type="button">
+          <span class="ico">🌳</span>
+          <span class="lbl">Yard waste</span>
+          <span class="sz">Usually 10 yd</span>
+        </button>
+        <button class="mess-card" data-project="remodel" data-suggested="20" type="button">
+          <span class="ico">🛠️</span>
+          <span class="lbl">Remodel / construction</span>
+          <span class="sz">Usually 20 yd</span>
+        </button>
+        <button class="mess-card" data-project="estate" data-suggested="30" type="button">
+          <span class="ico">🪑</span>
+          <span class="lbl">Estate / downsizing</span>
+          <span class="sz">Usually 30 yd</span>
+        </button>
+        <button class="mess-card" data-project="other" data-suggested="15" type="button">
+          <span class="ico">❓</span>
+          <span class="lbl">Something else</span>
+          <span class="sz">We'll figure it out</span>
+        </button>
+      </div>
+
+      <div class="mess-bear-corner">
+        <svg class="barnaby" viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="110" cy="270" rx="55" ry="5" fill="rgba(0,0,0,.15)"/>
+          <ellipse cx="110" cy="195" rx="60" ry="62" fill="#FFFFFF" stroke="#1B365D" stroke-width="3.5"/>
+          <path d="M55 175 Q65 165 90 165 L130 165 Q155 165 165 175 L165 240 Q150 250 110 250 Q70 250 55 240 Z" fill="#FF8200" stroke="#E07300" stroke-width="2.5"/>
+          <path d="M55 200 Q110 215 165 200" stroke="#FFD700" stroke-width="3" fill="none"/>
+          <ellipse cx="85" cy="262" rx="18" ry="9" fill="#1B365D"/>
+          <ellipse cx="135" cy="262" rx="18" ry="9" fill="#1B365D"/>
+          <circle cx="110" cy="98" r="55" fill="#FFFFFF" stroke="#1B365D" stroke-width="3.5"/>
+          <circle cx="72" cy="58" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+          <circle cx="148" cy="58" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+          <ellipse cx="110" cy="58" rx="55" ry="11" fill="#FF8200" stroke="#1B365D" stroke-width="3"/>
+          <path d="M58 58 Q58 22 110 22 Q162 22 162 58 Z" fill="#FF8200" stroke="#1B365D" stroke-width="3"/>
+          <line x1="110" y1="22" x2="110" y2="58" stroke="#E07300" stroke-width="2.5"/>
+          <rect x="95" y="36" width="30" height="10" fill="#1B365D" rx="2"/>
+          <circle cx="92" cy="98" r="5" fill="#142849"/>
+          <circle cx="128" cy="98" r="5" fill="#142849"/>
+          <ellipse cx="110" cy="125" rx="22" ry="16" fill="#F4F4F4" stroke="#1B365D" stroke-width="2"/>
+          <ellipse cx="110" cy="118" rx="6" ry="5" fill="#142849"/>
+          <path d="M 92 132 Q 110 142 128 132" stroke="#142849" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="speech">
+          <span class="who">GREG</span>
+          Don't sweat it — pick what's closest. We'll fine-tune the size next.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 3 ============================================================== -->
+  <section class="scene" data-scene="3">
+    <div class="expand">
+      <div class="expand-header">
+        <span class="mess-eyebrow">STEP 2 · THE EXPAND-O-MATIC</span>
+        <h2>Pick your <span class="accent">size</span></h2>
+      </div>
+
+      <div class="expand-stage">
+
+        <div class="scale-row">
+          <!-- DUMPSTER -->
+          <div class="dumpster-wrap" id="dumpsterWrap" style="transform:scale(.78)">
+            <span class="yardage-tag" id="yardageTag">15 YD</span>
+            <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="160" cy="210" rx="120" ry="6" fill="rgba(0,0,0,.18)"/>
+              <path d="M30 90 L290 90 L260 200 L60 200 Z" fill="#1B365D" stroke="#0E1F3B" stroke-width="3.5" stroke-linejoin="round"/>
+              <path d="M30 90 L290 90 L298 80 L22 80 Z" fill="#2A4775" stroke="#0E1F3B" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M50 92 L270 92 L262 100 L58 100 Z" fill="#0E1F3B"/>
+              <path d="M76 110 L244 110 L234 175 L86 175 Z" fill="#2A4775" stroke="#0E1F3B" stroke-width="2"/>
+              <circle cx="160" cy="142" r="22" fill="#FF8200"/>
+              <text x="160" y="151" font-family="Bungee, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="900">MW</text>
+              <line x1="115" y1="100" x2="105" y2="200" stroke="#0E1F3B" stroke-width="2.5" opacity=".55"/>
+              <line x1="205" y1="100" x2="215" y2="200" stroke="#0E1F3B" stroke-width="2.5" opacity=".55"/>
+              <rect x="74" y="155" width="172" height="12" fill="#142849" rx="2"/>
+              <ellipse cx="80" cy="200" rx="14" ry="6" fill="#0E1F3B"/>
+              <ellipse cx="240" cy="200" rx="14" ry="6" fill="#0E1F3B"/>
+            </svg>
+          </div>
+
+          <!-- = sign -->
+          <div style="font-family:Bungee,sans-serif;color:var(--navy-deep);font-size:1.4rem;align-self:center">=</div>
+
+          <!-- TRUCK STACK -->
+          <div class="truck-stack" id="truckStack">
+            <!-- pickup trucks injected by JS -->
+          </div>
+        </div>
+
+        <div class="scale-label">
+          Holds <span class="count" id="truckCount">4</span> pickup loads of junk
+        </div>
+
+        <div class="price-tag" id="priceTag">
+          $<span id="priceAmt">389</span>
+          <span class="delivery">7-day rental · delivery free</span>
+        </div>
+
+      </div>
+
+      <div class="raccoon-coach">
+        <!-- TYLER THE RACCOON -->
+        <svg class="raccoon" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="232" rx="48" ry="5" fill="rgba(0,0,0,.15)"/>
+          <!-- body -->
+          <ellipse cx="100" cy="170" rx="50" ry="52" fill="#7B8794" stroke="#142849" stroke-width="3"/>
+          <!-- jumpsuit -->
+          <path d="M55 155 Q60 145 80 145 L120 145 Q140 145 145 155 L145 215 Q130 222 100 222 Q70 222 55 215 Z" fill="#2A4775" stroke="#142849" stroke-width="2.5"/>
+          <!-- jumpsuit stripe -->
+          <path d="M55 178 Q100 188 145 178" stroke="#FF8200" stroke-width="2.5" fill="none"/>
+          <!-- belly fluff -->
+          <ellipse cx="100" cy="195" rx="20" ry="22" fill="#C9D1DA"/>
+          <!-- head -->
+          <circle cx="100" cy="90" r="48" fill="#7B8794" stroke="#142849" stroke-width="3"/>
+          <!-- ears -->
+          <path d="M62 56 L58 30 L78 50 Z" fill="#7B8794" stroke="#142849" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M138 56 L142 30 L122 50 Z" fill="#7B8794" stroke="#142849" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- mask -->
+          <ellipse cx="100" cy="92" rx="40" ry="20" fill="#142849"/>
+          <!-- eyes -->
+          <circle cx="82" cy="92" r="9" fill="#FFFFFF"/>
+          <circle cx="118" cy="92" r="9" fill="#FFFFFF"/>
+          <circle cx="82" cy="92" r="4" fill="#142849"/>
+          <circle cx="118" cy="92" r="4" fill="#142849"/>
+          <circle cx="83" cy="90" r="1.5" fill="#FFFFFF"/>
+          <circle cx="119" cy="90" r="1.5" fill="#FFFFFF"/>
+          <!-- snout -->
+          <ellipse cx="100" cy="115" rx="14" ry="12" fill="#F4F4F4"/>
+          <ellipse cx="100" cy="111" rx="5" ry="4" fill="#142849"/>
+          <path d="M 90 122 Q 100 130 110 122" stroke="#142849" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- whiskers -->
+          <line x1="78" y1="118" x2="60" y2="115" stroke="#142849" stroke-width="1.5"/>
+          <line x1="78" y1="122" x2="60" y2="125" stroke="#142849" stroke-width="1.5"/>
+          <line x1="122" y1="118" x2="140" y2="115" stroke="#142849" stroke-width="1.5"/>
+          <line x1="122" y1="122" x2="140" y2="125" stroke="#142849" stroke-width="1.5"/>
+          <!-- name patch on jumpsuit -->
+          <rect x="70" y="160" width="32" height="12" fill="#FFFFFF" rx="2"/>
+          <text x="86" y="170" font-family="Montserrat, sans-serif" font-size="8" font-weight="800" fill="#142849" text-anchor="middle">TYLER</text>
+        </svg>
+
+        <div class="speech" id="raccoonSpeech">
+          <span class="who">TYLER THE RACCOON</span>
+          <span id="raccoonText">Sweet spot for most jobs, partner. You'll have breathing room.</span>
+        </div>
+      </div>
+
+      <div class="size-picker" id="sizePicker">
+        <button class="size-btn" data-size="10" data-trucks="3" data-price="329" type="button">10<span class="yd">yd</span></button>
+        <button class="size-btn active" data-size="15" data-trucks="4" data-price="389" type="button">15<span class="yd">yd</span></button>
+        <button class="size-btn" data-size="20" data-trucks="6" data-price="449" type="button">20<span class="yd">yd</span></button>
+        <button class="size-btn" data-size="30" data-trucks="9" data-price="549" type="button">30<span class="yd">yd</span></button>
+      </div>
+
+      <div class="expand-actions">
+        <button class="btn btn-primary" id="continueBtn" type="button">Looks good →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 4 (TEASER) ===================================================== -->
+  <section class="scene" data-scene="4">
+    <div class="teaser">
+
+      <!-- GREG'S CLOSER -->
+      <div class="closer">
+        <svg class="closer-bear barnaby" viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="110" cy="270" rx="55" ry="5" fill="rgba(0,0,0,.18)"/>
+          <ellipse cx="110" cy="195" rx="60" ry="62" fill="#FFFFFF" stroke="#1B365D" stroke-width="3.5"/>
+          <path d="M55 175 Q65 165 90 165 L130 165 Q155 165 165 175 L165 240 Q150 250 110 250 Q70 250 55 240 Z" fill="#FF8200" stroke="#E07300" stroke-width="2.5"/>
+          <path d="M55 200 Q110 215 165 200" stroke="#FFD700" stroke-width="3" fill="none"/>
+          <path d="M58 215 Q110 230 162 215" stroke="#FFFFFF" stroke-width="2" fill="none" opacity=".7"/>
+          <ellipse cx="58" cy="210" rx="14" ry="24" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+          <circle cx="55" cy="234" r="11" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+          <ellipse cx="85" cy="262" rx="18" ry="9" fill="#1B365D"/>
+          <ellipse cx="135" cy="262" rx="18" ry="9" fill="#1B365D"/>
+          <circle cx="110" cy="98" r="55" fill="#FFFFFF" stroke="#1B365D" stroke-width="3.5"/>
+          <circle cx="72" cy="58" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+          <circle cx="148" cy="58" r="14" fill="#FFFFFF" stroke="#1B365D" stroke-width="3"/>
+          <circle cx="72" cy="58" r="6" fill="#FFC4B0"/>
+          <circle cx="148" cy="58" r="6" fill="#FFC4B0"/>
+          <ellipse cx="110" cy="58" rx="55" ry="11" fill="#FF8200" stroke="#1B365D" stroke-width="3"/>
+          <path d="M58 58 Q58 22 110 22 Q162 22 162 58 Z" fill="#FF8200" stroke="#1B365D" stroke-width="3"/>
+          <line x1="110" y1="22" x2="110" y2="58" stroke="#E07300" stroke-width="2.5"/>
+          <rect x="95" y="36" width="30" height="10" fill="#1B365D" rx="2"/>
+          <circle cx="92" cy="98" r="5" fill="#142849"/>
+          <circle cx="128" cy="98" r="5" fill="#142849"/>
+          <circle cx="93" cy="96" r="1.5" fill="#FFFFFF"/>
+          <circle cx="129" cy="96" r="1.5" fill="#FFFFFF"/>
+          <ellipse cx="110" cy="125" rx="22" ry="16" fill="#F4F4F4" stroke="#1B365D" stroke-width="2"/>
+          <ellipse cx="110" cy="118" rx="6" ry="5" fill="#142849"/>
+          <path d="M 92 132 Q 110 142 128 132" stroke="#142849" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="closer-speech">
+          <span class="who">GREG SAYS</span>
+          <p>Thanks for taking the demo for a spin, partner. When real trash shows up at your door, Midwest Waste will be right here — same two faces, same trucks, thirty years strong. Just give us a holler. Ope.</p>
+        </div>
+      </div>
+
+      <span class="mess-eyebrow" style="margin-bottom:10px">CONCEPT · TO BE BUILT</span>
+      <h2>Three more scenes ahead</h2>
+      <p class="lead">The full experience continues with the Trash Sorter, the Drop-Off Target, and the Boss-Level checkout.</p>
+
+      <div class="teaser-flow">
+        <div class="teaser-step">
+          <span class="num">SCENE 04</span>
+          <span class="ico">🦝</span>
+          Trash Sorter
+        </div>
+        <div class="teaser-step">
+          <span class="num">SCENE 05</span>
+          <span class="ico">🗺️</span>
+          Drop-Off Target
+        </div>
+        <div class="teaser-step">
+          <span class="num">SCENE 06</span>
+          <span class="ico">🏆</span>
+          High Score Checkout
+        </div>
+      </div>
+
+      <p class="teaser-note">
+        Production version uses <strong>Rive</strong> for character rigs, <strong>Suno</strong>-generated chiptune music,
+        and <strong>ElevenLabs</strong> voice acting. This prototype is brand-locked HTML/CSS/SVG only — proves the loop, not the polish.
+      </p>
+
+      <div class="cta-row" style="margin-top:18px;flex-wrap:wrap">
+        <button class="btn btn-secondary" id="restartBtn" type="button">↺ Play again</button>
+        <a class="btn btn-secondary" href="character-studies.html">↗ Character studies</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- PROGRESS DOTS -->
+<div class="progress" id="progress">
+  <span class="dot current"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<!-- SOUND TOGGLE + HINT -->
+<div class="sound-hint" id="soundHint">Tap for sound 🔊</div>
+<button class="sound-toggle" id="soundToggle" type="button" aria-label="Toggle sound">🔇</button>
+
+<!-- PICKUP TRUCK SVG TEMPLATE (cloned by JS) -->
+<template id="pickupTpl">
+  <div class="pickup">
+    <svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+      <!-- shadow -->
+      <ellipse cx="40" cy="46" rx="32" ry="3" fill="rgba(0,0,0,.18)"/>
+      <!-- bed -->
+      <rect x="34" y="22" width="38" height="16" fill="#5b6878" stroke="#142849" stroke-width="1.5" rx="2"/>
+      <!-- junk pile in bed -->
+      <path d="M36 22 Q44 14 52 18 Q60 12 68 20 L70 22 Z" fill="#7BB661"/>
+      <path d="M40 18 L46 12 L52 18 Z" fill="#A0522D"/>
+      <!-- cab -->
+      <path d="M10 38 L10 22 Q10 14 18 14 L34 14 L34 38 Z" fill="#FF8200" stroke="#142849" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- window -->
+      <path d="M14 22 Q14 18 18 18 L30 18 L30 22 Z" fill="#C9E3F2" stroke="#142849" stroke-width="1"/>
+      <!-- body -->
+      <rect x="8" y="32" width="64" height="6" fill="#FF8200" stroke="#142849" stroke-width="1.5" rx="1"/>
+      <!-- wheels -->
+      <circle cx="22" cy="40" r="6" fill="#142849"/>
+      <circle cx="22" cy="40" r="2.5" fill="#7B8794"/>
+      <circle cx="60" cy="40" r="6" fill="#142849"/>
+      <circle cx="60" cy="40" r="2.5" fill="#7B8794"/>
+    </svg>
+  </div>
+</template>
+
+<script>
+(() => {
+  // ---- AUDIO -----------------------------------------------------
+  let audioCtx = null;
+  let soundOn = false;
+
+  // Game music + character voice clips
+  const audio = {
+    music: new Audio('game/game-music.mp3'),
+    gregIntro: new Audio('game/greg-1-hey-there-partner.mp3'),
+    gregScene2: new Audio('game/greg-dont-sweat-it.mp3'),
+    gregClosing: new Audio('game/greg-closing.mp3'),
+    tyler10: new Audio('game/tyler-bare-minimum.mp3'),
+    tyler15: new Audio('game/tyler-sweet-spot-for.mp3'),
+    tyler20: new Audio('game/tyler-now-youve-got-breathing.mp3'),
+    tyler30: new Audio('game/tyler-Full-attic-and-garage.mp3')
+  };
+  Object.values(audio).forEach(a => { a.preload = 'auto'; });
+  audio.music.loop = true;
+
+  const MUSIC_VOL = 0.28;
+  const MUSIC_DUCK = 0.07;
+  let currentVoice = null;
+
+  function playVoice(key) {
+    if (!soundOn) return;
+    const a = audio[key];
+    if (!a) return;
+    if (currentVoice && !currentVoice.paused) {
+      currentVoice.pause();
+      currentVoice.currentTime = 0;
+    }
+    a.currentTime = 0;
+    a.volume = 0.95;
+    audio.music.volume = MUSIC_DUCK;
+    currentVoice = a;
+    const p = a.play();
+    if (p && p.catch) p.catch(() => {});
+    a.onended = () => {
+      if (soundOn) audio.music.volume = MUSIC_VOL;
+      if (currentVoice === a) currentVoice = null;
+    };
+  }
+
+  function startMusic() {
+    if (!soundOn) return;
+    audio.music.volume = MUSIC_VOL;
+    const p = audio.music.play();
+    if (p && p.catch) p.catch(() => {});
+  }
+
+  function stopAllAudio() {
+    audio.music.pause();
+    if (currentVoice) {
+      currentVoice.pause();
+      currentVoice.currentTime = 0;
+      currentVoice = null;
+    }
+  }
+
+  function ensureAudio() {
+    if (!audioCtx) {
+      const C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return null;
+      audioCtx = new C();
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function boing(direction = 1) {
+    if (!soundOn) return;
+    const ctx = ensureAudio(); if (!ctx) return;
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'triangle';
+    const start = direction > 0 ? 220 : 600;
+    const end = direction > 0 ? 660 : 220;
+    osc.frequency.setValueAtTime(start, t);
+    osc.frequency.exponentialRampToValueAtTime(end, t + 0.12);
+    osc.frequency.exponentialRampToValueAtTime(start * 0.85, t + 0.32);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.22, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.36);
+    osc.start(t); osc.stop(t + 0.4);
+  }
+
+  function blip(freq = 880, dur = 0.08) {
+    if (!soundOn) return;
+    const ctx = ensureAudio(); if (!ctx) return;
+    const t = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(freq, t);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.12, t + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.start(t); osc.stop(t + dur + 0.02);
+  }
+
+  function kaching() {
+    if (!soundOn) return;
+    blip(1320, 0.08);
+    setTimeout(() => blip(1760, 0.12), 70);
+  }
+
+  function victory() {
+    if (!soundOn) return;
+    const notes = [523, 659, 784, 1046];
+    notes.forEach((f, i) => setTimeout(() => blip(f, 0.14), i * 110));
+  }
+
+  // ---- SOUND TOGGLE ----------------------------------------------
+  const soundToggle = document.getElementById('soundToggle');
+  const soundHint = document.getElementById('soundHint');
+  const soundInline = document.getElementById('soundInline');
+
+  function updateSoundUI() {
+    soundToggle.classList.toggle('on', soundOn);
+    soundToggle.textContent = soundOn ? '🔊' : '🔇';
+    if (soundInline) {
+      soundInline.classList.toggle('on', soundOn);
+      soundInline.querySelector('.sound-ico').textContent = soundOn ? '🔊' : '🔇';
+      soundInline.querySelector('.sound-lbl').textContent = soundOn ? 'Sound on' : 'Sound off';
+    }
+  }
+
+  function toggleSound() {
+    soundOn = !soundOn;
+    updateSoundUI();
+    if (soundOn) {
+      ensureAudio();
+      soundHint.classList.remove('show');
+      blip(880, 0.08);
+      startMusic();
+      // Play current scene's voice line
+      if (currentScene === 1) playVoice('gregIntro');
+      else if (currentScene === 2) playVoice('gregScene2');
+      else if (currentScene === 3) playVoice('tyler' + currentSize);
+      else if (currentScene === 4) playVoice('gregClosing');
+    } else {
+      stopAllAudio();
+    }
+  }
+
+  soundToggle.addEventListener('click', toggleSound);
+  if (soundInline) soundInline.addEventListener('click', toggleSound);
+
+  // ---- SCENE NAVIGATION ------------------------------------------
+  const scenes = document.querySelectorAll('.scene');
+  const progressDots = document.querySelectorAll('#progress .dot');
+  const backBtn = document.getElementById('backBtn');
+  let currentScene = 1;
+  const sceneHistory = [1];
+
+  function goToScene(n, push = true) {
+    scenes.forEach(s => s.classList.toggle('active', +s.dataset.scene === n));
+    progressDots.forEach((d, i) => {
+      d.classList.remove('current', 'done');
+      if (i + 1 < n) d.classList.add('done');
+      if (i + 1 === n) d.classList.add('current');
+    });
+    if (push && n !== currentScene) sceneHistory.push(n);
+    currentScene = n;
+    document.body.className = 'scene-' + n;
+    backBtn.classList.toggle('show', n > 1 && n < 4);
+    blip(660, 0.06);
+    // Voice on scene entry (Scene 3 voice handled by selectSize)
+    if (n === 1) playVoice('gregIntro');
+    else if (n === 2) playVoice('gregScene2');
+    else if (n === 4) {
+      victory();
+      setTimeout(() => playVoice('gregClosing'), 750);
+    }
+  }
+
+  document.getElementById('startBtn').addEventListener('click', () => {
+    goToScene(2);
+  });
+
+  document.querySelectorAll('.mess-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const suggested = card.dataset.suggested;
+      goToScene(3);
+      // pre-select the suggested size
+      setTimeout(() => selectSize(suggested), 350);
+    });
+  });
+
+  document.getElementById('continueBtn').addEventListener('click', () => {
+    goToScene(4);
+  });
+
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    goToScene(1, false);
+    sceneHistory.length = 0;
+    sceneHistory.push(1);
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (sceneHistory.length > 1) {
+      sceneHistory.pop();
+      goToScene(sceneHistory[sceneHistory.length - 1], false);
+    }
+  });
+
+  document.getElementById('skipGame').addEventListener('click', e => {
+    e.preventDefault();
+    alert('Production version: routes to a fast 30-second booking form for power users / contractors.');
+  });
+
+  // ---- EXPAND-O-MATIC --------------------------------------------
+  const dumpsterWrap = document.getElementById('dumpsterWrap');
+  const yardageTag = document.getElementById('yardageTag');
+  const truckStack = document.getElementById('truckStack');
+  const truckCount = document.getElementById('truckCount');
+  const priceAmt = document.getElementById('priceAmt');
+  const priceTag = document.getElementById('priceTag');
+  const raccoonText = document.getElementById('raccoonText');
+  const raccoonSpeech = document.getElementById('raccoonSpeech');
+  const pickupTpl = document.getElementById('pickupTpl');
+
+  const SCALES = { '10': 0.66, '15': 0.82, '20': 1.0, '30': 1.22 };
+  const COACH = {
+    '10': "Bare minimum, partner. Sure that'll fit?",
+    '15': "Sweet spot for most jobs. Solid pick.",
+    '20': "Now you've got breathing room. Most folks underestimate by one size.",
+    '30': "Full attic-and-garage territory. You won't run out, ope."
+  };
+
+  let currentSize = '15';
+  let prevTruckCount = 0;
+
+  function selectSize(size) {
+    const btn = document.querySelector(`.size-btn[data-size="${size}"]`);
+    if (!btn) return;
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const trucks = +btn.dataset.trucks;
+    const price = btn.dataset.price;
+    const direction = +size > +currentSize ? 1 : -1;
+
+    // Scale dumpster
+    dumpsterWrap.style.transform = `scale(${SCALES[size]})`;
+    yardageTag.textContent = `${size} YD`;
+    boing(direction);
+
+    // Update trucks
+    renderTrucks(trucks);
+    truckCount.textContent = trucks;
+
+    // Update price with bump
+    priceAmt.textContent = price;
+    priceTag.classList.remove('bump');
+    void priceTag.offsetWidth;
+    priceTag.classList.add('bump');
+    setTimeout(kaching, 150);
+    playVoice('tyler' + size);
+
+    // Coach line swap
+    raccoonText.textContent = COACH[size];
+    raccoonSpeech.classList.remove('swap');
+    void raccoonSpeech.offsetWidth;
+    raccoonSpeech.classList.add('swap');
+
+    currentSize = size;
+  }
+
+  function renderTrucks(n) {
+    const existing = truckStack.querySelectorAll('.pickup');
+    if (n > existing.length) {
+      // Add new
+      for (let i = existing.length; i < n; i++) {
+        const node = pickupTpl.content.cloneNode(true);
+        truckStack.appendChild(node);
+      }
+    } else if (n < existing.length) {
+      // Remove from end
+      for (let i = existing.length - 1; i >= n; i--) {
+        existing[i].remove();
+      }
+    }
+    // Animate in
+    truckStack.querySelectorAll('.pickup').forEach((p, i) => {
+      setTimeout(() => p.classList.add('show'), 60 + i * 50);
+    });
+    prevTruckCount = n;
+  }
+
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => selectSize(btn.dataset.size));
+  });
+
+  // Initial state
+  document.body.className = 'scene-1';
+  updateSoundUI();
+  renderTrucks(4);
+
+  // ---- HERO DUMPSTER TAP -----------------------------------------
+  const heroDumpster = document.getElementById('heroDumpster');
+  heroDumpster.addEventListener('click', () => {
+    heroDumpster.style.animation = 'none';
+    void heroDumpster.offsetWidth;
+    heroDumpster.style.animation = '';
+    boing(1);
+  });
+
+  // ---- TAP CHARACTERS TO REPLAY VOICE ----------------------------
+  document.querySelectorAll('.scene[data-scene="1"] .barnaby, .scene[data-scene="2"] .barnaby, .scene[data-scene="4"] .closer-bear').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => {
+      const sceneNum = +el.closest('.scene').dataset.scene;
+      if (sceneNum === 1) playVoice('gregIntro');
+      else if (sceneNum === 2) playVoice('gregScene2');
+      else if (sceneNum === 4) playVoice('gregClosing');
+    });
+  });
+  const raccoon = document.querySelector('.raccoon-coach .raccoon');
+  if (raccoon) {
+    raccoon.style.cursor = 'pointer';
+    raccoon.addEventListener('click', () => playVoice('tyler' + currentSize));
+  }
+})();
+</script>
+</body>
+</html>
