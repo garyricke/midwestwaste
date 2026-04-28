@@ -1141,6 +1141,33 @@
   const MUSIC_VOL = 0.28;
   const MUSIC_DUCK = 0.07;
   let currentVoice = null;
+  let musicGain = null;
+  let musicSourceWired = false;
+
+  // iOS Safari ignores HTMLAudioElement.volume — route music through a
+  // Web Audio GainNode so we can actually duck it on mobile.
+  function wireMusicGraph() {
+    if (musicSourceWired || !audioCtx) return;
+    try {
+      const src = audioCtx.createMediaElementSource(audio.music);
+      musicGain = audioCtx.createGain();
+      musicGain.gain.value = MUSIC_VOL;
+      src.connect(musicGain);
+      musicGain.connect(audioCtx.destination);
+      musicSourceWired = true;
+    } catch (e) { /* already wired or unsupported */ }
+  }
+
+  function setMusicVolume(v) {
+    if (musicGain && audioCtx) {
+      const t = audioCtx.currentTime;
+      musicGain.gain.cancelScheduledValues(t);
+      musicGain.gain.setValueAtTime(musicGain.gain.value, t);
+      musicGain.gain.linearRampToValueAtTime(v, t + 0.18);
+    } else {
+      audio.music.volume = v;
+    }
+  }
 
   function playVoice(key) {
     if (!soundOn) return;
@@ -1152,19 +1179,19 @@
     }
     a.currentTime = 0;
     a.volume = 0.95;
-    audio.music.volume = MUSIC_DUCK;
+    setMusicVolume(MUSIC_DUCK);
     currentVoice = a;
     const p = a.play();
     if (p && p.catch) p.catch(() => {});
     a.onended = () => {
-      if (soundOn) audio.music.volume = MUSIC_VOL;
+      if (soundOn) setMusicVolume(MUSIC_VOL);
       if (currentVoice === a) currentVoice = null;
     };
   }
 
   function startMusic() {
     if (!soundOn) return;
-    audio.music.volume = MUSIC_VOL;
+    setMusicVolume(MUSIC_VOL);
     const p = audio.music.play();
     if (p && p.catch) p.catch(() => {});
   }
@@ -1185,6 +1212,7 @@
       audioCtx = new C();
     }
     if (audioCtx.state === 'suspended') audioCtx.resume();
+    wireMusicGraph();
     return audioCtx;
   }
 
