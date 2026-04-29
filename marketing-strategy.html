@@ -471,6 +471,425 @@
   }
   .source-note{font-size:.78rem;color:var(--muted);margin-top:10px;font-style:italic;line-height:1.5}
 
+  /* Junkyard Jam · playful game section */
+  .game-section{
+    position:relative;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255,130,0,.10) 0, transparent 36%),
+      radial-gradient(circle at 88% 82%, rgba(27,54,93,.07) 0, transparent 36%),
+      #FFFBEF;
+  }
+  .game-section::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:8px;
+    background:repeating-linear-gradient(135deg, var(--orange) 0 14px, var(--navy) 14px 28px);
+  }
+
+  .game-stage{
+    position:relative;
+    background:linear-gradient(180deg,#FFFFFF 0%,#FFF3D6 100%);
+    border:3px solid var(--navy);
+    border-radius:24px;
+    padding:48px 32px 36px;
+    margin-top:8px;
+    box-shadow:0 10px 0 var(--navy),0 14px 30px rgba(20,40,73,.15);
+    overflow:hidden;
+  }
+  .game-stage::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:14px;
+    background:repeating-linear-gradient(45deg,var(--orange) 0 12px,var(--navy) 12px 24px);
+  }
+  .game-stage-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-top:16px;
+  }
+  .game-stage-side{display:flex;flex-direction:column;align-items:center;gap:18px}
+  .game-bubble{
+    position:relative;
+    background:var(--white);
+    border:3px solid var(--navy);
+    border-radius:22px;
+    padding:14px 22px;
+    font-family:'Open Sans',sans-serif;font-weight:700;
+    font-size:1rem;line-height:1.35;color:var(--navy);
+    box-shadow:0 5px 0 rgba(20,40,73,.12);
+    max-width:300px;text-align:center;
+  }
+  .game-bubble::after{
+    content:"";position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
+    width:0;height:0;
+    border-left:14px solid transparent;border-right:14px solid transparent;
+    border-top:16px solid var(--navy);
+  }
+  .game-bubble::before{
+    content:"";position:absolute;bottom:-11px;left:50%;transform:translateX(-50%);
+    width:0;height:0;
+    border-left:10px solid transparent;border-right:10px solid transparent;
+    border-top:11px solid var(--white);z-index:2;
+  }
+  .game-bubble-orange{background:var(--orange);color:var(--navy-deep)}
+  .game-bubble-orange::before{border-top-color:var(--orange)}
+  .game-character{
+    display:block;width:auto;max-width:240px;height:auto;max-height:300px;
+    object-fit:contain;
+    filter:drop-shadow(0 8px 0 rgba(20,40,73,.10));
+  }
+  .game-character.flip{transform:scaleX(-1)}
+
+  .game-cta-wrap{display:flex;justify-content:center;margin-top:36px}
+  .game-cta{
+    display:inline-flex;flex-direction:column;align-items:center;
+    background:var(--orange);
+    color:var(--navy)!important;text-decoration:none!important;
+    border:3px solid var(--navy);border-radius:14px;
+    padding:18px 44px;
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    text-transform:uppercase;letter-spacing:.05em;
+    box-shadow:0 6px 0 var(--navy),0 8px 22px rgba(255,130,0,.32);
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .game-cta:hover{
+    transform:translateY(-3px);
+    box-shadow:0 9px 0 var(--navy),0 11px 26px rgba(255,130,0,.45);
+  }
+  .game-cta .pre{font-size:.74rem;letter-spacing:.18em}
+  .game-cta .main{font-size:1.7rem;margin-top:4px;letter-spacing:.02em;line-height:1}
+  .game-cta .url{
+    font-family:'Open Sans',sans-serif;font-weight:600;font-size:.78rem;
+    letter-spacing:.02em;text-transform:none;margin-top:8px;
+    color:var(--navy);opacity:.78;
+  }
+
+  /* Cartoon polish on the existing scene + principle cards */
+  .game-section .step{
+    border-radius:14px;border:2px solid var(--navy);
+    box-shadow:0 5px 0 rgba(20,40,73,.10);
+    background:var(--white);
+  }
+  .game-section .step-num{
+    display:inline-block;
+    background:var(--navy);color:var(--orange);
+    padding:5px 12px;border-radius:8px;
+    font-size:.7rem;letter-spacing:.16em;margin-bottom:10px;
+  }
+  .game-section .comp-card{
+    border:2px solid var(--navy);border-top:5px solid var(--orange);
+    box-shadow:0 5px 0 rgba(20,40,73,.10);
+    border-radius:14px;
+  }
+
+  .game-status{
+    margin-top:36px;
+    background:var(--white);
+    border:2px dashed var(--navy);
+    border-radius:14px;
+    padding:20px 26px;
+    font-size:.92rem;color:var(--ink);line-height:1.55;
+  }
+  .game-status strong{
+    display:block;
+    font-family:Montserrat,sans-serif;font-weight:800;color:var(--navy);
+    letter-spacing:.06em;font-size:.78rem;text-transform:uppercase;
+    margin-bottom:6px;
+  }
+
+  @media (max-width:880px){
+    .game-stage-row{grid-template-columns:1fr;gap:36px}
+    .game-character{max-width:200px;max-height:220px}
+  }
+
+  /* Payments-system info trigger + modal (lives in the game section) */
+  .game-payments-wrap{display:flex;justify-content:center;margin-top:40px}
+  .game-payments-trigger{
+    appearance:none;cursor:pointer;
+    display:flex;align-items:center;gap:28px;justify-content:space-between;
+    width:100%;max-width:920px;
+    background:linear-gradient(135deg,var(--orange) 0%,#FFA640 60%,#FFC272 100%);
+    color:var(--navy-deep)!important;
+    border:4px solid var(--navy-deep);border-radius:20px;
+    padding:28px 32px;
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    text-align:left;text-decoration:none;
+    box-shadow:8px 8px 0 var(--navy-deep),0 14px 32px rgba(255,130,0,.30);
+    transition:transform .18s ease,box-shadow .18s ease;
+    position:relative;overflow:hidden;
+  }
+  .game-payments-trigger::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:10px;
+    background:repeating-linear-gradient(135deg,var(--navy-deep) 0 12px,var(--orange-deep) 12px 24px);
+  }
+  .game-payments-trigger::after{
+    content:"";position:absolute;
+    right:-30px;bottom:-30px;width:160px;height:160px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 70%);
+    pointer-events:none;
+  }
+  .game-payments-trigger:hover{
+    transform:translate(-3px,-3px);
+    box-shadow:11px 11px 0 var(--navy-deep),0 18px 36px rgba(255,130,0,.36);
+    color:var(--navy-deep)!important;
+  }
+  .game-payments-trigger:active{
+    transform:translate(2px,2px);
+    box-shadow:5px 5px 0 var(--navy-deep),0 8px 18px rgba(255,130,0,.30);
+  }
+
+  .pt-side{display:flex;flex-direction:column;flex:1;min-width:0;padding-top:10px}
+  .pt-icon{
+    font-size:1.7rem;line-height:1;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:52px;height:52px;
+    background:var(--white);
+    border:3px solid var(--navy-deep);border-radius:12px;
+    box-shadow:3px 3px 0 var(--navy-deep);
+    margin-bottom:14px;
+  }
+  .pt-eyebrow{
+    display:inline-block;
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--navy-deep);font-weight:900;
+    background:var(--white);
+    border:2px solid var(--navy-deep);border-radius:6px;
+    padding:4px 9px;
+    box-shadow:2px 2px 0 var(--navy-deep);
+    margin-bottom:12px;align-self:flex-start;
+  }
+  .pt-main{
+    font-size:clamp(1.1rem,2.1vw,1.45rem);
+    line-height:1.22;letter-spacing:-.01em;
+    color:var(--navy-deep);
+    margin-bottom:10px;
+  }
+  .pt-sub{
+    font-family:'Open Sans',sans-serif;font-weight:600;font-size:.92rem;
+    color:var(--navy-deep);opacity:.82;line-height:1.45;
+    max-width:520px;
+  }
+
+  .pt-cta{
+    display:inline-flex;align-items:center;gap:12px;flex-shrink:0;
+    background:var(--white);color:var(--navy-deep);
+    border:3px solid var(--navy-deep);border-radius:12px;
+    padding:16px 26px;
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase;
+    box-shadow:4px 4px 0 var(--navy-deep);
+    animation:pt-pulse 2.2s ease-in-out infinite;
+    position:relative;z-index:1;
+  }
+  .pt-cta-arrow{font-size:1.5rem;line-height:1;font-weight:900;transition:transform .2s ease}
+  .game-payments-trigger:hover .pt-cta{
+    background:var(--navy-deep);color:var(--white);
+    animation:none;
+    box-shadow:4px 4px 0 var(--navy-deep);
+  }
+  .game-payments-trigger:hover .pt-cta-arrow{transform:translateX(5px)}
+
+  @keyframes pt-pulse{
+    0%,100%{box-shadow:4px 4px 0 var(--navy-deep),0 0 0 0 rgba(255,255,255,0)}
+    50%{box-shadow:4px 4px 0 var(--navy-deep),0 0 0 12px rgba(255,255,255,.55)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .pt-cta{animation:none}
+  }
+
+  .payments-modal{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(20,40,73,.78);
+    display:none;align-items:flex-start;justify-content:center;
+    padding:48px 16px 24px;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .payments-modal.open{display:flex}
+  .payments-card{
+    background:var(--white);
+    border:4px solid var(--navy-deep);border-radius:18px;
+    box-shadow:0 12px 0 var(--navy-deep),0 14px 30px rgba(0,0,0,.35);
+    max-width:720px;width:100%;
+    margin:auto;overflow:hidden;
+  }
+  .payments-header{
+    background:var(--navy-deep);color:var(--white);
+    padding:28px 32px 24px;
+    border-bottom:4px solid var(--orange);
+    position:relative;
+  }
+  .payments-eyebrow-mod{
+    font-family:'Montserrat',sans-serif;font-weight:800;
+    font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--orange);margin-bottom:8px;
+  }
+  .payments-title{
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.05;
+    color:var(--white);margin:0;letter-spacing:-.01em;
+  }
+  .payments-subtitle{
+    font-family:'Open Sans',sans-serif;font-size:.95rem;line-height:1.5;
+    margin:10px 0 0;color:#dce4f1;max-width:560px;
+  }
+  .payments-close{
+    position:absolute;top:14px;right:14px;
+    background:var(--orange);color:var(--navy-deep);
+    border:2.5px solid var(--navy-deep);border-radius:8px;
+    width:36px;height:36px;cursor:pointer;
+    font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem;
+    box-shadow:2px 2px 0 var(--navy-deep);
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .payments-close:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--navy-deep)}
+
+  .payments-body{padding:28px 32px 24px;color:var(--ink)}
+  .payments-q{
+    background:var(--steel);
+    border:2px solid var(--navy-deep);border-radius:12px;
+    padding:20px 22px;margin-bottom:18px;
+    box-shadow:4px 4px 0 var(--navy-deep);
+  }
+  .payments-q:last-child{margin-bottom:0}
+  .payments-q h3{
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    font-size:1.06rem;color:var(--navy-deep);margin:0 0 6px;
+    line-height:1.2;display:flex;align-items:center;gap:10px;
+  }
+  .payments-q .qmark{
+    font-family:'Montserrat',sans-serif;font-weight:900;
+    background:var(--orange);color:var(--navy-deep);
+    border:2px solid var(--navy-deep);border-radius:6px;
+    font-size:.68rem;letter-spacing:.06em;
+    padding:4px 9px;line-height:1;flex-shrink:0;
+    box-shadow:2px 2px 0 var(--navy-deep);
+  }
+  .payments-q p{margin:10px 0 0;font-size:.94rem;line-height:1.55;color:var(--ink)}
+  .payments-q ul{margin:12px 0 0;padding-left:22px;font-size:.92rem;line-height:1.55}
+  .payments-q ul li{margin-bottom:6px}
+  .payments-q ul li strong{color:var(--navy-deep)}
+
+  .payments-cap{
+    background:var(--white);
+    border:2px solid var(--navy-deep);border-radius:8px;
+    margin-top:14px;overflow:hidden;
+  }
+  .payments-cap-row{
+    display:grid;grid-template-columns:1.1fr 1.7fr 1fr;
+    font-size:.85rem;
+    border-bottom:1px solid rgba(20,40,73,.15);
+  }
+  .payments-cap-row:last-child{border-bottom:0}
+  .payments-cap-row.head{
+    background:var(--navy-deep);color:var(--white);
+    font-family:'Montserrat',sans-serif;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;font-size:.66rem;
+  }
+  .payments-cap-row > div{padding:10px 14px;line-height:1.4}
+  .payments-cap-row .scale{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--navy-deep)}
+  .payments-cap-row.now{background:rgba(255,130,0,.10)}
+  .payments-cap-row.now .scale{color:var(--orange-deep)}
+
+  .payments-pillrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .payments-pill{
+    display:inline-flex;align-items:center;gap:4px;
+    background:var(--navy-deep);color:var(--orange);
+    font-family:'Montserrat',sans-serif;font-weight:800;
+    font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 10px;border-radius:99px;
+    border:2px solid var(--navy-deep);
+  }
+
+  .payments-foot{
+    padding:18px 32px 24px;
+    background:var(--steel);
+    border-top:2px dashed var(--navy-deep);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .payments-foot .src{
+    font-family:'Open Sans',sans-serif;font-size:.74rem;color:var(--muted);font-style:italic;
+    flex:1;min-width:200px;
+  }
+  .payments-gotit{
+    background:var(--orange);color:var(--navy-deep);
+    border:3px solid var(--navy-deep);border-radius:10px;
+    font-family:'Montserrat',sans-serif;font-weight:900;font-size:.82rem;
+    letter-spacing:.05em;text-transform:uppercase;
+    padding:11px 24px;cursor:pointer;
+    box-shadow:3px 3px 0 var(--navy-deep);
+  }
+  .payments-gotit:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--navy-deep)}
+
+  @media (max-width:680px){
+    .payments-modal{padding:32px 10px 16px}
+    .payments-header{padding:22px 22px 18px}
+    .payments-body{padding:22px 18px 18px}
+    .payments-q{padding:16px 18px}
+    .payments-cap-row{grid-template-columns:1fr 1.5fr 1fr;font-size:.78rem}
+    .payments-cap-row.head{font-size:.6rem}
+    .payments-foot{padding:16px 22px 20px}
+    .game-payments-trigger{
+      flex-direction:column;align-items:stretch;
+      padding:24px 22px;gap:20px;
+    }
+    .pt-side{padding-top:14px}
+    .pt-icon{width:46px;height:46px;font-size:1.45rem;margin-bottom:12px}
+    .pt-cta{justify-content:center;font-size:1rem;padding:14px 22px}
+  }
+
+  /* Domain status pills (used in the section 05 callout) */
+  .domain-pill{
+    display:inline-block;
+    font-family:'Montserrat',sans-serif;font-weight:800;
+    font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:3px 9px;border-radius:99px;
+    margin-left:8px;vertical-align:.18em;
+    white-space:nowrap;
+  }
+  .domain-pill.secured{background:var(--orange);color:var(--navy-deep)}
+  .domain-pill.thirdparty{
+    background:rgba(255,255,255,.12);color:#dce4f1;
+    border:1px solid rgba(255,255,255,.32);
+  }
+
+  /* Podcast naming trigger (lives in the dark Big Bet section) */
+  .trash-name-wrap{display:flex;justify-content:center;margin-top:48px}
+  .trash-name-trigger{
+    appearance:none;cursor:pointer;
+    display:inline-flex;align-items:center;gap:18px;
+    background:rgba(255,255,255,.06);
+    color:var(--white)!important;text-decoration:none;
+    border:2px dashed rgba(255,130,0,.55);
+    border-radius:14px;
+    padding:18px 24px;
+    font-family:'Montserrat',sans-serif;font-weight:800;
+    text-align:left;max-width:720px;
+    transition:transform .15s ease,background .15s ease,border-color .15s ease;
+  }
+  .trash-name-trigger:hover{
+    background:rgba(255,130,0,.16);
+    border-color:var(--orange);
+    color:var(--white)!important;
+    transform:translateY(-2px);
+  }
+  .tn-icon{
+    font-size:1.4rem;line-height:1;
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;
+    background:var(--orange);color:var(--navy-deep);
+    border-radius:10px;flex-shrink:0;
+  }
+  .tn-text{display:flex;flex-direction:column;line-height:1.2;flex:1;min-width:0}
+  .tn-eyebrow{
+    font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--orange);font-weight:800;margin-bottom:5px;
+  }
+  .tn-main{font-size:1rem;color:var(--white);font-weight:800;line-height:1.3}
+  .tn-arrow{
+    font-size:1.4rem;color:var(--orange);font-weight:900;
+    transition:transform .2s ease;flex-shrink:0;
+  }
+  .trash-name-trigger:hover .tn-arrow{transform:translateX(5px)}
+  @media (max-width:680px){
+    .trash-name-trigger{padding:16px 18px;gap:14px}
+    .tn-main{font-size:.92rem}
+    .tn-icon{width:40px;height:40px;font-size:1.25rem}
+  }
+
   @media print{
     .hero-content{padding:36px 0}
     section{padding:36px 0;break-inside:avoid}
@@ -498,7 +917,7 @@
     <div class="hero-meta">
       <div>Cadence<strong>Biweekly · 24 episodes</strong></div>
       <div>Format<strong>30-min · iPhone + lavs</strong></div>
-      <div>Year-1 investment<strong>$134,600</strong></div>
+      <div>Year-1 investment<strong>$38,000</strong></div>
       <div>Reallocation<strong>From the existing $50K plan</strong></div>
     </div>
   </div>
@@ -789,9 +1208,9 @@
               <strong>Midwest Waste · proposed</strong>
               <div class="row-detail">Owner-operated · 30 years · this plan</div>
             </td>
-            <td class="num">$8,500</td>
-            <td class="num">$10,073</td>
-            <td class="num">$135,476</td>
+            <td class="num">$20,000</td>
+            <td class="num">$1,500</td>
+            <td class="num">$18,000</td>
           </tr>
         </tbody>
       </table>
@@ -890,8 +1309,94 @@
         </div>
       </div>
     </div>
+
+    <!-- Naming consideration trigger -->
+    <div class="trash-name-wrap">
+      <button type="button" class="trash-name-trigger" id="nameBtn" aria-haspopup="dialog" aria-controls="nameModal">
+        <span class="tn-icon" aria-hidden="true">📛</span>
+        <span class="tn-text">
+          <span class="tn-eyebrow">Naming consideration</span>
+          <span class="tn-main">Should it actually be "Trash Talk"? A reality check — and the alternative we recommend.</span>
+        </span>
+        <span class="tn-arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
   </div>
 </section>
+
+<!-- NAMING MODAL -->
+<div class="payments-modal" id="nameModal" role="dialog" aria-modal="true" aria-labelledby="nameTitle" aria-hidden="true">
+  <div class="payments-card" role="document">
+    <header class="payments-header">
+      <button type="button" class="payments-close" id="nameClose" aria-label="Close">✕</button>
+      <div class="payments-eyebrow-mod">Podcast naming</div>
+      <h2 id="nameTitle" class="payments-title">Should it actually be "Trash Talk"?</h2>
+      <p class="payments-subtitle">A pun-perfect name walking into a very crowded room. Here's the reality check — and the alternative that earns the click without losing the wit.</p>
+    </header>
+
+    <div class="payments-body">
+
+      <!-- Reality check -->
+      <div class="payments-q">
+        <h3>The reality check</h3>
+        <p>"Trash Talk" is the natural instinct — it's a perfect industry pun. The problem is discoverability. A search for <em>"Trash Talk Podcast"</em> currently returns:</p>
+        <ul>
+          <li>A massive gaming podcast.</li>
+          <li>A 90-Day Fiancé recap show.</li>
+          <li>A sports betting show.</li>
+        </ul>
+        <p>Trademarks are usually category-specific, so legal coexistence is plausible. But on Spotify and Apple Podcasts, Midwest Waste lands somewhere on page 10 — and the name itself becomes a discoverability tax that paid promotion has to claw back every week.</p>
+      </div>
+
+      <!-- Alternatives considered -->
+      <div class="payments-q">
+        <h3>Four directions considered</h3>
+        <p>The job is to bridge "gritty industrial work" and "high-level consulting" without sounding like either one alone. The shortlist:</p>
+        <ul>
+          <li><strong>Witty but professional</strong> — Haul Assets · The Refuse Report · Talkin' Shop (and Scrap) · Picking Up the Tab</li>
+          <li><strong>Modern &amp; industrial</strong> — The Waste Blueprint · Dumpster Divining · Managed Motion · The Haul Back</li>
+          <li><strong>Midwest connection</strong> — The Heartland Haul · The Great Lakes Garbage Guide · Midwest Manpower &amp; Managed Waste</li>
+          <li><strong>High-energy / culture</strong> — We Love Garbage (great if the show leans behind-the-scenes; off-tone if the audience is CFOs and property managers)</li>
+        </ul>
+      </div>
+
+      <!-- Recommendation -->
+      <div class="payments-q">
+        <h3>The recommendation · "The Bottom Line on Waste"</h3>
+        <p>One name, three reasons:</p>
+        <ul>
+          <li><strong>Double entendre.</strong> Refers to the bottom of the bin <em>and</em> the financial bottom line. Lands the industry pun without forfeiting the consulting authority.</li>
+          <li><strong>Authority.</strong> Tells a potential client exactly what they'll get — expert advice on what waste actually costs and how to spend less on it.</li>
+          <li><strong>SEO.</strong> Includes the keyword "Waste," which is what the buyer is actually typing. Easier to find for the people we want to find.</li>
+        </ul>
+
+        <div class="payments-pillrow">
+          <span class="payments-pill">Double entendre</span>
+          <span class="payments-pill">B2B-credible</span>
+          <span class="payments-pill">Searchable</span>
+          <span class="payments-pill">Logo-friendly</span>
+        </div>
+      </div>
+
+      <!-- Next steps -->
+      <div class="payments-q">
+        <h3>Before locking the name</h3>
+        <ul>
+          <li><strong>URL + socials.</strong> Confirm bottomlineonwaste.com (or similar) and the Instagram / LinkedIn / YouTube handles are clear.</li>
+          <li><strong>Elevator-pitch test.</strong> "Check out our podcast, <em>The Bottom Line on Waste</em>" — does it land in conversation?</li>
+          <li><strong>Logo synergy.</strong> The name has to set neatly under the Midwest Waste Consultants mark without crowding it.</li>
+          <li><strong>Audience call.</strong> Educational show for clients (how to save money) or industry show for haulers (how to run a better fleet)? The name leans toward the first; the show can do both, but the name signals the lead.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer class="payments-foot">
+      <span class="src">Source: /plan/best-podcast-name.md — naming brief, April 2026</span>
+      <button type="button" class="payments-gotit" id="nameGotIt">Got it →</button>
+    </footer>
+  </div>
+</div>
 
 <!-- TWO-SITE ARCHITECTURE ============================================= -->
 <section class="steel">
@@ -948,13 +1453,24 @@
     </div>
 
     <div class="callout" style="margin-top:36px">
-      <h3>The sub-brand solution</h3>
+      <h3>The sub-brand solution · domains already in hand</h3>
       <p>
         Keep the Polar Bear branding consistent across both, but the domains
-        reflect the intent. <strong>MidwestWaste.com</strong> — fast, transactional,
-        the Uber for trash. <strong>MidwestWasteConsultants.com</strong> — professional,
-        authority-based, the PhD of waste. Same company. Same two faces.
-        Different first impressions.
+        reflect the intent. <strong>MidwestWaste.app</strong><span class="domain-pill secured">Secured</span>
+        — the transactional site, where <em>app</em> is right there in the URL
+        before the customer even lands. The configurator is built to feel like
+        an app; the domain doesn't have to argue for that, it just says it
+        out loud. <strong>MidwestWasteConsultants.com</strong><span class="domain-pill secured">Secured</span>
+        — the consulting site, where the longer, more credible URL fits the
+        longer, more deliberate B2B sale.
+      </p>
+      <p style="margin-top:14px;margin-bottom:0">
+        <strong>A note on the .com.</strong> <span style="font-weight:700">MidwestWaste.com</span><span class="domain-pill thirdparty">Third-party owner</span>
+        is currently parked by an unrelated holder. Acquiring it stays on the table
+        as a year-2 option if it ever frees up — but it's not a launch dependency,
+        and the <strong>.app</strong> extension genuinely serves the transactional brand better.
+        We are not chasing a domain we'd have to negotiate for; we are using
+        the one that matches the experience and is already secured.
       </p>
     </div>
 
@@ -1014,11 +1530,243 @@
   </div>
 </section>
 
+<!-- JUNKYARD JAM ====================================================== -->
+<section class="game-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">06 · The hauling experience</span>
+      <h2>Junkyard Jam — turning a dumpster order into a game.</h2>
+      <p class="narrow">
+        Section 05 names the hauling site as the Uber for trash: fast,
+        transactional, mobile-first. <strong>Junkyard Jam</strong> is what
+        that idea looks like in practice. Hosted at MidwestWaste.app, it's
+        a six-scene gamified configurator where Greg the Bear and Tyler
+        the Raccoon walk a homeowner through "what's the mess, how big a
+        bin, where do we drop it" — then hand off to a grown-up payment
+        form at the finish line. Dumpster ordering is the most
+        over-form-driven web vertical in the Fox Valley. Every competitor
+        ships the same five-field quote request and a 24-hour callback.
+        <em>Skipping the form is the differentiation.</em>
+      </p>
+    </div>
+
+    <!-- Cartoon stage with Greg + Tyler and speech bubbles -->
+    <div class="game-stage">
+      <div class="game-stage-row">
+        <div class="game-stage-side">
+          <span class="game-bubble">"Hey there, partner — let's pick out a bin."</span>
+          <img class="game-character" src="character-studies/greg-nano-waving.png" alt="Greg the polar bear in an orange hard hat and hi-vis vest, waving hello">
+        </div>
+        <div class="game-stage-side">
+          <span class="game-bubble game-bubble-orange">"Bin's already loaded. Let's go."</span>
+          <img class="game-character flip" src="character-studies/tyler-nano-wrench.png" alt="Tyler the raccoon in a navy mechanic's jumpsuit, holding a red pipe wrench">
+        </div>
+      </div>
+    </div>
+
+    <!-- Big chunky CTA to the live prototype -->
+    <div class="game-cta-wrap">
+      <a href="https://midwestwaste.netlify.app/" target="_blank" rel="noopener" class="game-cta">
+        <span class="pre">▶ Play the prototype</span>
+        <span class="main">Junkyard Jam</span>
+        <span class="url">midwestwaste.netlify.app ↗</span>
+      </a>
+    </div>
+
+    <h3 style="margin-top:64px">The six-scene flow</h3>
+    <div class="workflow" style="grid-template-columns:repeat(3,1fr)">
+      <div class="step">
+        <div class="step-num">SCENE 01</div>
+        <h3>The Junkyard</h3>
+        <p>Greg greets the player. Sound toggle, a "Skip the game" link for contractors, persistent trust strip in view.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">SCENE 02</div>
+        <h3>The Mess</h3>
+        <p>One-tap project picker — garage, roof, yard, remodel, estate. Greg explains while you choose.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">SCENE 03</div>
+        <h3>The Expand-o-Matic</h3>
+        <p>Bin size visualized in pickup-truck loads. Tyler weighs in: "bare minimum," "sweet spot," "now you've got breathing room."</p>
+      </div>
+      <div class="step">
+        <div class="step-num">SCENE 04</div>
+        <h3>The Trash Sorter</h3>
+        <p>Drag items into the bin. Hazardous stuff bounces back with a Tyler wisecrack — teaches scope without a 600-word T&amp;Cs page.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">SCENE 05</div>
+        <h3>The Drop-Off Target</h3>
+        <p>Map pin + calendar. Gus the Crane Operator confirms the date in a slow Sam Elliott drawl.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">SCENE 06</div>
+        <h3>High-Score → Checkout</h3>
+        <p>Cartoon celebration shifts into a clean Apple/Google Pay form. The game ends; the transaction begins.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <h3>Why a game, on a $400 purchase</h3>
+      <p>
+        The risk is obvious — cartoon characters could read as "is this a
+        real business" on a real spend. The defense is mixed-mode design:
+        <strong>cartoon through scene 5, grown-up payment in scene 6</strong>,
+        with a persistent "Family-owned · 30 years · Talk to a human" trust
+        strip in view at all times, and a "Skip the game" link top-right
+        for contractors and power-users. The game does the work of a sales
+        rep without one. The form does the work of a payment processor
+        because that's exactly what it is.
+      </p>
+    </div>
+
+    <!-- Payments-system architecture trigger -->
+    <div class="game-payments-wrap">
+      <button type="button" class="game-payments-trigger" id="paymentsBtn" aria-haspopup="dialog" aria-controls="paymentsModal">
+        <span class="pt-side">
+          <span class="pt-icon" aria-hidden="true">🛡️</span>
+          <span class="pt-eyebrow">Architecture plan</span>
+          <span class="pt-main">The payment system — engineered to scale, stay safe, and prove itself.</span>
+          <span class="pt-sub">Starts simple at realistic regional volume · ready to scale to 1,000+ / hr with the queue, 10,000+ / hr with backoff · stress-tested at 5× peak before launch.</span>
+        </span>
+        <span class="pt-cta">
+          <span>View the plan</span>
+          <span class="pt-cta-arrow" aria-hidden="true">→</span>
+        </span>
+      </button>
+    </div>
+
+    <h3 style="margin-top:56px">Three locked design principles</h3>
+    <div class="competitors" style="grid-template-columns:repeat(3,1fr)">
+      <div class="comp-card">
+        <div class="comp-tier">PRINCIPLE 01</div>
+        <h3>Mobile-first portrait</h3>
+        <p>Roughly 70% of "dumpster rental near me" searches happen on a phone. The whole experience is engineered to feel native there first; desktop is a port of the mobile flow, not the other way around.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-tier">PRINCIPLE 02</div>
+        <h3>Sound off by default</h3>
+        <p>Toggle sits inline next to "Start the game" on scene 1, then floats bottom-right on subsequent scenes. Suno chiptune music for ambience, ElevenLabs voices for Greg and Tyler. Voice is a delight, not a tax.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-tier">PRINCIPLE 03</div>
+        <h3>One cast, two sites</h3>
+        <p>Greg and Tyler are not just mascots. They are the same Tyler &amp; Greg who host Trash Talk, voice-matched across both surfaces. The hauling game and the consulting podcast share the cast — that is how the brand compounds across both sales motions.</p>
+      </div>
+    </div>
+
+    <div class="game-status">
+      <strong>Prototype status · April 2026</strong>
+      Scenes 1–3 plus a Greg closer are live at
+      <a href="https://midwestwaste.netlify.app/" target="_blank" rel="noopener">midwestwaste.netlify.app ↗</a>
+      — Suno chiptune background, ElevenLabs voice on every scene, mobile audio
+      fixes for iOS Safari, SVG placeholder mascots. The Trash Sorter,
+      Drop-Off Target, and Checkout scenes are next, followed by an
+      illustrator pass on the Nano Banana / GPT-Image character set and Rive
+      rigging for production.
+    </div>
+
+    <!-- PAYMENTS MODAL -->
+    <div class="payments-modal" id="paymentsModal" role="dialog" aria-modal="true" aria-labelledby="paymentsTitle" aria-hidden="true">
+      <div class="payments-card" role="document">
+        <header class="payments-header">
+          <button type="button" class="payments-close" id="paymentsClose" aria-label="Close">✕</button>
+          <div class="payments-eyebrow-mod">Architecture plan</div>
+          <h2 id="paymentsTitle" class="payments-title">The Junkyard Jam payment system.</h2>
+          <p class="payments-subtitle">Engineered so the architecture — not the payment provider — sets the ceiling, with safety and integrity baked in from day one and validated under synthetic load before launch.</p>
+        </header>
+
+        <div class="payments-body">
+
+          <!-- Capacity tiers -->
+          <div class="payments-q">
+            <h3>Capacity tiers</h3>
+            <p>Day one starts at the simplest configuration — Stripe Checkout on a managed database — sized for realistic regional hauling volume. The platform is shaped so the limit moves with the architecture, not the payment provider: dropping in a queue lifts the ceiling to <strong>1,000+ orders per hour</strong>, exponential backoff to <strong>10,000+ per hour</strong>, and a Stripe limit increase carries it to enterprise volume. Each tier is a known move, not a rebuild.</p>
+
+            <div class="payments-cap" role="table" aria-label="Capacity tiers">
+              <div class="payments-cap-row head" role="row">
+                <div role="columnheader">Scale</div>
+                <div role="columnheader">Architecture</div>
+                <div role="columnheader">Bottleneck removed</div>
+              </div>
+              <div class="payments-cap-row now" role="row">
+                <div class="scale" role="cell">1–100 / day</div>
+                <div role="cell">Stripe Checkout · single managed DB</div>
+                <div role="cell">Day-one default</div>
+              </div>
+              <div class="payments-cap-row" role="row">
+                <div class="scale" role="cell">1,000+ / hr</div>
+                <div role="cell">Async webhooks · BullMQ queue · Supabase / PlanetScale</div>
+                <div role="cell">Database I/O</div>
+              </div>
+              <div class="payments-cap-row" role="row">
+                <div class="scale" role="cell">10,000+ / hr</div>
+                <div role="cell">Exponential backoff · idempotency keys · queue workers</div>
+                <div role="cell">API rate limit</div>
+              </div>
+              <div class="payments-cap-row" role="row">
+                <div class="scale" role="cell">Enterprise</div>
+                <div role="cell">Stripe limit increase · Stripe Billing Meter API</div>
+                <div role="cell">Stripe 100 ops/s cap</div>
+              </div>
+            </div>
+
+            <p><strong>The honest bottleneck.</strong> Stripe rarely fails. The system fails when the server can't process the success webhook fast enough. The architecture is built around that fact — webhook handlers are asynchronous by default, never synchronous.</p>
+          </div>
+
+          <!-- Architecture + safeguards -->
+          <div class="payments-q">
+            <h3>Architecture &amp; safeguards</h3>
+            <p>The design separates day-one safety primitives — which ship the moment the site is live — from throughput moves that drop in cleanly when volume warrants them. Both belong in the architecture from the start:</p>
+            <ul>
+              <li><strong>Stripe Checkout, never raw cards.</strong> <em>Day one.</em> Card data goes from the customer's browser to Stripe and never touches our servers — PCI scope is offloaded entirely.</li>
+              <li><strong>Webhook signatures verified on every request.</strong> <em>Day one.</em> Stripe signs every webhook; anything without a valid signature is rejected before it reaches a handler.</li>
+              <li><strong>Idempotency keys on every charge.</strong> <em>Day one.</em> Network retries can never double-bill a customer.</li>
+              <li><strong>TLS in transit, encryption at rest.</strong> <em>Day one.</em> Standard hosting hardening — there is no excuse not to ship this from minute one.</li>
+              <li><strong>Async processing through a job queue.</strong> <em>Drops in at 1,000+ / hr.</em> Webhook arrives, gets queued, returns 200 immediately. Workers handle email, invoice, and CRM updates in the background.</li>
+              <li><strong>Dead-letter queue + alerting.</strong> <em>Drops in with the queue.</em> Anything that fails three times lands in a queue that can be inspected and reprocessed. Nothing is lost silently.</li>
+            </ul>
+
+            <div class="payments-pillrow">
+              <span class="payments-pill">PCI offloaded</span>
+              <span class="payments-pill">Signed webhooks</span>
+              <span class="payments-pill">Idempotent</span>
+              <span class="payments-pill">TLS + at-rest encryption</span>
+              <span class="payments-pill">Stripe Radar fraud rules</span>
+            </div>
+          </div>
+
+          <!-- Pre-launch validation -->
+          <div class="payments-q">
+            <h3>Pre-launch validation</h3>
+            <p>Before a single real customer transacts, the whole stack runs through synthetic load:</p>
+            <ul>
+              <li><strong>5× projected peak.</strong> k6 or Artillery hammer the checkout endpoint, the webhook receiver, and the order-confirmation flow simultaneously at five times expected launch-day volume.</li>
+              <li><strong>30-minute soak at 2× peak.</strong> Surfaces memory leaks and queue starvation that don't show up in short bursts.</li>
+              <li><strong>Failure injection.</strong> Webhook responses are deliberately dropped, a worker is killed, and the database is partitioned to confirm the queue and idempotency keys recover the order without manual intervention.</li>
+              <li><strong>Stripe test-mode dry run.</strong> Same code path as production, no real money moves, every alert rule fires on cue.</li>
+              <li><strong>Production monitoring from minute one.</strong> Webhook latency, queue depth, payment-success rate, dead-letter count. If any of those drift, the team knows before the customer does.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <footer class="payments-foot">
+          <span class="src">Stack: Stripe API · Stripe Billing Meter · BullMQ · Supabase · Stripe Radar · k6 / Artillery</span>
+          <button type="button" class="payments-gotit" id="paymentsGotIt">Got it →</button>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- LANDING PAGES (THE DIFFERENTIATOR) ================================ -->
 <section>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">06 · The Differentiator</span>
+      <span class="eyebrow">07 · The Differentiator</span>
       <h2>Each episode becomes an immersive landing page.</h2>
       <p class="narrow">
         Most podcasts post a transcript and an embed and call it done. Trash
@@ -1162,15 +1910,17 @@
 <section class="steel">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">07 · Visual differentiator</span>
+      <span class="eyebrow">08 · Visual differentiator</span>
       <h2>Aerial cinematography. From a garbage truck.</h2>
       <p class="narrow">
-        A small piece of the budget unlocks something nobody in the regional
-        category is doing: <strong>FPV drone footage of trash hauling.</strong> Cinematic
-        aerial b-roll captured during real routes — top-down neighborhood
-        sweeps, low-altitude tracking shots on country roads, transfer-station
-        flyovers. Cut into episode landing pages, dropped into 15-second
-        social clips, threaded through the about page and service hubs.
+        A standout the regional category isn't doing — at no incremental cost,
+        because the capability is already on the team. <strong>FPV drone footage of
+        trash hauling</strong>, captured by Orbis (Part-107 certified pilot, in-house
+        drone) in a few hours per shoot, anywhere a route runs. Cinematic aerial
+        b-roll — top-down neighborhood sweeps, low-altitude tracking shots on
+        country roads, transfer-station flyovers. Cut into episode landing pages,
+        dropped into 15-second social clips, threaded through the about page and
+        service hubs.
       </p>
     </div>
 
@@ -1191,12 +1941,14 @@
     </div>
 
     <p style="margin-top:32px;max-width:780px">
-      <strong>The shoot model.</strong> One quarterly half-day shoot covers a season's worth of
-      b-roll across multiple routes and locations. Captured with a sub-250g
-      FPV drone (Part-107 certified pilot), ND filters, RAW capture. Output
-      gets cut into episode landing pages, social clips, the home page hero,
-      and a single annual brand film that lives on the about page. <em>Trash
-      hauling has never looked like this in regional marketing.</em>
+      <strong>The shoot model.</strong> Owner-operated capture, ad hoc. A few hours of flight
+      time on any active route yields a season's worth of usable b-roll —
+      no scheduled half-days, no rental gear, no separate crew. Sub-250g
+      cinematic FPV drone, Part-107 certified pilot, ND filters, RAW capture
+      — already in the kit. Output gets cut into episode landing pages, social
+      clips, the home page hero, and a single annual brand film that lives on
+      the about page. <em>Trash hauling has never looked like this in regional
+      marketing.</em>
     </p>
   </div>
 </section>
@@ -1205,7 +1957,7 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">08 · Production</span>
+      <span class="eyebrow">09 · Production</span>
       <h2>The recording is the easy part.</h2>
     </div>
 
@@ -1236,6 +1988,19 @@
       <div>
         <img src="images/marketing/recording-in-cab.png" alt="Two podcast hosts in their 40s and 50s laughing mid-conversation in the cab of a waste hauling truck, recording with an iPhone on a dashboard mount and lavalier microphones clipped to their shirts" style="width:100%;border-radius:12px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.15)">
         <div class="caption">Concept: Tyler &amp; Greg recording an episode in the cab. iPhone + Hollyland M2S lavs.</div>
+
+        <div style="margin-top:24px;background:var(--steel);border:1px solid var(--rule);border-radius:12px;padding:20px;display:flex;align-items:center;gap:18px">
+          <img src="images/Hollyland-wireless-mics.png" alt="Hollyland M2S wireless lavalier microphone kit — two black transmitters with magnetic clips alongside a charging case" style="width:140px;height:auto;flex-shrink:0;display:block">
+          <div style="flex:1;min-width:0">
+            <div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:4px">The whole rig</div>
+            <div style="font-family:Montserrat,sans-serif;font-weight:800;color:var(--navy);font-size:1rem;line-height:1.25;margin-bottom:6px">Hollyland M2S Lightning · ×2</div>
+            <div style="font-size:.85rem;color:var(--muted);line-height:1.5;margin-bottom:12px">Fits in a glove compartment. iPhone Lightning, magnetic clip-on, AI noise cancellation, ~7 hours per charge.</div>
+            <a href="https://www.amazon.com/Hollyland-M2S-Lightning-Microphone-Cancelling/dp/B0DNQ5D1H4?ref_=ast_sto_dp&th=1" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:var(--white)!important;text-decoration:none;font-family:Montserrat,sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:7px;border:2px solid var(--navy);box-shadow:2px 2px 0 var(--navy);transition:transform .15s ease,box-shadow .15s ease" onmouseover="this.style.transform='translate(-1px,-1px)';this.style.boxShadow='3px 3px 0 var(--navy)'" onmouseout="this.style.transform='';this.style.boxShadow='2px 2px 0 var(--navy)'">
+              View on Amazon
+              <span style="font-size:.95rem" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1269,8 +2034,8 @@
     </div>
 
     <div class="callout" style="margin-top:40px">
-      <h3>Intern handoff after episode 6</h3>
-      <p>Episodes 1–6 are calibration: Orbis builds the design system, the page template library, the Descript template, and the schema patterns. From episode 7 forward, the per-episode work drops dramatically and a trained intern can run the end-to-end workflow under Orbis supervision. That's reflected in the budget — <strong>$750/episode for the first 6, $500/episode for the next 18.</strong></p>
+      <h3>The intern handoff · $1,500/mo → $500–$750/mo</h3>
+      <p>Episodes 1–6 are calibration: Orbis builds the design system, the page template library, the Descript template, and the schema patterns. From episode 7 forward, the per-episode work drops dramatically and a trained intern can run the end-to-end workflow under Orbis supervision. That's reflected in the monthly retainer — <strong>$1,500/month through the calibration phase, dropping toward a $500–$750/month floor</strong> once the intern is shipping under Orbis QA only.</p>
     </div>
   </div>
 </section>
@@ -1279,7 +2044,7 @@
 <section class="dark">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">09 · Distribution + SEO/AEO</span>
+      <span class="eyebrow">10 · Distribution + SEO/AEO</span>
       <h2>Where the episode goes after it ships.</h2>
     </div>
 
@@ -1331,57 +2096,56 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">10 · 12-month roadmap</span>
+      <span class="eyebrow">11 · 12-month roadmap</span>
       <h2>Quarter by quarter.</h2>
     </div>
 
     <div class="roadmap">
       <div class="quarter">
-        <h4>Q1 · MAY–JUL 2026</h4>
-        <h3>Foundation</h3>
+        <h4>Q1 · MAY 2026</h4>
+        <h3>Build sprint</h3>
         <ul>
           <li>Brand finalization (using brand guide)</li>
-          <li>Website rebuild w/ episode template</li>
-          <li>Recording kit + Hollyland M2S</li>
-          <li>FPV drone + Part 107 cert</li>
-          <li>Trash Talk cover + intro music</li>
-          <li>Pilot 4 episodes (pre-launch buffer)</li>
+          <li>Both sites built — consulting + Junkyard Jam</li>
+          <li>Trash Talk brand kit · cover + intro music</li>
+          <li>Recording kit (Hollyland M2S)</li>
+          <li>2 pre-launch episodes recorded</li>
         </ul>
       </div>
       <div class="quarter">
-        <h4>Q2 · AUG–OCT 2026</h4>
+        <h4>Q2 · JUN–AUG 2026</h4>
         <h3>Launch</h3>
         <ul>
-          <li>Episode 1 ships; biweekly cadence begins</li>
+          <li>Both sites live · end of May / early June</li>
+          <li>Junkyard Jam configurator running</li>
+          <li>Episode 1 ships in June; biweekly cadence begins</li>
           <li>Episodes 1–6 (calibration phase)</li>
-          <li>First quarterly drone shoot</li>
           <li>Email list seeded from existing customers</li>
           <li>Apple / Spotify / YouTube live</li>
-          <li>Initial PPC campaign retargeted to landing pages</li>
+          <li>FPV b-roll captured on a Fox Valley route</li>
         </ul>
       </div>
       <div class="quarter">
-        <h4>Q3 · NOV 2026–JAN 2027</h4>
+        <h4>Q3 · SEP–DEC 2026</h4>
         <h3>Scale</h3>
         <ul>
           <li>Intern handoff at episode 7</li>
-          <li>Per-episode cost drops to $500</li>
-          <li>Episodes 7–12 ship</li>
+          <li>Monthly tracks toward $500–$750 floor</li>
+          <li>Episodes 7–14 ship</li>
           <li>First measurable AI Overview citations</li>
           <li>Consulting RFP referencing podcast: target 1+</li>
-          <li>Second quarterly drone shoot</li>
         </ul>
       </div>
       <div class="quarter">
-        <h4>Q4 · FEB–APR 2027</h4>
+        <h4>Q4 · JAN–APR 2027</h4>
         <h3>Compound</h3>
         <ul>
-          <li>Episodes 13–24 ship</li>
-          <li>Annual brand film (drone footage cut)</li>
+          <li>Episodes 15–24 ship</li>
+          <li>Annual brand film cut from drone footage</li>
           <li>Full retrospective + KPI review</li>
           <li>Year-2 budget recalibration</li>
           <li>Top-3 episodes turn into evergreen lead pages</li>
-          <li>Decision: weekly cadence for Year 2?</li>
+          <li>Decision: weekly cadence for year 2?</li>
         </ul>
       </div>
     </div>
@@ -1392,9 +2156,9 @@
 <section class="steel">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">11 · Budget &amp; estimate</span>
-      <h2>Year-1 investment: $134,600.</h2>
-      <p class="narrow">Inside the $50K marketing benchmark from the strategy doc plus a one-time setup phase. Steady-state monthly spend lands at the lower edge of the recommended $10.5–16K/mo range — freeing the AI Dividend ($15.5K/mo in operational savings) for year-2 scale.</p>
+      <span class="eyebrow">12 · Budget &amp; estimate</span>
+      <h2>Year-1 investment: $38,000.</h2>
+      <p class="narrow">$15,000 to build both sites and pre-launch the first month of episodes. $5,000 to wire up the payment system on the transactional site. Then $1,500/month covers production, distribution, and ongoing site updates — with a clear path to a $500–$750/month floor once a trained intern can run the playbook.</p>
     </div>
 
     <h3>One-time setup (Q1 · May–July 2026)</h3>
@@ -1404,17 +2168,26 @@
           <tr><th>Line item</th><th>Detail</th><th style="text-align:right">Cost</th></tr>
         </thead>
         <tbody>
-          <tr><td>Website rebuild</td><td>Podcast-first IA, episode template system, design components, location hubs, schema foundation. Built by Orbis with Claude Code.</td><td class="num">$8,500</td></tr>
-          <tr><td>Pilot batch · 4 episodes</td><td>Pre-launch buffer at calibration rate ($750 × 4) — ensures uninterrupted biweekly cadence at launch.</td><td class="num">$3,000</td></tr>
-          <tr><td>FPV drone kit</td><td>Sub-250g cinematic FPV drone, ND filter set, batteries, FAA Part 107 commercial certification fee, training.</td><td class="num">$1,500</td></tr>
-          <tr><td>Trash Talk brand</td><td>Cover art (3 sizes), episode-card template system, 15-second intro/outro music license, sound logo.</td><td class="num">$1,200</td></tr>
-          <tr><td>Recording kit</td><td>Hollyland M2S Lightning lavaliers (×2), iPhone dashboard mount, backup recorder, foam windscreens.</td><td class="num">$400</td></tr>
+          <tr><td>Consulting site rebuild</td><td>MidwestWasteConsultants.com — podcast-first IA, episode template system, location hubs, schema foundation. Built by Orbis with Claude Code.</td><td class="num">$5,000</td></tr>
+          <tr><td>Transactional site · Junkyard Jam</td><td>MidwestWaste.app — gamified six-scene configurator, mobile-first, character-led order flow. Submit-the-order only; payment is a separate line.</td><td class="num">$7,000</td></tr>
+          <tr><td>Trash Talk brand kit</td><td>Cover art (3 sizes), episode-card template system, 15-second intro/outro music license, sound logo.</td><td class="num">$1,000</td></tr>
+          <tr><td>First month · 2 episodes</td><td>Two pre-launch episodes ready for biweekly cadence — landing pages, audio edits, schema markup, social clips.</td><td class="num">$1,500</td></tr>
+          <tr><td>Recording kit</td><td>Hollyland M2S Lightning lavaliers (×2), iPhone dashboard mount, foam windscreens.</td><td class="num">$500</td></tr>
+          <tr class="row-highlight">
+            <td>
+              <strong>Payment system · Junkyard Jam</strong>
+              <div class="row-detail">Optional — can ship at launch or in a later phase</div>
+            </td>
+            <td>Stripe Checkout, signed webhook verification, async queue + dead-letter handling, idempotency keys, basic order DB. Architecture detailed in section 06.</td>
+            <td class="num">$5,000</td>
+          </tr>
         </tbody>
         <tfoot>
-          <tr><td colspan="2">Setup total</td><td class="num">$14,600</td></tr>
+          <tr><td colspan="2">Setup total · with payment system</td><td class="num">$20,000</td></tr>
         </tfoot>
       </table>
     </div>
+    <p class="source-note">Without the payment system, the launch-ready setup is <strong>$15,000</strong> — a submit-the-order flow on the transactional site, hand-fulfilled the same way the business operates today. The payment line can be added at launch or activated later as a discrete phase.</p>
 
     <h3 style="margin-top:48px">Monthly recurring (steady state · Aug 2026 onward)</h3>
     <div class="table-wrap">
@@ -1423,40 +2196,55 @@
           <tr><th>Line item</th><th>Detail</th><th style="text-align:right">Per month</th></tr>
         </thead>
         <tbody>
-          <tr><td>Trash Talk production · Orbis</td><td>2 episodes / month bundled (Descript edit + landing page + schema + 3 short-form clips). Calibration rate of $750 for ep 1–6, then $500 ep 7–24.</td><td class="num">$1,000</td></tr>
-          <tr><td>PPC / Search ads</td><td>Local high-intent hauling keywords · "dumpster rental Sugar Grove," "Aurora roll-off," etc.</td><td class="num">$4,500</td></tr>
-          <tr><td>SEO content extension</td><td>Location pages, show-notes optimization, internal linking sprints, technical SEO.</td><td class="num">$2,000</td></tr>
-          <tr><td>AI tools &amp; agents</td><td>Descript Pro, AI sales agent, AI billing audit agent, Claude Code seats.</td><td class="num">$1,800</td></tr>
-          <tr><td>Short-form social boosts</td><td>Paid promotion of episode clips · LinkedIn (consulting) + Meta (local).</td><td class="num">$400</td></tr>
-          <tr><td>FPV drone shoots · amortized</td><td>One half-day shoot per quarter, amortized monthly. Yields 90+ usable b-roll clips per shoot.</td><td class="num">$300</td></tr>
-          <tr><td>Podcast hosting · Transistor.fm</td><td>Professional plan · multi-show, advanced analytics, auto-distribute to all major networks.</td><td class="num">$49</td></tr>
-          <tr><td>Email · EmailOctopus Pro</td><td>Monthly podcast digest, scaling to ~5K subscribers by year-end.</td><td class="num">$24</td></tr>
+          <tr><td>Trash Talk production · Orbis</td><td>Two episodes / month — Descript edit + immersive landing page + schema markup + 3 short-form clips per episode.</td><td class="num">$900</td></tr>
+          <tr><td>Email + social distribution</td><td>Monthly podcast digest via EmailOctopus, plus clip pushes to LinkedIn (consulting) and Meta (local).</td><td class="num">$300</td></tr>
+          <tr><td>Site updates · both sites</td><td>Ongoing copy and design updates across MidwestWasteConsultants.com and MidwestWaste.app — location-page tweaks, link audits, accessibility passes, small features.</td><td class="num">$250</td></tr>
+          <tr><td>Hosting · Transistor + EmailOctopus</td><td>Podcast hosting (auto-distributes to Apple / Spotify / YouTube) + email service.</td><td class="num">$50</td></tr>
         </tbody>
         <tfoot>
-          <tr><td colspan="2">Monthly total</td><td class="num">$10,073</td></tr>
+          <tr><td colspan="2">Monthly total</td><td class="num">$1,500</td></tr>
         </tfoot>
       </table>
     </div>
 
-    <h3 style="margin-top:48px">Year-1 total &amp; reallocation</h3>
+    <h3 style="margin-top:48px">The intern handoff · $500–$750/month floor</h3>
+    <p class="narrow" style="margin-bottom:24px">Once the calibration phase is done and a trained intern can run the playbook with Orbis on QA only, the monthly cost steps down. This is the eventual steady state — the goal, not the launch number.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line item</th><th>Detail</th><th style="text-align:right">Per month</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Production · intern-led</td><td>Intern runs Descript edits and landing-page assembly using the design system shipped in setup. Orbis on QA only.</td><td class="num">$300–$450</td></tr>
+          <tr><td>Distribution · intern-led</td><td>Intern runs the email digest and clip pipeline using established templates.</td><td class="num">$100–$150</td></tr>
+          <tr><td>Orbis retainer</td><td>On-call for site updates, design tweaks, and quarterly system reviews.</td><td class="num">$50–$100</td></tr>
+          <tr><td>Hosting · Transistor + EmailOctopus</td><td>Same as the calibration phase.</td><td class="num">$50</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Reduced monthly total</td><td class="num">$500–$750</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h3 style="margin-top:48px">Year-1 total</h3>
     <div class="table-wrap">
       <table>
         <thead>
           <tr><th>Bucket</th><th>Detail</th><th style="text-align:right">Year 1</th></tr>
         </thead>
         <tbody>
-          <tr><td>One-time setup</td><td>Q1 build + kit + initial 4-episode buffer</td><td class="num">$14,600</td></tr>
-          <tr><td>Monthly recurring</td><td>$10,073 × 12 months</td><td class="num">$120,876</td></tr>
+          <tr><td>One-time setup</td><td>Both sites + first month of episodes + payment system</td><td class="num">$20,000</td></tr>
+          <tr><td>Monthly recurring</td><td>$1,500 × 12 months</td><td class="num">$18,000</td></tr>
         </tbody>
         <tfoot>
-          <tr><td colspan="2">Year-1 total</td><td class="num">$135,476</td></tr>
+          <tr><td colspan="2">Year-1 total</td><td class="num">$38,000</td></tr>
         </tfoot>
       </table>
     </div>
 
     <div class="callout">
-      <h3>How this fits the 2026 strategy doc</h3>
-      <p>The strategy doc recommended <strong>$10,500–$16,000/month</strong> in marketing spend. This plan lands at <strong>$10,073/month</strong> in steady state — at the bottom of that range — by reallocating the existing "Content &amp; Video Marketing" line ($2,000–3,500/mo) into podcast production, plus a small slice of "AI Integration" into hosting + email + drone tooling. PPC and SEO budgets are preserved. The $14,600 one-time setup is a Year-1-only line, recovered within months by the AI Dividend ($15,500/mo in operational savings the strategy doc projects).</p>
+      <h3>How to think about $1,500/month</h3>
+      <p>The 2026 strategy doc benchmarked content marketing at <strong>$10,500–$16,000 per month</strong>, bundled with PPC and paid social. This plan separates concerns: <strong>$1,500/month buys the content engine</strong> — two episodes, the immersive landing pages, monthly email, social clips, and ongoing updates on both sites. Paid acquisition (PPC, SEO ads, paid social boosts) is intentionally not bundled; it can be layered on later as the consulting pipeline matures, funded by the AI Dividend (~$15,500/mo in projected operational savings the strategy doc projects). The content library compounds either way.</p>
     </div>
   </div>
 </section>
@@ -1465,7 +2253,7 @@
 <section>
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">12 · KPIs &amp; checkpoints</span>
+      <span class="eyebrow">13 · KPIs &amp; checkpoints</span>
       <h2>What success looks like.</h2>
       <p class="narrow">Three checkpoints. If we miss two of three at any checkpoint, we recalibrate — not abandon. The hardest part of content is staying in the chair.</p>
     </div>
@@ -1499,7 +2287,7 @@
 <!-- DECISION ========================================================== -->
 <section class="dark">
   <div class="wrap" style="text-align:center">
-    <span class="eyebrow" style="color:var(--orange);font-family:Montserrat;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:inline-block;margin-bottom:14px">13 · The decision</span>
+    <span class="eyebrow" style="color:var(--orange);font-family:Montserrat;font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:inline-block;margin-bottom:14px">14 · The decision</span>
     <h2 style="max-width:780px;margin:0 auto 18px">Two trucks, two mics, twenty-four episodes.</h2>
     <p style="max-width:680px;margin:0 auto 24px;color:#dce4f1;font-size:1.1rem">
       The plan asks Tyler &amp; Greg for ~12 hours of recording across the year.
@@ -1519,5 +2307,43 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    function wireModal(triggerId, modalId, closeId, ackId){
+      const btn   = document.getElementById(triggerId);
+      const close = document.getElementById(closeId);
+      const ack   = document.getElementById(ackId);
+      const modal = document.getElementById(modalId);
+      if (!btn || !modal) return;
+      let lastFocus = null;
+
+      function open(){
+        lastFocus = document.activeElement;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        modal.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
+        close && close.focus();
+      }
+      function shut(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+      }
+
+      btn.addEventListener('click', open);
+      close && close.addEventListener('click', shut);
+      ack && ack.addEventListener('click', shut);
+      modal.addEventListener('click', (e) => { if (e.target === modal) shut(); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) shut();
+      });
+    }
+
+    wireModal('paymentsBtn','paymentsModal','paymentsClose','paymentsGotIt');
+    wireModal('nameBtn',    'nameModal',    'nameClose',    'nameGotIt');
+  })();
+</script>
 </body>
 </html>
