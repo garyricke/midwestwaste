@@ -100,20 +100,46 @@ const gateHtml = (error = "") => `<!doctype html>
     min-height: 1.4em;
     font-size: 0.86rem; color: #ffc7c7; padding-left: 4px;
   }
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 22px 0 16px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.45); font-weight: 700;
+  }
+  .divider::before, .divider::after {
+    content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.14);
+  }
+  .cta {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 20px; border-radius: 999px;
+    background: rgba(255,130,0,0.16);
+    color: #FFC272;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,130,0,0.55);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800; font-size: 0.92rem; letter-spacing: 0.04em;
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+  }
+  .cta:hover {
+    background: #FF8200; color: #142849;
+    border-color: #FF8200; transform: translateY(-1px);
+  }
+  .cta-arrow { font-weight: 900; font-size: 1.05rem; line-height: 1; }
   .foot {
-    margin-top: 26px; padding-top: 20px;
+    margin-top: 24px; padding-top: 18px;
     border-top: 1px solid rgba(255,255,255,0.12);
     font-family: "Montserrat", sans-serif;
-    font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.5;
+    font-size: 0.7rem; color: rgba(255,255,255,0.55); line-height: 1.5;
     letter-spacing: 0.04em; text-transform: uppercase;
   }
 </style>
 </head>
 <body>
   <main class="gate" role="main">
-    <span class="brand">Midwest Waste · Concept Preview</span>
+    <span class="brand">Midwest Waste · Estimate + Preview</span>
     <h1>By invitation only.</h1>
-    <p class="sub">This is a private preview of the Midwest Waste 2026 marketing strategy and the Junkyard Jam configurator. Enter the access phrase to continue.</p>
+    <p class="sub">Inside: the 2026 Midwest Waste marketing strategy and project estimate, plus a working preview of the Junkyard Jam ordering configurator. Enter the access phrase to continue.</p>
     <form method="POST" action="/_gate" autocomplete="off">
       <label for="pw">Access phrase</label>
       <div class="field">
@@ -122,7 +148,15 @@ const gateHtml = (error = "") => `<!doctype html>
       </div>
       <p class="err" role="status" aria-live="polite">${error}</p>
     </form>
-    <p class="foot">Concept preview prepared by Orbis Design · April 2026</p>
+
+    <div class="divider"><span>or</span></div>
+
+    <a class="cta" href="https://calendar.app.google/AZqWuFVUtmTbPyeu6" target="_blank" rel="noopener">
+      Book a call to review the proposal
+      <span class="cta-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <p class="foot">Prepared by Orbis Design · April 2026</p>
   </main>
 </body>
 </html>`;
