@@ -911,6 +911,52 @@
     .tn-icon{width:40px;height:40px;font-size:1.25rem}
   }
 
+  /* Payment terms · Net 15/30/45 table */
+  .terms-table-wrap{overflow-x:auto;margin:24px 0}
+  .terms-table{
+    width:100%;border-collapse:collapse;background:var(--white);
+    border:1px solid var(--rule);border-radius:10px;overflow:hidden;
+    font-size:.94rem;
+  }
+  .terms-table th{
+    padding:18px 16px;font-family:Montserrat,sans-serif;font-weight:700;
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;text-align:right;border-bottom:0;line-height:1.2;
+  }
+  .terms-table th.terms-milestone{text-align:left;background:var(--navy);}
+  .terms-table th.terms-base{background:#5b6878;}
+  .terms-table th.terms-n15{background:var(--navy-light);}
+  .terms-table th.terms-n30{background:#C8A452;color:#fff;}
+  .terms-table th.terms-n45{background:var(--orange);}
+  .terms-table tr.terms-phase td{
+    background:var(--navy);color:#dce4f1;
+    font-family:Montserrat,sans-serif;font-weight:700;
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:14px 16px;border-bottom:0;
+  }
+  .terms-table tr.terms-phase td.terms-phase-total{
+    text-align:right;color:#FFC07A;
+  }
+  .terms-table tbody td{
+    padding:16px 16px;border-bottom:1px solid var(--rule);
+    font-family:Montserrat,sans-serif;font-weight:600;
+    text-align:right;color:var(--navy);white-space:nowrap;
+    font-feature-settings:"tnum" 1;
+  }
+  .terms-table tbody td.t-milestone{
+    text-align:left;font-family:'Open Sans',sans-serif;
+    color:var(--ink);font-weight:600;white-space:normal;
+  }
+  .terms-table tbody td.t-base{color:var(--ink);}
+  .terms-table tbody td.t-n30{color:#A88532;}
+  .terms-table tbody td.t-n45{color:var(--orange-deep);font-weight:700;}
+  .terms-table tbody tr:hover td:not(.t-milestone){background:rgba(20,40,73,.02)}
+  .terms-table tbody tr.terms-italic td{font-style:italic;color:var(--muted);font-weight:500}
+  @media (max-width:780px){
+    .terms-table{font-size:.82rem}
+    .terms-table th,.terms-table tbody td{padding:12px 10px}
+  }
+
   @media print{
     .hero-content{padding:36px 0}
     section{padding:36px 0;break-inside:avoid}
@@ -943,6 +989,224 @@
     </div>
   </div>
 </header>
+
+<!-- WORKING AGREEMENT (May 12, 2026 meeting) ========================== -->
+<section class="steel">
+  <div class="wrap">
+    <div class="section-head narrow">
+      <span class="eyebrow">Working agreement · May 12, 2026</span>
+      <h2>Scope &amp; payment schedule.</h2>
+      <p>
+        This page captures what we agreed at Scott's on May 12 and turns it
+        into a working contract. Three-piece business — local hauling,
+        national consulting, and the new national brokering layer that
+        emerged in this meeting — running on two purpose-built sites and
+        one podcast engine. Everything below sits on top of the strategy
+        doc that follows.
+      </p>
+    </div>
+
+    <h3>What we decided on May 12</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Decision</th><th>Detail</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Two sites, not three</strong></td>
+            <td>MidwestWasteConsultants.com (consulting + relationship) and MidwestWaste.app (Junkyard Jam + transactional). Both already secured. National brokering routes through MidwestWaste.app — no third domain, no third stack.</td>
+          </tr>
+          <tr>
+            <td><strong>Podcast is the engine</strong></td>
+            <td>Biweekly cadence, hosted by Tyler &amp; Greg, recorded on an iPhone in the truck. Replaces incremental Google Ads spend as the content library compounds. Guest pipeline already lined up: Carson, Jesse, Sean, Greg's dad, Jim Alderman, Van Dykstra, Big Bob, Dumpster Dave, both Steves.</td>
+          </tr>
+          <tr class="row-highlight">
+            <td><strong>Ecommerce first, game second</strong><div class="row-detail">Net-new sequencing as of May 12</div></td>
+            <td>MidwestWaste.app ships in two phases on the same codebase. <strong>Phase 1 — basic ecommerce</strong> goes up as fast as possible: a plain order form that looks up the closest qualified hauler via Google Distance Matrix, applies a 20–25% margin on the hauler's posted rate, charges via Stripe, and auto-emails the hauler with the delivery details. <strong>Phase 2 — Junkyard Jam</strong> layers the cartoon game UX (characters, voiceover, music, six-scene flow) on top of the working ecommerce engine. Start taking orders early; "gameify" once the plumbing is proven.</td>
+          </tr>
+          <tr>
+            <td><strong>Domain access</strong></td>
+            <td>MidwestWasteConsultants.com is hosted at Google (registered through a prior agency). Admin access transfers to Orbis at kickoff. New domains register at Cloudflare going forward.</td>
+          </tr>
+          <tr>
+            <td><strong>Intern handoff path</strong></td>
+            <td>Once cadence is proven (around episode 7), a trained intern takes over Descript edits, landing-page assembly, and the email digest under Orbis QA — stepping the monthly down to the $500–$750 floor described in section 12.</td>
+          </tr>
+          <tr>
+            <td><strong>Content from you</strong></td>
+            <td>Greg &amp; Tyler send raw iPhone photos and voice memos as work happens — no studio shoots, no production crew. Orbis cleans the audio, transcribes, builds the landing page, and pushes clips to social.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:48px">Scope of work</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Deliverable</th><th>Detail</th><th style="text-align:right">Setup cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Site A · MidwestWasteConsultants.com</td><td>Podcast-first information architecture, episode template system, location hubs, schema foundation. Built by Orbis with Claude Code.</td><td class="num">$5,000</td></tr>
+          <tr class="row-highlight">
+            <td><strong>Site B · MidwestWaste.app — Phase 1</strong><div class="row-detail">Basic ecommerce + brokering · ships first</div></td>
+            <td>Plain-form order flow — mobile-first but not yet gamified. Stripe Checkout · hauler database · Google Distance Matrix routing to the closest hauler · 20–25% auto-margin layer · email notification to the assigned hauler · rate-management sheet so haulers keep their own numbers current. Goal: start taking real orders as fast as possible.</td>
+            <td class="num">$7,000</td>
+          </tr>
+          <tr class="row-highlight">
+            <td><strong>Site B · MidwestWaste.app — Phase 2</strong><div class="row-detail">"Gameify" the working ecommerce</div></td>
+            <td>Junkyard Jam cartoon UX layered on top of the Phase 1 ordering engine: six-scene flow (Junkyard · Mess · Expand-o-Matic · Trash Sorter · Drop-Off Target · High-Score Checkout), Greg + Tyler + Gus voiceover, Suno music bed, character animations. Same checkout, same brokering plumbing — just a much funner front end.</td>
+            <td class="num">$5,000</td>
+          </tr>
+          <tr><td>Trash Talk brand kit</td><td>Cover art (3 sizes), episode-card template system, 15-second intro/outro music license, sound logo.</td><td class="num">$1,000</td></tr>
+          <tr>
+            <td>Trash Talk launch run<div class="row-detail">2 episodes floor · up to 6 if runway is clean</div></td>
+            <td><strong>2 episodes guaranteed.</strong> If the Phase 1 ecommerce build ships without unforeseens eating the runway, Orbis delivers <strong>up to 6 episodes (≈3 months of biweekly content)</strong> as a launch bank before monthly cadence begins — same price. If the ecommerce build burns time, the bank caps at the 2-episode floor and monthly cadence picks up immediately. Each episode includes the immersive landing page, audio edit, schema markup, and three short-form clips.</td>
+            <td class="num">$1,500</td>
+          </tr>
+          <tr>
+            <td>Email list activation + launch campaign<div class="row-detail">Scales with the launch run (1–3 months of email)</div></td>
+            <td>Import the existing QuickBooks contact list (~10K+ historical customers) and build the welcome-back template in EmailOctopus. Then <strong>the email campaign covers however many months the launch run takes</strong> — one launch announcement plus a monthly blast spotlighting each new episode. If the launch run is the 2-episode floor (~2 weeks), that's a single launch blast. If it stretches to 6 episodes (~3 months), the email cadence runs for those 3 months <em>before</em> the monthly retainer's email blast picks up. Same price either way.</td>
+            <td class="num">Included</td>
+          </tr>
+          <tr><td>Recording kit</td><td>Hollyland M2S Lightning lavaliers (×2), iPhone dashboard mount, foam windscreens.</td><td class="num">$500</td></tr>
+          <tr><td>Drone / FPV footage</td><td>Aerial site flyovers and FPV cinematics captured by Orbis (Gary is Part-107 certified). Used for hero loops, episode B-roll, and the section 08 visual differentiator. No third-party crew, no per-shoot day rate.</td><td class="num">Included</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Setup total</td><td class="num">$20,000</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="source-note">Year-1 total lands at $38,000 — $20,000 one-time setup plus $1,500/month for 12 months of content production, distribution, and ongoing site updates. Full breakdown is in section 12 below.</p>
+
+    <h3 style="margin-top:48px">Payment schedule</h3>
+    <p class="narrow" style="margin-bottom:24px">Three milestones for setup, then monthly recurring on the first of each month once setup closes. Matches Gary's stated preference for staged payments tied to working deliverables, not calendar dates.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Milestone</th><th>Trigger</th><th style="text-align:right">Amount</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1 · Kickoff deposit</strong><div class="row-detail">50% · due on signature</div></td>
+            <td>Work begins on the consulting site and MidwestWaste.app Phase 1 (basic ecommerce + brokering plumbing). Recording kit ordered. Domain access transferred. Hauler list and starting rates collected.</td>
+            <td class="num">$10,000</td>
+          </tr>
+          <tr>
+            <td><strong>2 · Sites live + Phase 1 ecommerce taking orders</strong><div class="row-detail">30% · target early to mid June 2026</div></td>
+            <td>MidwestWasteConsultants.com live. MidwestWaste.app Phase 1 live and accepting real orders — Stripe payments, hauler routing, and margin logic in production. Trash Talk brand kit delivered.</td>
+            <td class="num">$6,000</td>
+          </tr>
+          <tr>
+            <td><strong>3 · Phase 2 "gameify" + launch run begins</strong><div class="row-detail">20% · target late June / early July 2026</div></td>
+            <td>Junkyard Jam cartoon UX shipped on top of the working Phase 1 ordering engine — six-scene flow, character voiceover, music bed. <strong>Floor: first 2 Trash Talk episodes</strong> published with full landing pages and the launch email blast sent. If Phase 1 ran clean, Orbis continues delivering the launch bank (up to 6 episodes / ~3 months total), with the email campaign running monthly alongside it, before monthly retainer cadence begins — no extra invoice.</td>
+            <td class="num">$4,000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Setup payments total</td><td class="num">$20,000</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h3 style="margin-top:48px">Monthly · starting after the launch run completes</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Line</th><th>Detail</th><th style="text-align:right">Per month</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Podcast production · 2 episodes / mo</td><td>Two Trash Talk episodes per month — Descript audio edit, immersive landing page, schema markup, three short-form clips each, distribution via Transistor to Apple / Spotify / YouTube.</td><td class="num">$900</td></tr>
+          <tr><td><strong>Monthly email blast</strong></td><td>Newsletter to the activated QuickBooks list — episode highlights, customer stories, seasonal hauling reminders. Sent on a fixed monthly cadence via EmailOctopus with open / click reporting.</td><td class="num">$300</td></tr>
+          <tr><td>Site updates · both sites</td><td>Ongoing copy and design updates across MidwestWasteConsultants.com and MidwestWaste.app — location-page tweaks, link audits, accessibility passes, small features.</td><td class="num">$250</td></tr>
+          <tr><td>Hosting · Transistor + EmailOctopus</td><td>Podcast hosting (auto-distributes to Apple / Spotify / YouTube) + email service.</td><td class="num">$50</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Monthly recurring</td><td class="num">$1,500</td></tr>
+        </tfoot>
+      </table>
+    </div>
+    <p class="source-note">First monthly invoice issues on the 1st of the month after the launch run (2–6 episodes) is exhausted. Auto-billed via Stripe. Steps down to a $500–$750 floor once a trained intern can run the playbook under Orbis QA — full detail in section 12.</p>
+
+    <h3 style="margin-top:48px">Payment terms · Net 15 / Net 30 / Net 45</h3>
+    <p class="narrow" style="margin-bottom:24px">Default terms are <strong>due on receipt with no finance charges</strong> — the "due on receipt" column below is the actual amount owed. Net 15 / 30 / 45 are <em>optional extensions</em> you can request before the due date if cash flow needs the float. The uplift on those columns reflects the carrying cost only — fees apply per individual invoice and never compound. If you pay on receipt, you never see a finance charge.</p>
+    <div class="terms-table-wrap">
+      <table class="terms-table">
+        <thead>
+          <tr>
+            <th class="terms-milestone">Milestone</th>
+            <th class="terms-base">Due on receipt<br><span style="font-weight:400;font-size:.7rem;opacity:.85;letter-spacing:.1em">Default · no fee</span></th>
+            <th class="terms-n15">Net 15 (+1.0%)</th>
+            <th class="terms-n30">Net 30 (+1.5%)</th>
+            <th class="terms-n45">Net 45 (+2.5%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="terms-phase">
+            <td colspan="4">Phase 1 · Foundation (setup)</td>
+            <td class="terms-phase-total">$20,000 base</td>
+          </tr>
+          <tr>
+            <td class="t-milestone">M1 — Kickoff deposit (on signature)</td>
+            <td class="t-base">$10,000</td>
+            <td>$10,100</td>
+            <td class="t-n30">$10,150</td>
+            <td class="t-n45">$10,250</td>
+          </tr>
+          <tr>
+            <td class="t-milestone">M2 — Sites live + Phase 1 ecommerce taking orders (early to mid June 2026)</td>
+            <td class="t-base">$6,000</td>
+            <td>$6,060</td>
+            <td class="t-n30">$6,090</td>
+            <td class="t-n45">$6,150</td>
+          </tr>
+          <tr>
+            <td class="t-milestone">M3 — Phase 2 "gameify" + launch run begins · 2-episode floor (late June / early July 2026)</td>
+            <td class="t-base">$4,000</td>
+            <td>$4,040</td>
+            <td class="t-n30">$4,060</td>
+            <td class="t-n45">$4,100</td>
+          </tr>
+          <tr class="terms-phase">
+            <td colspan="4">Phase 2 · Retainer (monthly)</td>
+            <td class="terms-phase-total">$1,500 / mo base</td>
+          </tr>
+          <tr>
+            <td class="t-milestone">M4+ — Monthly content engine (starting month after M3 closes)</td>
+            <td class="t-base">$1,500</td>
+            <td>$1,515</td>
+            <td class="t-n30">$1,522.50</td>
+            <td class="t-n45">$1,537.50</td>
+          </tr>
+          <tr class="terms-italic">
+            <td class="t-milestone" colspan="5">Same Net 15 / 30 / 45 uplift schedule applies to each monthly retainer invoice individually.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="source-note"><strong>Pay on receipt and you owe the base amount — zero finance charges, ever.</strong> The Net 15 / 30 / 45 columns only apply if you proactively request an extension on a specific invoice before its due date. Uplift math: 18% APR (standard B2B rate) applied to the days extended — Net 15: 18% × 15/365 = 0.74%, billed at a flat <strong>1.0%</strong> · Net 30: 18% × 30/365 = 1.48%, billed at <strong>1.5%</strong> · Net 45: 18% × 45/365 = 2.22%, billed at <strong>2.5%</strong>. Fees apply per individual invoice and are <strong>not compounded</strong>. <strong>Worst case if all three Foundation invoices are extended to Net 45:</strong> +$500 → $20,500 total. Pay on receipt on all three: $20,000 flat. Extensions don't change the work schedule — only when the invoice clears.</p>
+
+    <h3 style="margin-top:48px">Not included</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Why it sits outside this SOW</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Ads, paid social, paid SEO</td><td>Intentionally unbundled. The content engine is built to absorb that role over time; layering paid back in is your call, fundable from the AI Dividend (~$15.5K/mo) the strategy doc projects.</td></tr>
+          <tr><td>"Need a Dumpster" trademark filing</td><td>Discussed May 12 as a worthwhile defensive move once the brand picks up volume. Quoted separately when you're ready — USPTO filing fees + attorney time, not Orbis labor.</td></tr>
+          <tr><td>Hauler rate negotiation</td><td>Midwest Waste owns the hauler relationships. Orbis builds the tools that hold the rates; you set them and keep them current.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <h3>Sign-off</h3>
+      <p>Countersigning the kickoff invoice (milestone 1) constitutes acceptance of this scope and payment schedule. Anything outside the tables above is a change order — quoted and approved separately before work starts. Everything in the strategy doc that follows is the reasoning behind these numbers.</p>
+    </div>
+  </div>
+</section>
 
 <!-- THESIS ============================================================ -->
 <section>
